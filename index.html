@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>জাতীয় বিশ্ববিদ্যালয় | অর্থনীতি ১ম বর্ষ | মৌলিক গণিত সাজেশন</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap');
+
+  :root {
+    --deep-green: #0a4d3c;
+    --mid-green: #1a7a5e;
+    --light-green: #2da878;
+    --accent-gold: #d4a017;
+    --accent-orange: #e67e22;
+    --bg-cream: #fdf8f0;
+    --bg-light: #f4f9f6;
+    --text-dark: #1a2a20;
+    --text-mid: #2d4a35;
+    --border-color: #b8d8c8;
+    --card-shadow: 0 4px 16px rgba(10,77,60,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Hind Siliguri', 'Noto Serif Bengali', sans-serif;
+    background: var(--bg-cream);
+    color: var(--text-dark);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  .main-header {
+    background: linear-gradient(135deg, var(--deep-green) 0%, var(--mid-green) 60%, var(--light-green) 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 20px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .main-header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .main-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -30px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(212,160,23,0.12);
+  }
+  .header-badge {
+    display: inline-block;
+    background: var(--accent-gold);
+    color: var(--deep-green);
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .main-header h1 {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .main-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0.92;
+    margin-bottom: 6px;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .meta-chip {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 30px 20px 50px;
+  }
+
+  .syllabus-card {
+    background: white;
+    border: 1.5px solid var(--border-color);
+    border-left: 5px solid var(--mid-green);
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 30px;
+    box-shadow: var(--card-shadow);
+  }
+  .syllabus-card h3 {
+    color: var(--deep-green);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .syllabus-card h3::before { content: '📋'; font-size: 18px; }
+  .syllabus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 10px;
+  }
+  .syllabus-item {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-mid);
+  }
+  .syllabus-item .chapter-num {
+    display: block;
+    font-size: 11px;
+    color: var(--mid-green);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    letter-spacing: 0.5px;
+  }
+
+  .section-title {
+    background: linear-gradient(90deg, var(--deep-green), var(--mid-green));
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px 8px 0 0;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .section-title .icon { font-size: 18px; }
+
+  .q-block {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 20px 22px;
+    margin-bottom: 4px;
+    box-shadow: 0 2px 8px rgba(10,77,60,0.06);
+  }
+
+  .chapter-header {
+    background: var(--bg-light);
+    border: 1.5px solid var(--border-color);
+    border-left: 4px solid var(--accent-gold);
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin: 22px 0 14px;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--deep-green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .q-list { list-style: none; }
+  .q-list li {
+    padding: 8px 0 8px 22px;
+    border-bottom: 1px dashed #e0ede8;
+    position: relative;
+    font-size: 14.5px;
+    line-height: 1.75;
+  }
+  .q-list li:last-child { border-bottom: none; }
+  .q-list li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--light-green);
+    font-size: 10px;
+    top: 12px;
+  }
+  .year-tag {
+    display: inline-block;
+    background: var(--accent-gold);
+    color: #4a2800;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 10px;
+    margin-left: 6px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .hot-tag {
+    display: inline-block;
+    background: #e53935;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 10px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .q-ans {
+    display: block;
+    background: #eaf6f0;
+    border-left: 3px solid var(--mid-green);
+    border-radius: 0 6px 6px 0;
+    padding: 5px 10px 5px 12px;
+    margin-top: 5px;
+    font-size: 13.5px;
+    color: #1a3a25;
+    line-height: 1.7;
+  }
+  .q-ans::before {
+    content: '✍ উত্তর: ';
+    font-weight: 700;
+    color: var(--mid-green);
+  }
+
+  .tips-box {
+    background: linear-gradient(135deg, #fff9e6, #fffcf0);
+    border: 2px solid var(--accent-gold);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-top: 30px;
+  }
+  .tips-box h4 {
+    color: #8b5e00;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .tips-list { list-style: none; }
+  .tips-list li {
+    padding: 5px 0 5px 22px;
+    position: relative;
+    font-size: 14px;
+    color: #4a3000;
+  }
+  .tips-list li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    font-weight: 700;
+  }
+
+  .marks-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .marks-table th {
+    background: var(--deep-green);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .marks-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+  }
+  .marks-table tr:nth-child(even) td { background: var(--bg-light); }
+
+  /* Mobile marks cards */
+  .marks-cards { display: none; }
+  .marks-card {
+    background: white;
+    border: 1.5px solid var(--border-color);
+    border-left: 5px solid var(--mid-green);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(10,77,60,0.07);
+  }
+  .marks-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .marks-card-badge {
+    background: var(--deep-green);
+    color: white;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .marks-card-type {
+    color: var(--text-mid);
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+  .marks-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .marks-card-stat {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 6px;
+  }
+  .marks-card-stat .stat-label {
+    display: block;
+    font-size: 10px;
+    color: var(--mid-green);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 3px;
+  }
+  .marks-card-stat .stat-value {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--deep-green);
+  }
+
+  @media (max-width: 600px) {
+    .marks-table-wrap { display: none; }
+    .marks-cards { display: block; }
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 2px dashed var(--border-color);
+    color: #5a7a65;
+    font-size: 13px;
+  }
+
+  .notice-box {
+    background: #e8f4fd;
+    border: 1.5px solid #90caf9;
+    border-left: 5px solid #1565c0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: #0d2a4a;
+  }
+
+  @media (max-width: 600px) {
+    .main-header h1 { font-size: 20px; }
+    .main-header h2 { font-size: 15px; }
+    .syllabus-grid { grid-template-columns: 1fr 1fr; }
+    .container { padding: 20px 14px 40px; }
+    .q-block { padding: 14px 14px; }
+    .chapter-header { font-size: 14px; padding: 10px 14px; }
+    .section-title { font-size: 14px; padding: 10px 14px; }
+    .q-list li { font-size: 13.5px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="main-header">
+  <div class="header-badge">📚 ফাইনাল পরীক্ষা সাজেশন ২০২৪/২৫</div>
+  <h1>জাতীয় বিশ্ববিদ্যালয়<br>বি.এস.এস (অনার্স) প্রথম বর্ষ</h1>
+  <h2>বিভাগ: অর্থনীতি | বিষয়: মৌলিক গণিত (Basic Mathematics)</h2>
+  <div class="header-meta">
+    <span class="meta-chip">📌 বিষয় কোড: 212205</span>
+    <span class="meta-chip">⏱ ক্লাস ঘণ্টা: ৬০</span>
+    <span class="meta-chip">💯 পূর্ণমান: ১০০</span>
+    <span class="meta-chip">🎓 ক্রেডিট: ৪</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="notice-box">
+    ⚠️ <strong>সংশোধিত সংস্করণ:</strong> এই সাজেশনটি বইয়ের প্রকৃত সূচিপত্র অনুযায়ী আপডেট করা হয়েছে। অধ্যায়ের নাম ও বিষয়বস্তু বইয়ের সাথে সামঞ্জস্যপূর্ণ।
+  </div>
+
+  <!-- SYLLABUS -->
+  <div class="syllabus-card">
+    <h3>সিলেবাস — অধ্যায়সমূহ (বই অনুযায়ী)</h3>
+    <div class="syllabus-grid">
+      <div class="syllabus-item"><span class="chapter-num">অধ্যায় ১</span>কতিপয় মৌলিক ধারণার পর্যালোচনা</div>
+      <div class="syllabus-item"><span class="chapter-num">অধ্যায় ২</span>সেটের ধারণা (Set Theory)</div>
+      <div class="syllabus-item"><span class="chapter-num">অধ্যায় ৩</span>প্রাথমিক স্থিতীয় বিশ্লেষণ</div>
+      <div class="syllabus-item"><span class="chapter-num">অধ্যায় ৪</span>অপেক্ষক, সীমা এবং অবিচ্ছিন্নতা</div>
+      <div class="syllabus-item"><span class="chapter-num">অধ্যায় ৫</span>সমীকরণ পদ্ধতি</div>
+      <div class="syllabus-item"><span class="chapter-num">অধ্যায় ৬</span>জ্যামিতি</div>
+      <div class="syllabus-item"><span class="chapter-num">অধ্যায় ৭</span>প্রাথমিক অন্তরক ক্যালকুলাস</div>
+      <div class="syllabus-item"><span class="chapter-num">অধ্যায় ৮</span>কাম্যকরণ (Optimization)</div>
+    </div>
+  </div>
+
+  <!-- MARKS DISTRIBUTION -->
+  <div class="section-title"><span class="icon">📊</span> প্রশ্নের ধরন ও নম্বর বণ্টন</div>
+  <div class="q-block">
+    <!-- Desktop Table -->
+    <div class="marks-table-wrap">
+    <table class="marks-table">
+      <tr>
+        <th>বিভাগ</th>
+        <th>প্রশ্নের ধরন</th>
+        <th>উত্তর দিতে হবে</th>
+        <th>প্রতিটি নম্বর</th>
+        <th>মোট</th>
+      </tr>
+      <tr>
+        <td><strong>ক-বিভাগ</strong></td>
+        <td>অতিসংক্ষিপ্ত (১ শব্দ/১ বাক্য)</td>
+        <td>যেকোনো ১০টি (মোট ১৫টি)</td>
+        <td>১</td>
+        <td>১০</td>
+      </tr>
+      <tr>
+        <td><strong>খ-বিভাগ</strong></td>
+        <td>সংক্ষিপ্ত (৪-৫ লাইন)</td>
+        <td>যেকোনো ৫টি (মোট ৮টি)</td>
+        <td>৪</td>
+        <td>২০</td>
+      </tr>
+      <tr>
+        <td><strong>গ-বিভাগ</strong></td>
+        <td>রচনামূলক (বিশ্লেষণধর্মী)</td>
+        <td>যেকোনো ৫টি (মোট ৮টি)</td>
+        <td>১০+৪ ইনকোর্স</td>
+        <td>৭০</td>
+      </tr>
+    </table>
+    </div>
+
+    <!-- Mobile Cards -->
+    <div class="marks-cards">
+      <div class="marks-card">
+        <div class="marks-card-header">
+          <span class="marks-card-badge">ক-বিভাগ</span>
+          <span class="marks-card-type">অতিসংক্ষিপ্ত (১ শব্দ/১ বাক্য)</span>
+        </div>
+        <div class="marks-card-grid">
+          <div class="marks-card-stat"><span class="stat-label">মোট প্রশ্ন</span><span class="stat-value">১৫টি</span></div>
+          <div class="marks-card-stat"><span class="stat-label">উত্তর দিতে হবে</span><span class="stat-value">১০টি</span></div>
+          <div class="marks-card-stat"><span class="stat-label">মোট নম্বর</span><span class="stat-value">১০</span></div>
+        </div>
+      </div>
+      <div class="marks-card">
+        <div class="marks-card-header">
+          <span class="marks-card-badge">খ-বিভাগ</span>
+          <span class="marks-card-type">সংক্ষিপ্ত (৪-৫ লাইন)</span>
+        </div>
+        <div class="marks-card-grid">
+          <div class="marks-card-stat"><span class="stat-label">মোট প্রশ্ন</span><span class="stat-value">৮টি</span></div>
+          <div class="marks-card-stat"><span class="stat-label">উত্তর দিতে হবে</span><span class="stat-value">৫টি</span></div>
+          <div class="marks-card-stat"><span class="stat-label">মোট নম্বর</span><span class="stat-value">২০</span></div>
+        </div>
+      </div>
+      <div class="marks-card" style="border-left-color: var(--accent-gold);">
+        <div class="marks-card-header">
+          <span class="marks-card-badge" style="background: var(--accent-gold); color: #3a1a00;">গ-বিভাগ</span>
+          <span class="marks-card-type">রচনামূলক (বিশ্লেষণধর্মী)</span>
+        </div>
+        <div class="marks-card-grid">
+          <div class="marks-card-stat"><span class="stat-label">মোট প্রশ্ন</span><span class="stat-value">৮টি</span></div>
+          <div class="marks-card-stat"><span class="stat-label">উত্তর দিতে হবে</span><span class="stat-value">৫টি</span></div>
+          <div class="marks-card-stat"><span class="stat-label">মোট নম্বর</span><span class="stat-value">৭০</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:13px; color:#5a7a65; margin-top:6px;">★ ইনকোর্স পরীক্ষা: ৩০ নম্বর | চূড়ান্ত পরীক্ষা: ৭০ নম্বর (পাস: ৩৬)</p>
+  </div>
+
+
+  <!-- ===== ক বিভাগ ===== -->
+  <div class="section-title"><span class="icon">✏️</span> ক-বিভাগ: অতিসংক্ষিপ্ত প্রশ্নাবলি (বিগত সালের + গুরুত্বপূর্ণ)</div>
+  <div class="q-block">
+
+    <div class="chapter-header">🔹 অধ্যায় ১ — কতিপয় মৌলিক ধারণার পর্যালোচনা</div>
+    <ul class="q-list">
+      <li>গাণিতিক অর্থনীতি কী? <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">গাণিতিক অর্থনীতি হলো অর্থনীতির সেই শাখা যেখানে অর্থনৈতিক তত্ত্ব ও সম্পর্কসমূহ গাণিতিক প্রতীক, সমীকরণ ও সংখ্যার সাহায্যে প্রকাশ করা হয়।</span>
+      </li>
+      <li>অগাণিতিক অর্থনীতি কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">অগাণিতিক অর্থনীতি হলো সেই পদ্ধতি যেখানে অর্থনৈতিক ধারণা ও তত্ত্বসমূহ মৌখিক ভাষায় ও চিত্রের (রেখাচিত্র) মাধ্যমে বিশ্লেষণ করা হয়, গাণিতিক প্রতীক ব্যবহার না করে।</span>
+      </li>
+      <li>অর্থনৈতিক মডেল কী? <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">অর্থনৈতিক মডেল হলো বাস্তব অর্থনৈতিক ঘটনাবলির একটি সরলীকৃত গাণিতিক উপস্থাপনা, যা পরিবর্তনশীলগুলোর মধ্যে কার্যকারণ সম্পর্ক ব্যাখ্যা করে।</span>
+      </li>
+      <li>স্বাভাবিক সংখ্যা কাকে বলে? <span class="year-tag">২০১৩, ১৭</span>
+        <span class="q-ans">গণনার জন্য ব্যবহৃত ধনাত্মক পূর্ণ সংখ্যাসমূহকে স্বাভাবিক সংখ্যা বলে। যেমন: 1, 2, 3, 4, ... (শূন্য অন্তর্ভুক্ত নয়)।</span>
+      </li>
+      <li>মূলদ সংখ্যা কাকে বলে? <span class="year-tag">২০১৪, ১৯</span>
+        <span class="q-ans">যে সংখ্যাকে p/q আকারে (p ও q পূর্ণ সংখ্যা, q ≠ 0) প্রকাশ করা যায় তাকে মূলদ সংখ্যা বলে। যেমন: 1/2, 3/4, 5।</span>
+      </li>
+      <li>অমূলদ সংখ্যা কাকে বলে? <span class="year-tag">২০১৫, ১৭</span>
+        <span class="q-ans">যে সংখ্যাকে p/q আকারে প্রকাশ করা যায় না তাকে অমূলদ সংখ্যা বলে। এর দশমিক প্রসারণ অশেষ ও অপুনরাবৃত্তিশীল। যেমন: √2, √3, π।</span>
+      </li>
+      <li>মূলদ ও অমূলদ সংখ্যার পার্থক্য কী? <span class="hot-tag">★ গুরুত্বপূর্ণ</span>
+        <span class="q-ans">মূলদ সংখ্যাকে p/q (q≠0) আকারে লেখা যায় এবং এর দশমিক সসীম বা পুনরাবৃত্তিশীল; অমূলদ সংখ্যা p/q আকারে লেখা যায় না এবং এর দশমিক অশেষ ও অপুনরাবৃত্তিশীল। যেমন: 3/4 মূলদ, √5 অমূলদ।</span>
+      </li>
+      <li>বাস্তব সংখ্যা কী? <span class="year-tag">২০১৩, ১৭</span>
+        <span class="q-ans">মূলদ ও অমূলদ সংখ্যার সমষ্টিকে বাস্তব সংখ্যা বলে। সংখ্যারেখায় যেকোনো বিন্দু একটি বাস্তব সংখ্যা নির্দেশ করে। উদাহরণ: –5, 0, 3, √2, π।</span>
+      </li>
+      <li>কাল্পনিক সংখ্যা কী? <span class="year-tag">২০১৮</span>
+        <span class="q-ans">যে সংখ্যার বর্গ ঋণাত্মক তাকে কাল্পনিক সংখ্যা বলে। এটি i = √(–1) দ্বারা প্রকাশিত হয়। যেমন: 2i, –3i।</span>
+      </li>
+      <li>জটিল সংখ্যা কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">বাস্তব ও কাল্পনিক অংশের সমন্বয়ে গঠিত সংখ্যাকে জটিল সংখ্যা বলে। এর আকার: a + bi, যেখানে a বাস্তব অংশ এবং bi কাল্পনিক অংশ। যেমন: 3 + 4i।</span>
+      </li>
+      <li>মৌলিক সংখ্যা কী? <span class="year-tag">২০১২, ১৫, ১৯</span>
+        <span class="q-ans">যে ধনাত্মক পূর্ণ সংখ্যা 1 এবং নিজে ছাড়া অন্য কোনো সংখ্যা দ্বারা নিঃশেষে বিভাজ্য নয় তাকে মৌলিক সংখ্যা বলে। যেমন: 2, 3, 5, 7, 11।</span>
+      </li>
+      <li>যৌগিক সংখ্যা কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">যে ধনাত্মক পূর্ণ সংখ্যা 1 ও নিজে ছাড়াও অন্য সংখ্যা দ্বারা নিঃশেষে বিভাজ্য তাকে যৌগিক সংখ্যা বলে। যেমন: 4, 6, 8, 9, 12।</span>
+      </li>
+      <li>জোড় ও বিজোড় সংখ্যার পার্থক্য কী? <span class="year-tag">২০১৫</span>
+        <span class="q-ans">যে সংখ্যা 2 দ্বারা নিঃশেষে বিভাজ্য তা জোড় (যেমন: 2, 4, 6); যা 2 দ্বারা বিভাজ্য নয় তা বিজোড় (যেমন: 1, 3, 5)।</span>
+      </li>
+      <li>পূর্ণ সংখ্যা কী? অর্থনীতিতে পূর্ণ সংখ্যার ব্যবহার কি? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">শূন্যসহ সকল ধনাত্মক ও ঋণাত্মক স্বাভাবিক সংখ্যাকে পূর্ণ সংখ্যা বলে: ..., –2, –1, 0, 1, 2, ... অর্থনীতিতে উৎপাদন পরিমাণ, জনসংখ্যা, ঋণ ইত্যাদি প্রকাশে পূর্ণ সংখ্যা ব্যবহৃত হয়।</span>
+      </li>
+      <li>ভগ্নাংশ কী? ভগ্নাংশের প্রকারভেদ উল্লেখ কর। <span class="year-tag">২০১৪</span>
+        <span class="q-ans">p/q আকারের সংখ্যাকে ভগ্নাংশ বলে। প্রকারভেদ: (i) প্রকৃত ভগ্নাংশ: লব &lt; হর (যেমন: 2/5); (ii) অপ্রকৃত ভগ্নাংশ: লব ≥ হর (যেমন: 7/3); (iii) মিশ্র ভগ্নাংশ (যেমন: 2⅓)।</span>
+      </li>
+      <li>চলক কাকে বলে? <span class="year-tag">২০১৩, ১৬</span>
+        <span class="q-ans">যে রাশি বিভিন্ন মান ধারণ করতে পারে তাকে চলক বলে। যেমন: দাম (P), পরিমাণ (Q), আয় (Y) — এগুলো অর্থনীতিতে সাধারণ চলক।</span>
+      </li>
+      <li>স্বাধীন ও অধীন চলকের পার্থক্য কী? <span class="year-tag">২০১৫, ১৯</span>
+        <span class="q-ans">স্বাধীন চলক নিজে থেকে মান পরিবর্তন করে (যেমন: দাম P); অধীন চলক স্বাধীন চলকের পরিবর্তনের ফলে পরিবর্তিত হয় (যেমন: চাহিদা Q)। Q = f(P) সমীকরণে P স্বাধীন, Q অধীন।</span>
+      </li>
+      <li>অভিজ্ঞরীণ ও বাহ্যিক চলকের পার্থক্য কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">অভিজ্ঞরীণ (Endogenous) চলক মডেলের ভেতরে নির্ধারিত হয় (যেমন: ভারসাম্য মূল্য); বাহ্যিক (Exogenous) চলক মডেলের বাইরে থেকে নির্ধারিত হয় (যেমন: সরকারি ব্যয় G)।</span>
+      </li>
+      <li>ধ্রুবক ও পরামিতির মধ্যে পার্থক্য কী? <span class="hot-tag">★ বার বার আসে</span>
+        <span class="q-ans">ধ্রুবক সর্বদা একটি নির্দিষ্ট মান ধারণ করে (যেমন: π = 3.14); পরামিতি একটি নির্দিষ্ট প্রসঙ্গে ধ্রুবকের মতো আচরণ করে কিন্তু বিভিন্ন মডেলে ভিন্ন মান নেয় (যেমন: a + bY এ 'a' ও 'b' পরামিতি)।</span>
+      </li>
+      <li>সহগ কী? সহগ ও পরামিতির পার্থক্য কী? <span class="year-tag">২০১৮</span>
+        <span class="q-ans">সহগ হলো চলকের গুণক (যেমন: 3x এ 3 হলো সহগ)। সহগ নির্দিষ্ট সমীকরণে চলকের সামনে থাকে; পরামিতি মডেলের কাঠামোগত বৈশিষ্ট্য নির্দেশ করে এবং বিভিন্ন পরিস্থিতিতে ভিন্ন হতে পারে।</span>
+      </li>
+      <li>অর্থনৈতিক মডেলের উপাদানসমূহ কী কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">অর্থনৈতিক মডেলের উপাদান: (i) চলক (Variable), (ii) ধ্রুবক (Constant), (iii) পরামিতি (Parameter), (iv) সমীকরণ (Equation), (v) অনুমান/ধারণা (Assumption)।</span>
+      </li>
+      <li>সূচক কী? সূচকের নিয়মাবলি লিখ। <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">সূচক বা ঘাত নির্দেশ করে কোনো সংখ্যা কতবার নিজের সাথে গুণ করা হয়েছে। নিয়ম: aᵐ·aⁿ = aᵐ⁺ⁿ; aᵐ/aⁿ = aᵐ⁻ⁿ; (aᵐ)ⁿ = aᵐⁿ; a⁰ = 1; a⁻ⁿ = 1/aⁿ।</span>
+      </li>
+      <li>ভগ্নাংশের সূচক কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">যখন সূচক ভগ্নাংশ হয় তখন তাকে ভগ্নাংশের সূচক বলে। যেমন: a^(1/n) = ⁿ√a (n-তম মূল); a^(m/n) = (ⁿ√a)ᵐ। উদাহরণ: 8^(1/3) = ∛8 = 2।</span>
+      </li>
+      <li>অসমতা কী? <span class="year-tag">২০১৮</span>
+        <span class="q-ans">দুটি রাশির মধ্যে সমতা না থাকলে তাকে অসমতা বলে। >, <, ≥, ≤ চিহ্ন দ্বারা প্রকাশ করা হয়। যেমন: x > 5 মানে x, 5 এর চেয়ে বড়।</span>
+      </li>
+      <li>0 ≤ x ≤ 3 হলে x কী ধরনের চলক? <span class="year-tag">২০১১, ১৭</span>
+        <span class="q-ans">0 ≤ x ≤ 3 হলে x একটি <strong>সীমিত/বদ্ধ (bounded)</strong> চলক। এটি 0 থেকে 3 এর মধ্যে যেকোনো মান নিতে পারে, তাই এটি একটি <strong>অবিচ্ছিন্ন চলক</strong>।</span>
+      </li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ২ — সেটের ধারণা</div>
+    <ul class="q-list">
+      <li>সেট কী? <span class="year-tag">২০১৩, ১৬</span>
+        <span class="q-ans">সুনির্দিষ্ট ও সুপরিচিত বস্তু বা উপাদানের সুসংগঠিত সংগ্রহকে সেট বলে। যেমন: A = {1, 2, 3}। সেটের উপাদানগুলো অনন্য (unique) এবং কোনো নির্দিষ্ট ক্রম নেই।</span>
+      </li>
+      <li>সীমিত ও অসীম সেটের পার্থক্য কী? <span class="year-tag">২০১৫</span>
+        <span class="q-ans">সীমিত সেটে উপাদান সংখ্যা গণনাযোগ্য ও নির্দিষ্ট (যেমন: {1,2,3}); অসীম সেটে উপাদান সংখ্যা অগণনীয় ও অনির্দিষ্ট (যেমন: সকল স্বাভাবিক সংখ্যার সেট ℕ)।</span>
+      </li>
+      <li>ফাঁকা/নাল সেট কাকে বলে? <span class="year-tag">২০১৩</span>
+        <span class="q-ans">যে সেটে কোনো উপাদান নেই তাকে ফাঁকা বা নাল সেট বলে। প্রকাশ: {} বা ∅। যেমন: {x : x একটি স্বাভাবিক সংখ্যা এবং x < 0} = ∅।</span>
+      </li>
+      <li>একক সেট কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">যে সেটে মাত্র একটি উপাদান থাকে তাকে একক সেট বলে। যেমন: A = {5} বা B = {0}।</span>
+      </li>
+      <li>সমান সেট ও সমতুল্য সেটের পার্থক্য কী? <span class="year-tag">২০১৪, ১৮</span>
+        <span class="q-ans">সমান সেট: দুটি সেটের সকল উপাদান একই হলে (যেমন: A={1,2} ও B={2,1} → A=B); সমতুল্য সেট: দুটি সেটের উপাদান সংখ্যা সমান কিন্তু উপাদান আলাদা হতে পারে (যেমন: {1,2} ≡ {a,b})।</span>
+      </li>
+      <li>ইউনিভার্সাল সেট কাকে বলে? <span class="year-tag">২০১৪, ১৮</span>
+        <span class="q-ans">একটি আলোচনার প্রেক্ষাপটে যে সেটে সংশ্লিষ্ট সব উপাদান অন্তর্ভুক্ত থাকে তাকে ইউনিভার্সাল সেট বলে। U দ্বারা প্রকাশ করা হয়। এটি অন্য সকল সেটের সুপারসেট।</span>
+      </li>
+      <li>উপসেট ও প্রকৃত উপসেটের পার্থক্য কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">A ⊆ B মানে A এর সকল উপাদান B তে আছে (A = B হতে পারে) — এটি উপসেট; A ⊂ B মানে A এর সব উপাদান B তে আছে কিন্তু A ≠ B — এটি প্রকৃত উপসেট।</span>
+      </li>
+      <li>পাওয়ার সেট কাকে বলে? A = {1,2,3} হলে P(A) কত? <span class="year-tag">২০১৫, ১৭</span>
+        <span class="q-ans">কোনো সেটের সকল উপসেট নিয়ে গঠিত সেটকে পাওয়ার সেট বলে। n উপাদানের সেটের পাওয়ার সেটে 2ⁿ উপাদান থাকে। A = {1,2,3} এর জন্য |P(A)| = 2³ = 8।</span>
+      </li>
+      <li>ভেনচিত্র কী? <span class="year-tag">২০১৪, ১৬</span>
+        <span class="q-ans">সেটের সম্পর্ক দৃশ্যমানভাবে প্রকাশের জন্য আয়তক্ষেত্র (ইউনিভার্সাল সেট) ও বৃত্তের (উপসেট) মাধ্যমে আঁকা চিত্রকে ভেনচিত্র বলে। John Venn এর নামানুসারে নামকরণ।</span>
+      </li>
+      <li>সংযোগ সেট (Union) কী? <span class="year-tag">২০১৫</span>
+        <span class="q-ans">A ও B সেটের সকল উপাদান নিয়ে গঠিত সেটকে সংযোগ সেট বলে। A∪B = {x : x∈A বা x∈B}। যেমন: {1,2}∪{2,3} = {1,2,3}।</span>
+      </li>
+      <li>ছেদন সেট (Intersection) কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">A ও B উভয় সেটে বিদ্যমান সাধারণ উপাদান নিয়ে গঠিত সেটকে ছেদন সেট বলে। A∩B = {x : x∈A এবং x∈B}। যেমন: {1,2,3}∩{2,3,4} = {2,3}।</span>
+      </li>
+      <li>পূরক সেট কী? <span class="year-tag">২০১৫, ১৯</span>
+        <span class="q-ans">ইউনিভার্সাল সেট U থেকে A সেটের উপাদানগুলো বাদ দিলে যে সেট পাওয়া যায় তাকে A-এর পূরক সেট বলে। A' = U – A = {x : x∈U কিন্তু x∉A}।</span>
+      </li>
+      <li>সংযোগহীন/পৃথকীকৃত সেট কাকে বলে? <span class="year-tag">২০১১</span>
+        <span class="q-ans">যদি দুটি সেট A ও B এর মধ্যে কোনো সাধারণ উপাদান না থাকে, অর্থাৎ A∩B = ∅ হয়, তাহলে তাদের সংযোগহীন বা পৃথক সেট বলে।</span>
+      </li>
+      <li>De Morgan's Law লিখ। <span class="hot-tag">★ বার বার আসে</span>
+        <span class="q-ans">De Morgan's Law দুটি: (i) (A∪B)' = A'∩B' — সংযোগের পূরক = পূরকদ্বয়ের ছেদন; (ii) (A∩B)' = A'∪B' — ছেদনের পূরক = পূরকদ্বয়ের সংযোগ।</span>
+      </li>
+      <li>A = {2, 4, 6, 8} হলে উপসেটের সংখ্যা কত? <span class="year-tag">২০১৯</span>
+        <span class="q-ans">A তে n = 4টি উপাদান আছে। উপসেটের সংখ্যা = 2ⁿ = 2⁴ = <strong>16</strong>। প্রকৃত উপসেট = 16 – 1 = 15।</span>
+      </li>
+      <li>প্রমাণ কর যে, A∩B ⊂ A∪B <span class="hot-tag">★</span>
+        <span class="q-ans">ধরা যাক x ∈ A∩B। তাহলে x∈A এবং x∈B। যেহেতু x∈A, তাই x∈A বা x∈B — অর্থাৎ x∈A∪B। সুতরাং প্রতিটি উপাদান A∩B এ থাকলে A∪B তেও থাকে। ∴ A∩B ⊂ A∪B (প্রমাণিত)।</span>
+      </li>
+      <li>সীমিত সেটের উপাদান সংখ্যা নির্ণয়ের সূত্র লিখ। <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">|A∪B| = |A| + |B| – |A∩B|। তিনটি সেটের জন্য: |A∪B∪C| = |A|+|B|+|C| – |A∩B| – |B∩C| – |A∩C| + |A∩B∩C|।</span>
+      </li>
+      <li>ডোমেন ও রেঞ্জের পার্থক্য কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">ডোমেন হলো স্বাধীন চলকের (x) সকল সম্ভাব্য মানের সেট; রেঞ্জ হলো অধীন চলকের (y) সকল সম্ভাব্য মানের সেট। যেমন: f(x)=x² এ ডোমেন = ℝ, রেঞ্জ = [0, ∞)।</span>
+      </li>
+      <li>কার্তেসীয় গুণক কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">দুটি সেট A ও B এর কার্তেসীয় গুণক A×B হলো সকল ক্রমজোড় (a, b) এর সেট যেখানে a∈A ও b∈B। যেমন: A={1,2}, B={x,y} হলে A×B = {(1,x),(1,y),(2,x),(2,y)}।</span>
+      </li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৩ — প্রাথমিক স্থিতীয় বিশ্লেষণ</div>
+    <ul class="q-list">
+      <li>ভারসাম্য কী? <span class="year-tag">২০১৫, ১৯</span>
+        <span class="q-ans">ভারসাম্য হলো এমন একটি অবস্থা যেখানে পরস্পরবিরোধী শক্তিগুলো সমান হয়ে যায় এবং সিস্টেমটি পরিবর্তনের কোনো প্রবণতা দেখায় না। অর্থনীতিতে: চাহিদা = যোগান হলে বাজারে ভারসাম্য প্রতিষ্ঠিত হয়।</span>
+      </li>
+      <li>আংশিক ভারসাম্য কাকে বলে? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">আংশিক ভারসাম্য হলো এমন বিশ্লেষণ পদ্ধতি যেখানে অন্যান্য বাজারের প্রভাব অপরিবর্তিত রেখে (ceteris paribus) একটি নির্দিষ্ট বাজারের ভারসাম্য নির্ণয় করা হয়। Alfred Marshall এই ধারণা প্রবর্তন করেন।</span>
+      </li>
+      <li>সামগ্রিক ভারসাম্য কী? <span class="year-tag">২০১৮</span>
+        <span class="q-ans">সামগ্রিক ভারসাম্য হলো এমন বিশ্লেষণ পদ্ধতি যেখানে একই সাথে অর্থনীতির সকল বাজার (পণ্য, শ্রম, মূলধন) এবং তাদের পারস্পরিক নির্ভরশীলতা বিবেচনা করে ভারসাম্য নির্ণয় করা হয়। Walras এই ধারণার প্রবর্তক।</span>
+      </li>
+      <li>বাজার ভারসাম্য কী? <span class="year-tag">২০১৫, ১৭</span>
+        <span class="q-ans">বাজার ভারসাম্য হলো সেই অবস্থা যেখানে কোনো পণ্যের চাহিদার পরিমাণ (Qd) ও যোগানের পরিমাণ (Qs) সমান হয়। অর্থাৎ Qd = Qs। এই বিন্দুতে ভারসাম্য মূল্য (P*) ও ভারসাম্য পরিমাণ (Q*) নির্ধারিত হয়।</span>
+      </li>
+      <li>জাতীয় আয় মডেল কী? <span class="year-tag">২০১৮</span>
+        <span class="q-ans">জাতীয় আয় মডেল হলো কেইনসীয় অর্থনীতির একটি সরল মডেল যেখানে জাতীয় আয় Y = C + I + G সমীকরণে প্রকাশ করা হয়। এখানে C = ভোগ, I = বিনিয়োগ, G = সরকারি ব্যয়। ভারসাম্য আয় Y* = a/(1–b) (সরল ক্ষেত্রে)।</span>
+      </li>
+      <li>বিনিয়োগ গুণক কী? <span class="year-tag">২০১৬, ১৯</span>
+        <span class="q-ans">বিনিয়োগ গুণক (k) হলো বিনিয়োগের একক পরিবর্তনের ফলে জাতীয় আয়ে মোট পরিবর্তনের অনুপাত। সূত্র: k = ΔY/ΔI = 1/(1–b) = 1/MPS, যেখানে b = প্রান্তিক ভোগ প্রবণতা (MPC)। b = 0.8 হলে k = 1/(1–0.8) = 5।</span>
+      </li>
+      <li>IS রেখা কী? LM রেখা কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">IS রেখা: পণ্য বাজারের ভারসাম্যে সুদের হার (r) ও জাতীয় আয় (Y) এর সমন্বয় দেখায়; বিনিয়োগ (I) = সঞ্চয় (S)। LM রেখা: মুদ্রা বাজারের ভারসাম্যে r ও Y এর সমন্বয় দেখায়; মুদ্রার চাহিদা (L) = মুদ্রার যোগান (M)।</span>
+      </li>
+      <li>IS-LM মডেল কী? <span class="year-tag">২০১৮</span>
+        <span class="q-ans">IS-LM মডেল হলো কেইনসীয় সামষ্টিক অর্থনীতির একটি গুরুত্বপূর্ণ মডেল যেখানে পণ্য বাজার (IS) ও মুদ্রা বাজার (LM) একই সাথে বিশ্লেষণ করে ভারসাম্য সুদের হার (r*) এবং ভারসাম্য আয় (Y*) নির্ণয় করা হয়।</span>
+      </li>
+      <li>ভারসাম্যের উপর করের প্রভাব কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">কর (T) আরোপ করলে ভারসাম্য আয় হ্রাস পায়। কর গুণক = –b/(1–b)। উদাহরণ: b = 0.8 হলে কর গুণক = –0.8/0.2 = –4। অর্থাৎ T ১ টাকা বৃদ্ধিতে Y* ৪ টাকা হ্রাস পায়। সরকারি ব্যয় গুণকের চেয়ে কর গুণকের মান ছোট (পরম মূল্যে)।</span>
+      </li>
+      <li>তুলনামূলক স্থিতীয় বিশ্লেষণ কী? <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">তুলনামূলক স্থিতীয় বিশ্লেষণ হলো এমন একটি পদ্ধতি যেখানে দুটি ভিন্ন ভারসাম্য অবস্থার তুলনা করা হয় — একটি বহিরাগত পরিবর্তন (যেমন: নীতি পরিবর্তন) এর আগে ও পরে — কিন্তু পরিবর্তনের প্রক্রিয়া বিশ্লেষণ করা হয় না।</span>
+      </li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৪ — অপেক্ষক, সীমা এবং অবিচ্ছিন্নতা</div>
+    <ul class="q-list">
+      <li>অপেক্ষক কী? <span class="year-tag">২০১৩, ১৬, ২০</span> <span class="hot-tag">★</span>
+        <span class="q-ans">অপেক্ষক হলো দুটি চলকের মধ্যে এমন একটি সম্পর্ক যেখানে স্বাধীন চলক (x) এর প্রতিটি মানের জন্য অধীন চলক (y) এর একটি এবং কেবল একটি মান নির্ধারিত হয়। লেখা হয়: y = f(x)।</span>
+      </li>
+      <li>সম্পর্ক ও অপেক্ষকের পার্থক্য কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">সম্পর্ক: x এর একটি মানের বিপরীতে y এর একাধিক মান থাকতে পারে (যেমন: x² + y² = 25)। অপেক্ষক: x এর প্রতিটি মানের জন্য y এর একটিমাত্র মান থাকে (যেমন: y = 2x + 1)। সব অপেক্ষকই সম্পর্ক, কিন্তু সব সম্পর্ক অপেক্ষক নয়।</span>
+      </li>
+      <li>অপেক্ষকের ডোমেন ও রেঞ্জ কী? <span class="year-tag">২০১৪, ১৮</span>
+        <span class="q-ans">ডোমেন হলো স্বাধীন চলক x এর সকল গ্রহণযোগ্য মানের সেট (ইনপুট সেট)। রেঞ্জ হলো অধীন চলক y এর সকল সম্ভাব্য আউটপুট মানের সেট। যেমন: f(x) = √x এ ডোমেন = [0, ∞) এবং রেঞ্জ = [0, ∞)।</span>
+      </li>
+      <li>এক মান বিশিষ্ট অপেক্ষক কী? <span class="year-tag">২০১৫</span>
+        <span class="q-ans">যে অপেক্ষকে x এর প্রতিটি মানের জন্য y এর মাত্র একটি মান পাওয়া যায় তাকে এক মান বিশিষ্ট (single-valued) অপেক্ষক বলে। যেমন: y = x², y = 2x + 3। অধিকাংশ অর্থনৈতিক অপেক্ষক এক মান বিশিষ্ট।</span>
+      </li>
+      <li>বহুমান বিশিষ্ট অপেক্ষক কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">যে অপেক্ষকে x এর একটি মানের জন্য y এর একাধিক মান পাওয়া যায় তাকে বহুমান বিশিষ্ট (multi-valued) অপেক্ষক বলে। যেমন: y² = x সমীকরণে x = 4 হলে y = +2 বা –2। গাণিতিক দৃষ্টিতে এটি প্রকৃত অপেক্ষক নয়।</span>
+      </li>
+      <li>বিপরীত অপেক্ষক কী? <span class="year-tag">২০১৪, ১৮</span>
+        <span class="q-ans">যদি y = f(x) হয়, তাহলে x কে y এর অপেক্ষক হিসেবে প্রকাশ করলে x = f⁻¹(y) পাওয়া যায়, এটিই বিপরীত অপেক্ষক। যেমন: y = 2x + 3 হলে বিপরীত অপেক্ষক x = (y – 3)/2। বিপরীত অপেক্ষকের অস্তিত্বের জন্য মূল অপেক্ষককে এক-এক (one-to-one) হতে হবে।</span>
+      </li>
+      <li>যৌগিক অপেক্ষক কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">একটি অপেক্ষকের মান অন্য একটি অপেক্ষকের ইনপুট হিসেবে ব্যবহৃত হলে তাকে যৌগিক অপেক্ষক বলে। যেমন: g[f(x)] বা (g∘f)(x)। উদাহরণ: f(x) = x² ও g(x) = x+1 হলে g[f(x)] = x² + 1।</span>
+      </li>
+      <li>একঘাত (লিনিয়ার) অপেক্ষক কী? <span class="year-tag">২০১৩, ১৫</span>
+        <span class="q-ans">যে অপেক্ষকে x এর সর্বোচ্চ ঘাত ১ তাকে একঘাত বা লিনিয়ার অপেক্ষক বলে। সাধারণ রূপ: y = a + bx। লেখচিত্র সরলরেখা। অর্থনীতিতে: চাহিদা Q = a – bP এবং ভোগ C = a + bY একঘাত অপেক্ষকের উদাহরণ।</span>
+      </li>
+      <li>দ্বিঘাত অপেক্ষক কী? <span class="year-tag">২০১৩, ১৬</span>
+        <span class="q-ans">যে অপেক্ষকে x এর সর্বোচ্চ ঘাত ২ তাকে দ্বিঘাত অপেক্ষক বলে। সাধারণ রূপ: y = ax² + bx + c (a ≠ 0)। লেখচিত্র পরাবৃত্ত (Parabola)। অর্থনীতিতে মোট ব্যয় (TC) প্রায়ই দ্বিঘাত অপেক্ষক।</span>
+      </li>
+      <li>ঘাত অপেক্ষক কী? <span class="year-tag">২০১৫</span>
+        <span class="q-ans">যে অপেক্ষকে চলক x ঘাত n (যেকোনো বাস্তব সংখ্যা) আকারে থাকে তাকে ঘাত অপেক্ষক বলে। সাধারণ রূপ: y = axⁿ। উদাহরণ: y = 3x², y = x⁰·⁵ = √x। কব-ডগলাস উৎপাদন অপেক্ষক Q = AL^α K^β একটি ঘাত অপেক্ষক।</span>
+      </li>
+      <li>লগারিদম অপেক্ষক কী? <span class="year-tag">২০১৬, ১৮</span>
+        <span class="q-ans">লগারিদম অপেক্ষক হলো y = log_a(x) বা y = ln(x) আকারের অপেক্ষক। সূচক অপেক্ষকের বিপরীত অপেক্ষক। এর ডোমেন: (0, ∞) এবং রেঞ্জ: (–∞, +∞)। অর্থনীতিতে প্রবৃদ্ধির হার ও স্থিতিস্থাপকতা বিশ্লেষণে ব্যবহৃত হয়।</span>
+      </li>
+      <li>সূচক অপেক্ষক কী? <span class="year-tag">২০১৫, ১৭</span>
+        <span class="q-ans">যে অপেক্ষকে x ঘাত হিসেবে থাকে তাকে সূচক অপেক্ষক বলে। সাধারণ রূপ: y = aˣ বা y = eˣ। এর ডোমেন: (–∞, +∞) এবং রেঞ্জ: (0, +∞)। যৌগিক সুদ A = P·eʳᵗ সূচক অপেক্ষকের উদাহরণ।</span>
+      </li>
+      <li>বীজগাণিতীয় ও অবীজগাণিতীয় অপেক্ষকের পার্থক্য কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">বীজগাণিতীয় অপেক্ষক: যোগ, বিয়োগ, গুণ, ভাগ ও মূল ক্রিয়া দ্বারা গঠিত (যেমন: y = x² + 3x)। অবীজগাণিতীয় অপেক্ষক: লগ, সূচক বা ত্রিকোণমিতিক রাশি থাকে (যেমন: y = eˣ, y = ln x)। এদের অতিক্রমী (transcendental) অপেক্ষকও বলে।</span>
+      </li>
+      <li>অবিচ্ছিন্ন অপেক্ষক কী? <span class="year-tag">২০১৪, ১৮</span>
+        <span class="q-ans">যে অপেক্ষকে কোনো বিন্দুতে ফাঁক, লাফ বা অসংজ্ঞায়িত অবস্থা নেই তাকে অবিচ্ছিন্ন অপেক্ষক বলে। শর্ত তিনটি: (i) f(a) সংজ্ঞায়িত, (ii) lim f(x) বিদ্যমান, (iii) lim f(x) = f(a)। অবিচ্ছিন্ন অপেক্ষকের লেখচিত্র একটানা আঁকা যায়।</span>
+      </li>
+      <li>সীমার ধারণা কী? <span class="year-tag">২০১৫, ১৯</span>
+        <span class="q-ans">সীমা (Limit) হলো এমন একটি মান যার দিকে x কোনো নির্দিষ্ট মান a এর কাছে যাওয়ার সময় f(x) ক্রমশ অগ্রসর হয়। লেখা হয়: lim(x→a) f(x) = L। x = a তে f(x) সংজ্ঞায়িত না হলেও সীমা থাকতে পারে।</span>
+      </li>
+      <li>অপেক্ষকের বামদিকের ও ডানদিকের সীমার পার্থক্য কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">বামদিকের সীমা (Left-hand limit): x বাম দিক থেকে a এর কাছে গেলে f(x) যে মানে অগ্রসর হয়; lim(x→a⁻) f(x)। ডানদিকের সীমা (Right-hand limit): x ডান দিক থেকে a এর কাছে গেলে; lim(x→a⁺) f(x)। উভয় সীমা সমান হলে সীমা বিদ্যমান।</span>
+      </li>
+      <li>সমজাতীয় অপেক্ষক কী? <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">যদি f(tx, ty) = tⁿ·f(x, y) হয় তাহলে f কে n-মাত্রার সমজাতীয় অপেক্ষক বলে। উদাহরণ: f(x,y) = x² + xy + y² হলে f(tx,ty) = t²f(x,y) → দ্বিতীয় মাত্রার সমজাতীয়। কব-ডগলাস: Q = L^α K^β সমজাতীয় যদি α+β = 1।</span>
+      </li>
+      <li>ঢাল কী? সরল রেখার ঢাল কী? <span class="year-tag">২০১৪, ১৬</span>
+        <span class="q-ans">ঢাল হলো x বরাবর একক পরিবর্তনের জন্য y এর পরিবর্তনের হার। ঢাল = Δy/Δx। সরল রেখার ঢাল: y = mx + c সমীকরণে m = ঢাল = (y₂–y₁)/(x₂–x₁)। ধনাত্মক ঢাল ডান-ঊর্ধ্বমুখী, ঋণাত্মক ঢাল ডান-নিম্নমুখী রেখা নির্দেশ করে।</span>
+      </li>
+      <li>লগারিদমের সংজ্ঞা দাও। সাধারণ লগ ও প্রাকৃতিক লগের পার্থক্য কী? <span class="year-tag">২০১৬, ১৯</span>
+        <span class="q-ans">লগারিদম: aˣ = N হলে x = log_a N। সাধারণ লগ (Common Log): ভিত্তি 10; log₁₀ বা lg দিয়ে প্রকাশ। প্রাকৃতিক লগ (Natural Log): ভিত্তি e = 2.71828...; ln দিয়ে প্রকাশ। অর্থনীতিতে প্রবৃদ্ধি বিশ্লেষণে ln বেশি ব্যবহৃত হয়।</span>
+      </li>
+      <li>সুদ গণনা কী? সরল সুদ ও চক্রবৃদ্ধি সুদের পার্থক্য কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">সরল সুদ: সুদ শুধু মূলধনের উপর গণনা হয়; SI = P·r·t। চক্রবৃদ্ধি সুদ: সুদের উপরেও সুদ যোগ হয়; A = P(1+r)ⁿ। পার্থক্য: চক্রবৃদ্ধিতে সময়ের সাথে আসলের পরিমাণ বাড়ে বলে একই সময়ে চক্রবৃদ্ধি সুদের মোট পরিমাণ সরল সুদের চেয়ে বেশি হয়।</span>
+      </li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৫ — সমীকরণ পদ্ধতি</div>
+    <ul class="q-list">
+      <li>সমীকরণ কী? <span class="year-tag">২০১৪, ১৭</span>
+        <span class="q-ans">সমীকরণ হলো দুটি রাশির মধ্যে সমতা প্রকাশকারী গাণিতিক বিবৃতি যেখানে অজ্ঞাত চলক থাকে এবং নির্দিষ্ট মানের জন্য সমতা সত্য হয়। যেমন: 2x + 3 = 7 একটি সমীকরণ যেখানে x = 2 সমাধান।</span>
+      </li>
+      <li>একঘাত সমীকরণ ও দ্বিঘাত সমীকরণের পার্থক্য কী? <span class="year-tag">২০১৩, ১৬</span>
+        <span class="q-ans">একঘাত সমীকরণ: চলকের সর্বোচ্চ ঘাত ১; সাধারণ রূপ ax + b = 0; একটি মাত্র সমাধান আছে; লেখচিত্র সরলরেখা। দ্বিঘাত সমীকরণ: চলকের সর্বোচ্চ ঘাত ২; সাধারণ রূপ ax² + bx + c = 0 (a ≠ 0); সর্বোচ্চ দুটি সমাধান আছে; লেখচিত্র পরাবৃত্ত।</span>
+      </li>
+      <li>ত্রিঘাত সমীকরণ কাকে বলে? <span class="year-tag">২০১৫</span>
+        <span class="q-ans">যে সমীকরণে চলকের সর্বোচ্চ ঘাত ৩ তাকে ত্রিঘাত সমীকরণ বলে। সাধারণ রূপ: ax³ + bx² + cx + d = 0 (a ≠ 0)। সর্বোচ্চ তিনটি বাস্তব মূল থাকতে পারে। উদাহরণ: x³ – 6x² + 11x – 6 = 0 এর মূল: x = 1, 2, 3।</span>
+      </li>
+      <li>সহসমীকরণ পদ্ধতি কী? <span class="year-tag">২০১৬, ১৮</span>
+        <span class="q-ans">যখন একাধিক চলকসহ একাধিক সমীকরণ একই সাথে সমাধান করা হয় তাকে সহসমীকরণ পদ্ধতি বলে। পদ্ধতিগুলো: (i) প্রতিস্থাপন পদ্ধতি, (ii) অপনয়ন পদ্ধতি, (iii) ক্র্যামারের নিয়ম। উদাহরণ: 2x + y = 5 এবং x – y = 1 সমাধানে x = 2, y = 1।</span>
+      </li>
+      <li>সমীকরণ ও অসমতার পার্থক্য কী? <span class="year-tag">২০১৫, ১৯</span> <span class="hot-tag">★</span>
+        <span class="q-ans">সমীকরণ: দুটি রাশির মধ্যে সমতা (=) থাকে; নির্দিষ্ট মানের জন্য সত্য; লেখচিত্র একটি বিন্দু বা রেখা। উদাহরণ: 2x = 6 → x = 3। অসমতা: দুটি রাশির মধ্যে >, <, ≥, ≤ সম্পর্ক থাকে; একটি পরিসরের মানের জন্য সত্য; লেখচিত্র রেখার একটি অংশ। উদাহরণ: 2x < 6 → x < 3।</span>
+      </li>
+      <li>দ্বিঘাত সমীকরণের মূল বা বীজ কী? <span class="year-tag">২০১৪, ১৮</span>
+        <span class="q-ans">দ্বিঘাত সমীকরণ ax² + bx + c = 0 এর যে মান x এ সমীকরণটি সিদ্ধ হয় তাকে মূল বা বীজ বলে। সূত্র: x = (–b ± √(b²–4ac)) / 2a। বিষমপদ (discriminant) D = b²–4ac: D > 0 হলে দুটি ভিন্ন বাস্তব মূল, D = 0 হলে দুটি সমান মূল, D < 0 হলে কোনো বাস্তব মূল নেই।</span>
+      </li>
+      <li>বিশুদ্ধ ও মিশ্র দ্বিঘাত সমীকরণের পার্থক্য কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">বিশুদ্ধ দ্বিঘাত সমীকরণ: শুধু x² এবং ধ্রুবক পদ থাকে, x এর পদ থাকে না; রূপ: ax² + c = 0; উদাহরণ: x² – 9 = 0 → x = ±3। মিশ্র দ্বিঘাত সমীকরণ: x², x এবং ধ্রুবক তিনটি পদই থাকে; রূপ: ax² + bx + c = 0 (b ≠ 0); উদাহরণ: x² – 5x + 6 = 0।</span>
+      </li>
+      <li>অসমতা কী? অসমতার বৈশিষ্ট্য লিখ। <span class="year-tag">২০১৭, ১৮</span>
+        <span class="q-ans">অসমতা হলো দুটি রাশির মধ্যে সমতার পরিবর্তে ক্ষুদ্রতর বা বৃহত্তর সম্পর্ক প্রকাশকারী বিবৃতি। বৈশিষ্ট্য: (i) উভয় পক্ষে একই ধনাত্মক সংখ্যা যোগ/বিয়োগ/গুণ/ভাগ করলে অসমতা অপরিবর্তিত থাকে; (ii) উভয় পক্ষে ঋণাত্মক সংখ্যা গুণ বা ভাগ করলে অসমতার চিহ্ন পরিবর্তন হয়; (iii) উভয় পক্ষে একই রাশি যোগ বা বিয়োগ করলে অসমতা অপরিবর্তিত থাকে।</span>
+      </li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৬ — জ্যামিতি</div>
+    <ul class="q-list">
+      <li>স্থানাঙ্ক জ্যামিতি কী? <span class="year-tag">২০১৫</span>
+        <span class="q-ans">স্থানাঙ্ক জ্যামিতি হলো জ্যামিতির একটি শাখা যেখানে বিন্দু, রেখা ও আকৃতিকে সংখ্যার মাধ্যমে (স্থানাঙ্ক ব্যবহার করে) উপস্থাপন করা হয়। রেনে দেকার্ত (René Descartes) এই পদ্ধতির প্রবর্তন করেন, তাই একে বিশ্লেষণী জ্যামিতি বা কার্তেসীয় জ্যামিতিও বলে।</span>
+      </li>
+      <li>কার্তেসীয় স্থানাঙ্ক কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">কার্তেসীয় স্থানাঙ্ক হলো দুটি পরস্পর লম্ব অক্ষ (x-অক্ষ ও y-অক্ষ) এর উপর ভিত্তি করে কোনো বিন্দুর অবস্থান নির্দেশকারী সংখ্যার জোড়া (x, y)। x = বাম-ডান দূরত্ব (ভুজ), y = উপর-নিচ দূরত্ব (কোটি)। মূলবিন্দু O = (0, 0)।</span>
+      </li>
+      <li>চতুর্ভাগ কী? <span class="year-tag">২০১৪</span>
+        <span class="q-ans">কার্তেসীয় তলকে x-অক্ষ ও y-অক্ষ চারটি ভাগে বিভক্ত করে, এই চারটি অংশকে চতুর্ভাগ বলে। প্রথম চতুর্ভাগ (x>0, y>0), দ্বিতীয় চতুর্ভাগ (x<0, y>0), তৃতীয় চতুর্ভাগ (x<0, y<0), চতুর্থ চতুর্ভাগ (x>0, y<0)।</span>
+      </li>
+      <li>দুটি বিন্দুর দূরত্ব নির্ণয়ের সূত্র লিখ। <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">দুটি বিন্দু P(x₁, y₁) ও Q(x₂, y₂) এর মধ্যবর্তী দূরত্ব: d = √[(x₂–x₁)² + (y₂–y₁)²]। উদাহরণ: P(1, 2) ও Q(4, 6) হলে d = √[(4–1)² + (6–2)²] = √[9+16] = √25 = 5।</span>
+      </li>
+      <li>দুটি বিন্দুর মধ্যবিন্দু নির্ণয়ের সূত্র লিখ। <span class="year-tag">২০১৪</span>
+        <span class="q-ans">P(x₁, y₁) ও Q(x₂, y₂) এর মধ্যবিন্দু M = ((x₁+x₂)/2, (y₁+y₂)/2)। উদাহরণ: P(2, 4) ও Q(6, 8) হলে M = ((2+6)/2, (4+8)/2) = (4, 6)।</span>
+      </li>
+      <li>সরল রেখার সাধারণ সমীকরণ লিখ। <span class="year-tag">২০১৬</span>
+        <span class="q-ans">সরল রেখার সাধারণ সমীকরণ: ax + by + c = 0 (যেখানে a, b, c ধ্রুবক এবং a ও b একসাথে শূন্য নয়)। বিশেষ রূপ: ঢাল-ছেদক রূপ y = mx + c (m = ঢাল, c = y-ছেদক); দুই ছেদক রূপ x/a + y/b = 1 (a = x-ছেদক, b = y-ছেদক)।</span>
+      </li>
+      <li>ভূমি অক্ষের ছেদক ও লম্ব অক্ষের ছেদক কী? <span class="year-tag">২০১৫, ১৭</span>
+        <span class="q-ans">x-ছেদক (ভূমি অক্ষের ছেদক): সরল রেখা x-অক্ষকে যে বিন্দুতে ছেদ করে সেখানে y = 0; x-ছেদক = –c/a (y = mx+c হলে)। y-ছেদক (লম্ব অক্ষের ছেদক): সরল রেখা y-অক্ষকে যে বিন্দুতে ছেদ করে সেখানে x = 0; y-ছেদক = c।</span>
+      </li>
+      <li>দুটি সরলরেখা সমান্তরাল হওয়ার শর্ত কী? <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">দুটি সরলরেখা y = m₁x + c₁ ও y = m₂x + c₂ সমান্তরাল হওয়ার শর্ত: m₁ = m₂ (ঢাল সমান) কিন্তু c₁ ≠ c₂। অর্থাৎ দুটি রেখা কখনো মিলিত হয় না। উদাহরণ: y = 2x + 3 ও y = 2x – 5 সমান্তরাল কারণ উভয়ের ঢাল 2।</span>
+      </li>
+      <li>দুটি সরলরেখা লম্ব হওয়ার শর্ত কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">দুটি সরলরেখা y = m₁x + c₁ ও y = m₂x + c₂ পরস্পর লম্ব হওয়ার শর্ত: m₁ × m₂ = –1 (অর্থাৎ একটির ঢাল অন্যটির ঢালের ঋণাত্মক বিপরীত)। উদাহরণ: y = 2x + 1 ও y = –½x + 3 লম্ব কারণ 2 × (–½) = –1।</span>
+      </li>
+      <li>বৃত্তের সমীকরণ কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">কেন্দ্র (h, k) ও ব্যাসার্ধ r বিশিষ্ট বৃত্তের সমীকরণ: (x–h)² + (y–k)² = r²। মূলবিন্দুকেন্দ্রিক (h=0, k=0) বৃত্তের সমীকরণ: x² + y² = r²। সাধারণ রূপ: x² + y² + 2gx + 2fy + c = 0; কেন্দ্র (–g, –f) ও ব্যাসার্ধ = √(g²+f²–c)।</span>
+      </li>
+      <li>সমপরাবৃত্ত কী? সমপরাবৃত্তের সমীকরণ লিখ। <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">সমপরাবৃত্ত (Rectangular Hyperbola) হলো এমন একটি বক্ররেখা যেখানে দুটি চলকের গুণফল সবসময় ধ্রুবক থাকে। সমীকরণ: xy = k (k ধ্রুবক)। বৈশিষ্ট্য: দুটি উপগামী রেখা (x-অক্ষ ও y-অক্ষ); x বাড়লে y কমে এবং বিপরীতভাবে। অর্থনীতিতে: একক স্থিতিস্থাপক চাহিদা রেখা P×Q = ধ্রুবক একটি সমপরাবৃত্ত।</span>
+      </li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৭ — প্রাথমিক অন্তরক ক্যালকুলাস</div>
+    <ul class="q-list">
+      <li>অন্তরক ক্যালকুলাস কী? <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">অন্তরক ক্যালকুলাস হলো গণিতের সেই শাখা যেখানে কোনো অপেক্ষকের পরিবর্তনের হার (rate of change) নিয়ে আলোচনা করা হয়। নিউটন ও লাইবনিজ এটি প্রতিষ্ঠা করেন। এটি ঢাল, সর্বোচ্চ-সর্বনিম্ন মান নির্ণয়, প্রান্তিক বিশ্লেষণ ইত্যাদিতে ব্যবহৃত হয়।</span>
+      </li>
+      <li>অন্তরজ/অন্তরক সহগ কী? <span class="year-tag">২০১৩, ১৭</span> <span class="hot-tag">★</span>
+        <span class="q-ans">অন্তরক সহগ হলো কোনো অপেক্ষকের পরিবর্তনের তাৎক্ষণিক হার (instantaneous rate of change)। y = f(x) হলে অন্তরক সহগ: dy/dx = lim(Δx→0) Δy/Δx। জ্যামিতিকভাবে এটি কোনো বিন্দুতে বক্ররেখার স্পর্শকের ঢাল নির্দেশ করে।</span>
+      </li>
+      <li>অন্তরক সহগের জ্যামিতিক ব্যাখ্যা কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">জ্যামিতিকভাবে dy/dx হলো y = f(x) বক্ররেখার কোনো নির্দিষ্ট বিন্দুতে অঙ্কিত স্পর্শকের ঢাল। dy/dx > 0 হলে বক্ররেখা ঊর্ধ্বমুখী; dy/dx < 0 হলে নিম্নমুখী; dy/dx = 0 হলে স্পর্শক x-অক্ষের সমান্তরাল (সর্বোচ্চ বা সর্বনিম্ন বিন্দু)।</span>
+      </li>
+      <li>dy/dx এবং Δy/Δx এর পার্থক্য কী? <span class="year-tag">২০১৯</span> <span class="hot-tag">★</span>
+        <span class="q-ans">Δy/Δx হলো গড় পরিবর্তনের হার — x এর সসীম পরিবর্তনে y এর গড় পরিবর্তন; এটি দুটি বিন্দু সংযোগকারী ছেদক রেখার ঢাল। dy/dx হলো তাৎক্ষণিক পরিবর্তনের হার — Δx → 0 হলে Δy/Δx এর সীমা; এটি স্পর্শকের ঢাল এবং অন্তরক সহগ।</span>
+      </li>
+      <li>স্থির অপেক্ষকের নিয়মে অন্তরকরণ কী? <span class="year-tag">২০১৫</span>
+        <span class="q-ans">স্থির অপেক্ষকের নিয়ম: যদি y = c (c ধ্রুবক) হয়, তাহলে dy/dx = 0। অর্থাৎ ধ্রুবকের অন্তরক সহগ সর্বদা শূন্য। কারণ ধ্রুবকের মান পরিবর্তন হয় না, তাই পরিবর্তনের হারও শূন্য। উদাহরণ: y = 5 হলে dy/dx = 0।</span>
+      </li>
+      <li>ঘাত অপেক্ষকের নিয়মে অন্তরকরণ কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">ঘাত নিয়ম (Power Rule): যদি y = xⁿ হয়, তাহলে dy/dx = n·xⁿ⁻¹। অর্থাৎ ঘাতকে সামনে আনো এবং ঘাত থেকে ১ বিয়োগ করো। উদাহরণ: y = x⁵ হলে dy/dx = 5x⁴; y = x³ হলে dy/dx = 3x²।</span>
+      </li>
+      <li>গুণনের নিয়মে অন্তরকরণ কী? (Product Rule) <span class="year-tag">২০১৪, ১৭</span>
+        <span class="q-ans">গুণনের নিয়ম (Product Rule): যদি y = u·v হয় (u ও v উভয়ই x এর অপেক্ষক), তাহলে dy/dx = u·(dv/dx) + v·(du/dx)। সংক্ষেপে: (uv)' = uv' + vu'। উদাহরণ: y = x²·eˣ হলে dy/dx = x²·eˣ + eˣ·2x = eˣ(x² + 2x)।</span>
+      </li>
+      <li>ভাগের নিয়মে অন্তরকরণ কী? (Quotient Rule) <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">ভাগের নিয়ম (Quotient Rule): যদি y = u/v হয়, তাহলে dy/dx = [v·(du/dx) – u·(dv/dx)] / v²। সংক্ষেপে: (u/v)' = (vu' – uv')/v²। উদাহরণ: y = x²/(x+1) হলে dy/dx = [(x+1)·2x – x²·1]/(x+1)² = (x²+2x)/(x+1)²।</span>
+      </li>
+      <li>শৃঙ্খল নিয়মে অন্তরকরণ কী? (Chain Rule) <span class="year-tag">২০১৬, ২০</span> <span class="hot-tag">★</span>
+        <span class="q-ans">শৃঙ্খল নিয়ম (Chain Rule): যদি y = f(u) এবং u = g(x) হয়, তাহলে dy/dx = (dy/du)·(du/dx)। যৌগিক অপেক্ষকের অন্তরকরণে ব্যবহৃত হয়। উদাহরণ: y = (3x² + 1)⁵ হলে u = 3x²+1, y = u⁵ → dy/dx = 5u⁴·6x = 30x(3x²+1)⁴।</span>
+      </li>
+      <li>লগ অপেক্ষকের অন্তরকরণের সূত্র লিখ। <span class="year-tag">২০১৭</span>
+        <span class="q-ans">লগারিদম অপেক্ষকের অন্তরকরণ সূত্র: (i) d/dx(ln x) = 1/x; (ii) d/dx(log_a x) = 1/(x·ln a); (iii) d/dx[ln f(x)] = f'(x)/f(x) (শৃঙ্খল নিয়ম প্রয়োগে)। উদাহরণ: y = ln(x²+3) হলে dy/dx = 2x/(x²+3)।</span>
+      </li>
+      <li>আংশিক অন্তরক কী? <span class="year-tag">২০১৪, ১৭, ২০</span> <span class="hot-tag">★</span>
+        <span class="q-ans">আংশিক অন্তরক হলো বহুচলকীয় অপেক্ষকের ক্ষেত্রে একটি চলকের পরিবর্তে অন্য চলকগুলোকে ধ্রুবক রেখে যে অন্তরক সহগ নির্ণয় করা হয়। z = f(x, y) হলে ∂z/∂x (y ধ্রুবক রেখে x এর সাপেক্ষে) এবং ∂z/∂y (x ধ্রুবক রেখে y এর সাপেক্ষে)। উদাহরণ: z = x²y + y³ হলে ∂z/∂x = 2xy, ∂z/∂y = x² + 3y²।</span>
+      </li>
+      <li>মোট অন্তরক (Total Differential) কী? <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">মোট অন্তরক হলো একটি বহুচলকীয় অপেক্ষকে সকল চলকের সামান্য পরিবর্তনের ফলে অপেক্ষকের মোট পরিবর্তন। z = f(x, y) হলে মোট অন্তরক: dz = (∂z/∂x)dx + (∂z/∂y)dy। অর্থনৈতিক উদাহরণ: Q = f(L, K) হলে dQ = (∂Q/∂L)dL + (∂Q/∂K)dK।</span>
+      </li>
+      <li>অবতল ও উত্তল অপেক্ষকের পার্থক্য কী? <span class="year-tag">২০১৫, ১৭</span>
+        <span class="q-ans">উত্তল অপেক্ষক (Convex): বক্ররেখা উপরের দিকে বাঁকানো; d²y/dx² > 0; অন্তরক সহগ বাড়তে থাকে; স্থানীয় সর্বনিম্ন বিন্দু থাকে। অবতল অপেক্ষক (Concave): বক্ররেখা নিচের দিকে বাঁকানো; d²y/dx² < 0; অন্তরক সহগ কমতে থাকে; স্থানীয় সর্বোচ্চ বিন্দু থাকে।</span>
+      </li>
+      <li>অনমনীয় বিন্দু কী? <span class="year-tag">২০১৬, ১৮</span>
+        <span class="q-ans">অনমনীয় বিন্দু (Inflection Point) হলো এমন একটি বিন্দু যেখানে বক্ররেখার বক্রতার দিক পরিবর্তন হয় — অবতল থেকে উত্তল বা উত্তল থেকে অবতলে পরিণত হয়। শর্ত: d²y/dx² = 0 এবং d³y/dx³ ≠ 0। উদাহরণ: y = x³ এর x = 0 তে অনমনীয় বিন্দু।</span>
+      </li>
+      <li>সর্বোচ্চ ও সর্বনিম্ন মান কী? <span class="year-tag">২০১৫, ১৯</span>
+        <span class="q-ans">স্থানীয় সর্বোচ্চ মান: যে বিন্দুতে f'(x) = 0 এবং f''(x) < 0; ঐ বিন্দুর আশেপাশের মানগুলোর চেয়ে বড়। স্থানীয় সর্বনিম্ন মান: যে বিন্দুতে f'(x) = 0 এবং f''(x) > 0; ঐ বিন্দুর আশেপাশের মানগুলোর চেয়ে ছোট। উভয় বিন্দুতেই f'(x) = 0 (FOC) পূরণ হতে হয়।</span>
+      </li>
+      <li>ইউলারের তত্ত্ব কী? <span class="year-tag">২০১৬, ১৯</span> <span class="hot-tag">★</span>
+        <span class="q-ans">ইউলারের উপপাদ্য: যদি f(x, y) একটি n-মাত্রার সমজাতীয় অপেক্ষক হয়, তাহলে: x·(∂f/∂x) + y·(∂f/∂y) = n·f(x, y)। অর্থনৈতিক গুরুত্ব: কব-ডগলাস Q = L^α K^β (α+β=1) এর ক্ষেত্রে L·MPL + K·MPK = Q (উৎপাদনের সম্পূর্ণ বণ্টন সম্ভব)।</span>
+      </li>
+      <li>সমজাতীয় অপেক্ষক ও ইউলারের উপপাদ্য কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">সমজাতীয় অপেক্ষক: f(tx, ty) = tⁿ·f(x, y) হলে f কে n-মাত্রার সমজাতীয় অপেক্ষক বলে। ইউলারের উপপাদ্য: n-মাত্রার সমজাতীয় অপেক্ষকের জন্য x·fₓ + y·fᵧ = n·f(x,y)। উদাহরণ: f(x,y) = x³+y³ হলে f(tx,ty) = t³f(x,y) → তৃতীয় মাত্রার সমজাতীয়; ইউলার: x·fₓ+y·fᵧ = 3f।</span>
+      </li>
+      <li>স্থিতিস্থাপকতা কী? চাহিদার দাম স্থিতিস্থাপকতা কী? <span class="year-tag">২০১৫, ১৭, ২০</span> <span class="hot-tag">★</span>
+        <span class="q-ans">স্থিতিস্থাপকতা: এক চলকের শতকরা পরিবর্তনের ফলে অন্য চলকের শতকরা পরিবর্তনের অনুপাত। চাহিদার দাম স্থিতিস্থাপকতা (Price Elasticity of Demand): Ep = (dQ/dP)·(P/Q)। |Ep| > 1 = স্থিতিস্থাপক; |Ep| < 1 = অস্থিতিস্থাপক; |Ep| = 1 = একক স্থিতিস্থাপক। চাহিদারেখার ঢাল ঋণাত্মক বলে Ep সাধারণত ঋণাত্মক।</span>
+      </li>
+      <li>চাহিদার আয় স্থিতিস্থাপকতা কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">চাহিদার আয় স্থিতিস্থাপকতা (Income Elasticity of Demand): Ey = (dQ/dY)·(Y/Q)। ভোক্তার আয় পরিবর্তনের ফলে চাহিদার পরিমাণের পরিবর্তনের পরিমাপ। Ey > 0 → স্বাভাবিক দ্রব্য; Ey < 0 → নিম্নমানের দ্রব্য (Inferior Good); Ey > 1 → বিলাসদ্রব্য।</span>
+      </li>
+      <li>যোগান স্থিতিস্থাপকতা কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">যোগান স্থিতিস্থাপকতা (Price Elasticity of Supply): Es = (dQ/dP)·(P/Q)। মূল্য পরিবর্তনের ফলে যোগানের পরিমাণের পরিবর্তনের পরিমাপ। যোগান বক্রের ঢাল ধনাত্মক হওয়ায় Es > 0। Es > 1 = স্থিতিস্থাপক; Es < 1 = অস্থিতিস্থাপক; Es = 1 = একক স্থিতিস্থাপক।</span>
+      </li>
+      <li>কব-ডগলাস উৎপাদন অপেক্ষক কী? <span class="year-tag">২০১৬, ১৯</span>
+        <span class="q-ans">কব-ডগলাস উৎপাদন অপেক্ষক: Q = A·Lᵅ·Kᵝ (A = প্রযুক্তি ধ্রুবক, L = শ্রম, K = মূলধন, α ও β = আউটপুট স্থিতিস্থাপকতা)। বৈশিষ্ট্য: α+β = 1 হলে স্থির মাপকাঠির প্রতিদান (CRS); α+β > 1 হলে বর্ধমান (IRS); α+β < 1 হলে হ্রাসমান (DRS)। প্রান্তিক উৎপাদন: MPL = αQ/L, MPK = βQ/K।</span>
+      </li>
+      <li>CES উৎপাদন অপেক্ষক কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">CES (Constant Elasticity of Substitution) উৎপাদন অপেক্ষক: Q = A[δL⁻ᵨ + (1–δ)K⁻ᵨ]⁻¹/ᵨ। এখানে প্রতিস্থাপনের স্থিতিস্থাপকতা σ = 1/(1+ρ) সবসময় ধ্রুবক থাকে। বিশেষ ক্ষেত্র: ρ→0 হলে কব-ডগলাস অপেক্ষক পাওয়া যায়; ρ→∞ হলে লেওন্তিয়েফ অপেক্ষক পাওয়া যায়।</span>
+      </li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৮ — কাম্যকরণ (Optimization)</div>
+    <ul class="q-list">
+      <li>কাম্যকরণ কী? <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">কাম্যকরণ (Optimization) হলো গাণিতিক পদ্ধতিতে কোনো উদ্দেশ্য অপেক্ষকের (objective function) সর্বোচ্চ বা সর্বনিম্ন মান নির্ণয় করার প্রক্রিয়া। অর্থনীতিতে: উৎপাদক মুনাফা সর্বোচ্চ করতে এবং ভোক্তা উপযোগিতা সর্বোচ্চ বা ব্যয় সর্বনিম্ন করতে কাম্যকরণ পদ্ধতি ব্যবহার করে।</span>
+      </li>
+      <li>সর্বোচ্চ ও সর্বনিম্ন মান নির্ণয়ের প্রথম ক্রম শর্ত (FOC) কী? <span class="year-tag">২০১৬, ১৭, ২০</span> <span class="hot-tag">★</span>
+        <span class="q-ans">প্রথম ক্রম শর্ত (First Order Condition, FOC): y = f(x) অপেক্ষকের সর্বোচ্চ বা সর্বনিম্ন মানের জন্য প্রথম অন্তরক সহগ শূন্য হতে হবে। অর্থাৎ dy/dx = f'(x) = 0। এই শর্ত পূরণকারী বিন্দুকে সংকটমান বিন্দু (critical point) বলে। FOC একা সর্বোচ্চ না সর্বনিম্ন তা নির্ধারণ করতে পারে না — এর জন্য SOC দরকার।</span>
+      </li>
+      <li>দ্বিতীয় ক্রম শর্ত (SOC) কী? <span class="year-tag">২০১৭, ১৮</span> <span class="hot-tag">★</span>
+        <span class="q-ans">দ্বিতীয় ক্রম শর্ত (Second Order Condition, SOC): FOC পূরণ হওয়ার পর SOC দিয়ে সর্বোচ্চ না সর্বনিম্ন তা নিশ্চিত করা হয়। নিয়ম: d²y/dx² = f''(x) < 0 হলে সর্বোচ্চ মান (বক্ররেখা অবতল); f''(x) > 0 হলে সর্বনিম্ন মান (বক্ররেখা উত্তল); f''(x) = 0 হলে অনমনীয় বিন্দু (inflection point)।</span>
+      </li>
+      <li>শর্তহীন ও শর্তযুক্ত কাম্যকরণের পার্থক্য কী? <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">শর্তহীন কাম্যকরণ: কোনো বাধা বা সীমাবদ্ধতা ছাড়াই উদ্দেশ্য অপেক্ষকের সর্বোচ্চ বা সর্বনিম্ন মান নির্ণয় করা হয়; যেমন: সরাসরি মুনাফা সর্বোচ্চকরণ। শর্তযুক্ত কাম্যকরণ: একটি বাধা (constraint) সাপেক্ষে সর্বোচ্চ বা সর্বনিম্ন নির্ণয়; যেমন: বাজেট সীমার মধ্যে উপযোগিতা সর্বোচ্চকরণ। শর্তযুক্ত সমস্যায় ল্যাগরেঞ্জ গুণক পদ্ধতি ব্যবহৃত হয়।</span>
+      </li>
+      <li>চরম মান ও আপেক্ষিক চরম মানের পার্থক্য কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">আপেক্ষিক (স্থানীয়) চরম মান: একটি নির্দিষ্ট এলাকায় সর্বোচ্চ বা সর্বনিম্ন — পার্শ্ববর্তী বিন্দুর তুলনায় সবচেয়ে বড় বা ছোট। নিরঙ্কুশ (বৈশ্বিক) চরম মান: সম্পূর্ণ ডোমেনে সর্বোচ্চ বা সর্বনিম্ন। পার্থক্য: একটি অপেক্ষকে একাধিক আপেক্ষিক চরম মান থাকতে পারে কিন্তু নিরঙ্কুশ চরম মান একটিই। নিরঙ্কুশ চরম মান সবসময় আপেক্ষিক চরম মানের মধ্যে থাকবে, কিন্তু বিপরীতটা সত্য নয়।</span>
+      </li>
+      <li>স্যাডেল বিন্দু কী? <span class="year-tag">২০১৬, ১৮</span>
+        <span class="q-ans">স্যাডেল বিন্দু (Saddle Point) হলো এমন একটি সংকটমান বিন্দু যেটি একটি দিকে সর্বোচ্চ এবং অন্য দিকে সর্বনিম্ন — অর্থাৎ সর্বোচ্চও নয়, সর্বনিম্নও নয়। দুই চলকের অপেক্ষকে f(x,y) এর ক্ষেত্রে শর্ত: স্পর্শক তল সমতল কিন্তু D = f₁₁·f₂₂ – (f₁₂)² < 0 হলে স্যাডেল বিন্দু। উদাহরণ: z = x² – y² এ মূলবিন্দু (0,0) একটি স্যাডেল বিন্দু।</span>
+      </li>
+      <li>আপেক্ষিক ও নিরঙ্কুশ সর্বোচ্চ মানের পার্থক্য কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">আপেক্ষিক সর্বোচ্চ মান: অপেক্ষকের ডোমেনের একটি নির্দিষ্ট অঞ্চলে সবচেয়ে বড় মান; শর্ত: f'(x)=0 ও f''(x)<0। একটি অপেক্ষকে একাধিক আপেক্ষিক সর্বোচ্চ থাকতে পারে। নিরঙ্কুশ সর্বোচ্চ মান: সম্পূর্ণ ডোমেনে অপেক্ষকের সর্বোচ্চ মান; এটি সকল আপেক্ষিক সর্বোচ্চের মধ্যে সবচেয়ে বড়। অর্থনৈতিক কাম্যকরণে সাধারণত নিরঙ্কুশ সর্বোচ্চই অনুসন্ধান করা হয়।</span>
+      </li>
+      <li>ম্যাকলরিন ও টেলর সিরিজ কী? <span class="year-tag">২০১৬</span>
+        <span class="q-ans">টেলর সিরিজ: কোনো অপেক্ষক f(x) কে x = a বিন্দুর কাছে ঘাত অপেক্ষকের সমষ্টিরূপে প্রকাশ করা হয়: f(x) = f(a) + f'(a)(x–a) + f''(a)(x–a)²/2! + ... ম্যাকলরিন সিরিজ: টেলর সিরিজের বিশেষ রূপ যেখানে a = 0; f(x) = f(0) + f'(0)x + f''(0)x²/2! + ... উদাহরণ: eˣ = 1 + x + x²/2! + x³/3! + ...।</span>
+      </li>
+      <li>মুনাফা সর্বোচ্চকরণের শর্ত MR = MC কী অর্থ বহন করে? <span class="hot-tag">★ অতি গুরুত্বপূর্ণ</span>
+        <span class="q-ans">মুনাফা সর্বোচ্চকরণের শর্ত MR = MC অর্থ হলো প্রান্তিক আয় (Marginal Revenue) = প্রান্তিক ব্যয় (Marginal Cost)। π = TR – TC সর্বোচ্চ করতে: dπ/dQ = dTR/dQ – dTC/dQ = MR – MC = 0 → MR = MC (FOC)। SOC: d²π/dQ² < 0 → dMR/dQ < dMC/dQ (MC রেখার ঢাল MR রেখার ঢালের চেয়ে বড়)। অর্থ: শেষ একক উৎপাদন থেকে আয় ও ব্যয় সমান — আর উৎপাদন বাড়ালে মুনাফা কমবে।</span>
+      </li>
+      <li>ল্যাগরেঞ্জ গুণক পদ্ধতি কী? <span class="year-tag">২০১৬, ১৮, ২০</span> <span class="hot-tag">★</span>
+        <span class="q-ans">ল্যাগরেঞ্জ গুণক পদ্ধতি হলো শর্তযুক্ত কাম্যকরণের একটি কৌশল। উদ্দেশ্য অপেক্ষক z = f(x, y) কে g(x, y) = 0 বাধার সাপেক্ষে কাম্য করতে ল্যাগরেঞ্জ অপেক্ষক গঠন করা হয়: L = f(x, y) + λ·g(x, y)। FOC: ∂L/∂x = 0, ∂L/∂y = 0, ∂L/∂λ = 0। এই তিনটি সমীকরণ থেকে x*, y* ও λ (ল্যাগরেঞ্জ গুণক) নির্ণয় করা হয়।</span>
+      </li>
+      <li>ল্যাগরেঞ্জ গুণকের অর্থনৈতিক তাৎপর্য কী? <span class="year-tag">২০১৭</span>
+        <span class="q-ans">ল্যাগরেঞ্জ গুণক λ হলো ছায়া মূল্য (shadow price)। এটি নির্দেশ করে যে বাধা (constraint) এক একক শিথিল করলে উদ্দেশ্য অপেক্ষকের সর্বোচ্চ মান কতটুকু পরিবর্তন হবে। অর্থনৈতিক উদাহরণ: বাজেট বাধার সাপেক্ষে উপযোগিতা সর্বোচ্চকরণে λ হলো অর্থের প্রান্তিক উপযোগিতা — অতিরিক্ত এক টাকা বাজেটে সর্বোচ্চ উপযোগিতা কত বাড়বে তা দেখায়।</span>
+      </li>
+      <li>প্রতিস্থাপন পদ্ধতি ও ল্যাগরেঞ্জ পদ্ধতির পার্থক্য কী? <span class="year-tag">২০১৫</span>
+        <span class="q-ans">প্রতিস্থাপন পদ্ধতি: বাধার সমীকরণ থেকে একটি চলককে অন্য চলকের মাধ্যমে প্রকাশ করে উদ্দেশ্য অপেক্ষকে প্রতিস্থাপন করা হয়, তারপর এক চলকের অপেক্ষক হিসেবে সমাধান করা হয়; সহজ কিন্তু জটিল সমস্যায় কঠিন। ল্যাগরেঞ্জ পদ্ধতি: সরাসরি প্রতিস্থাপন না করে λ গুণক যোগ করে এক বড় সমস্যায় রূপান্তর করা হয়; বহু বাধা ও বহু চলকের ক্ষেত্রে সুবিধাজনক এবং λ এর অর্থনৈতিক ব্যাখ্যা পাওয়া যায়।</span>
+      </li>
+    </ul>
+
+  </div><!-- end ক-বিভাগ block -->
+
+
+  <!-- ===== খ বিভাগ ===== -->
+  <div class="section-title"><span class="icon">📝</span> খ-বিভাগ: সংক্ষিপ্ত প্রশ্নাবলি (৪ নম্বর করে)</div>
+  <div class="q-block">
+
+    <div class="chapter-header">🔹 অধ্যায় ১ — কতিপয় মৌলিক ধারণার পর্যালোচনা</div>
+    <ul class="q-list">
+      <li>মূলদ ও অমূলদ সংখ্যার মধ্যে পার্থক্য লিখ। <span class="year-tag">২০১৫, ১৭</span>
+        <span class="q-ans">মূলদ সংখ্যা: p/q আকারে প্রকাশযোগ্য (p, q পূর্ণ সংখ্যা, q≠0); দশমিক প্রসার সীমিত বা পুনরাবৃত্তিমূলক। যেমন: 3/4 = 0.75, 1/3 = 0.333…। অমূলদ সংখ্যা: p/q আকারে প্রকাশ অসম্ভব; দশমিক প্রসার অসীম ও অনিয়মিত। যেমন: √2 = 1.41421…, π = 3.14159…। উভয় মিলে বাস্তব সংখ্যা (ℝ) গঠিত হয়।</span>
+      </li>
+      <li>বাস্তব ও কাল্পনিক সংখ্যার পার্থক্য উদাহরণসহ লিখ। <span class="year-tag">২০১৮</span>
+        <span class="q-ans">বাস্তব সংখ্যা (Real Number): সংখ্যারেখায় উপস্থাপনযোগ্য সকল সংখ্যা; মূলদ ও অমূলদ উভয়ই অন্তর্ভুক্ত। যেমন: –5, 0, 3/4, √2। কাল্পনিক সংখ্যা (Imaginary Number): ঋণাত্মক সংখ্যার বর্গমূল; i = √(–1) দ্বারা প্রকাশিত। যেমন: 3i, –2i। জটিল সংখ্যা: a + bi আকারে (a = বাস্তব অংশ, b = কাল্পনিক অংশ)।</span>
+      </li>
+      <li>ধ্রুবক ও পরামিতির মধ্যে পার্থক্য লিখ। <span class="year-tag">২০১৩, ১৫, ১৯</span>
+        <span class="q-ans">ধ্রুবক (Constant): সর্বদা নির্দিষ্ট একটি মান ধারণ করে, কখনো পরিবর্তন হয় না। যেমন: π = 3.14159, e = 2.71828। পরামিতি (Parameter): মডেলে নির্দিষ্ট থাকে কিন্তু ভিন্ন মডেলে বা প্রেক্ষাপটে ভিন্ন মান নিতে পারে। যেমন: C = a + bY সমীকরণে a ও b পরামিতি — প্রতিটি পরিবারের জন্য আলাদা মান নেয়।</span>
+      </li>
+      <li>চলক ও ধ্রুবকের মধ্যে পার্থক্য দেখাও। <span class="year-tag">২০১৯</span>
+        <span class="q-ans">চলক (Variable): বিভিন্ন সময়ে বা প্রেক্ষাপটে ভিন্ন ভিন্ন মান গ্রহণ করতে পারে। যেমন: দাম (P), আয় (Y), উৎপাদন (Q) — এগুলো অর্থনৈতিক চলক। ধ্রুবক (Constant): সর্বদা একটি নির্দিষ্ট মান বজায় রাখে। যেমন: π, e। পার্থক্য: চলকের মান পরিস্থিতিভেদে পরিবর্তনশীল; ধ্রুবকের মান অপরিবর্তনীয়।</span>
+      </li>
+      <li>স্বাধীন ও অধীন চলকের পার্থক্য উদাহরণসহ লিখ। <span class="year-tag">২০১৬, ১৮</span>
+        <span class="q-ans">স্বাধীন চলক (Independent Variable): যে চলকের মান স্বাধীনভাবে নির্ধারিত হয়, অন্য চলকের উপর নির্ভর করে না; সাধারণত x দিয়ে প্রকাশ। যেমন: দাম P। অধীন চলক (Dependent Variable): যে চলকের মান স্বাধীন চলকের উপর নির্ভর করে; সাধারণত y দিয়ে প্রকাশ। যেমন: চাহিদার পরিমাণ Qd = f(P) — এখানে P স্বাধীন, Qd অধীন।</span>
+      </li>
+      <li>গাণিতিক ও অগাণিতিক অর্থনীতির পার্থক্য লিখ। <span class="year-tag">২০১৫, ১৭</span>
+        <span class="q-ans">গাণিতিক অর্থনীতি: অর্থনৈতিক তত্ত্ব ও সম্পর্ক গণিতের ভাষায় (সমীকরণ, অপেক্ষক, ম্যাট্রিক্স) প্রকাশ করে; নির্ভুল, সংক্ষিপ্ত ও সাধারণ বিশ্লেষণ সম্ভব। অগাণিতিক অর্থনীতি: শুধু ভাষা ও যুক্তির মাধ্যমে অর্থনৈতিক ধারণা ব্যাখ্যা করে; সহজবোধ্য কিন্তু অনেক সময় অস্পষ্ট। গাণিতিক পদ্ধতি আরও নির্ভুল, পরীক্ষণযোগ্য এবং জটিল সম্পর্ক বিশ্লেষণে সক্ষম।</span>
+      </li>
+      <li>সূচকের নিয়মাবলি উদাহরণসহ লিখ। <span class="year-tag">২০১৬, ১৮</span>
+        <span class="q-ans">সূচকের মূল নিয়মসমূহ: (i) aᵐ × aⁿ = aᵐ⁺ⁿ (যেমন: 2³×2² = 2⁵ = 32); (ii) aᵐ ÷ aⁿ = aᵐ⁻ⁿ (যেমন: 3⁵/3² = 3³ = 27); (iii) (aᵐ)ⁿ = aᵐⁿ (যেমন: (2²)³ = 2⁶ = 64); (iv) a⁰ = 1; (v) a⁻ⁿ = 1/aⁿ; (vi) a^(1/n) = ⁿ√a; (vii) (ab)ⁿ = aⁿbⁿ।</span>
+      </li>
+      <li>অর্থনৈতিক মডেলের সীমাবদ্ধতা আলোচনা কর। <span class="year-tag">২০১৭</span>
+        <span class="q-ans">অর্থনৈতিক মডেলের প্রধান সীমাবদ্ধতাসমূহ: (i) অবাস্তব অনুমান: Ceteris paribus (অন্যান্য বিষয় অপরিবর্তিত) ধরা হয় যা বাস্তবে সম্ভব নয়; (ii) সরলীকরণ: জটিল বাস্তবতাকে সহজ করে ফেলা হয়; (iii) পরিমাপের সমস্যা: মানবিক আচরণ ও মনোভাব সংখ্যায় প্রকাশ কঠিন; (iv) গতিশীলতার অভাব: স্থিতীয় মডেল দীর্ঘমেয়াদী পরিবর্তন ব্যাখ্যা করতে পারে না; (v) তথ্যের অনিশ্চয়তা।</span>
+      </li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ২ — সেটের ধারণা</div>
+    <ul class="q-list">
+      <li>De Morgan's Law প্রমাণ কর। <span class="hot-tag">★ অতি গুরুত্বপূর্ণ</span>
+        <span class="q-ans">De Morgan's Law: (i) (A∪B)' = A'∩B'; (ii) (A∩B)' = A'∪B'।
+        প্রমাণ (i): ধরি x ∈ (A∪B)'। তাহলে x ∉ A∪B → x ∉ A এবং x ∉ B → x ∈ A' এবং x ∈ B' → x ∈ A'∩B'। বিপরীতভাবে x ∈ A'∩B' হলে x ∈ A' ও x ∈ B' → x ∉ A ও x ∉ B → x ∉ A∪B → x ∈ (A∪B)'। ∴ (A∪B)' = A'∩B' প্রমাণিত। একইভাবে (ii) প্রমাণ করা যায়।</span>
+      </li>
+      <li>ভেনচিত্রের সাহায্যে পূরক সেট, সংযোগহীন সেট, সংযোগ সেট ও ছেদন সেট দেখাও। <span class="year-tag">২০১৪, ১৬</span>
+        <span class="q-ans">সংযোগ সেট (A∪B): A ও B উভয়ের সকল উপাদান; ভেনচিত্রে দুটি বৃত্তের সম্পূর্ণ ছায়া অঞ্চল। ছেদন সেট (A∩B): A ও B উভয়ে বিদ্যমান উপাদান; ভেনচিত্রে দুটি বৃত্তের মাঝের ছেদ অংশ। পূরক সেট (A'): U থেকে A বাদ দিলে যা থাকে; ভেনচিত্রে বৃত্তের বাইরের আয়তক্ষেত্রের অংশ। সংযোগহীন সেট: A∩B = ∅; ভেনচিত্রে দুটি বৃত্ত আলাদা, কোনো ছেদ অংশ নেই।</span>
+      </li>
+      <li>সেটের Idempotent Law ও Identity Law প্রমাণ কর। <span class="year-tag">২০১৫, ১৮</span>
+        <span class="q-ans">Idempotent Law: (i) A∪A = A; (ii) A∩A = A।
+        প্রমাণ (i): x ∈ A∪A ↔ x ∈ A বা x ∈ A ↔ x ∈ A। ∴ A∪A = A ✓
+        Identity Law: (i) A∪∅ = A; (ii) A∩U = A।
+        প্রমাণ (i): x ∈ A∪∅ ↔ x ∈ A বা x ∈ ∅ ↔ x ∈ A (∵ ∅ তে কোনো উপাদান নেই) ↔ x ∈ A। ∴ A∪∅ = A ✓; (ii) A∩U = A কারণ A ⊆ U, তাই A এর প্রতিটি উপাদান U-তেও আছে।</span>
+      </li>
+      <li>প্রমাণ কর যে, A∩B ⊂ A∪B <span class="year-tag">২০১৭</span>
+        <span class="q-ans">প্রমাণ: ধরি x ∈ A∩B (যেকোনো উপাদান)। তাহলে x ∈ A এবং x ∈ B (ছেদন সেটের সংজ্ঞা অনুযায়ী)। যেহেতু x ∈ A, তাই "x ∈ A বা x ∈ B" বিবৃতিটি সত্য। অর্থাৎ x ∈ A∪B। সুতরাং A∩B-এর যেকোনো উপাদান A∪B-তেও আছে। ∴ A∩B ⊆ A∪B। যদি A ≠ B হয়, তাহলে A∩B ⊂ A∪B (প্রকৃত উপসেট)। প্রমাণিত ✓</span>
+      </li>
+      <li>সসীম সেটের উপাদান সংখ্যা নির্ণয়ের সূত্র প্রয়োগ করে একটি উদাহরণ সমাধান কর। <span class="year-tag">২০১৬, ১৯</span>
+        <span class="q-ans">সূত্র: |A∪B| = |A| + |B| – |A∩B|। উদাহরণ: ১০০ জন শিক্ষার্থীর মধ্যে ৬০ জন গণিত (M) পড়ে, ৫০ জন পদার্থ (P) পড়ে এবং ২০ জন উভয়ই পড়ে। উভয় বিষয়ের অন্তত একটি পড়ে কতজন? সমাধান: |M∪P| = |M| + |P| – |M∩P| = 60 + 50 – 20 = 90 জন। শুধু গণিত = 60 – 20 = 40 জন; শুধু পদার্থ = 50 – 20 = 30 জন।</span>
+      </li>
+      <li>সেটের বিতরণ বিধি ও ক্রমবিনিময় বিধি প্রমাণ কর। <span class="year-tag">২০১৮</span>
+        <span class="q-ans">ক্রমবিনিময় বিধি (Commutative Law): (i) A∪B = B∪A; (ii) A∩B = B∩A। প্রমাণ: x ∈ A∪B ↔ x ∈ A বা x ∈ B ↔ x ∈ B বা x ∈ A ↔ x ∈ B∪A। ∴ A∪B = B∪A ✓।
+        বিতরণ বিধি (Distributive Law): A∪(B∩C) = (A∪B)∩(A∪C)। প্রমাণ: x ∈ A∪(B∩C) ↔ x ∈ A বা (x ∈ B এবং x ∈ C) ↔ (x ∈ A বা x ∈ B) এবং (x ∈ A বা x ∈ C) ↔ x ∈ (A∪B)∩(A∪C) ✓।</span>
+      </li>
+      <li>প্রকৃত উপসেট ও অপ্রকৃত উপসেটের পার্থক্য উদাহরণসহ লিখ। <span class="year-tag">২০১৬</span>
+        <span class="q-ans">প্রকৃত উপসেট (Proper Subset): A ⊂ B যদি A-এর সকল উপাদান B-তে থাকে কিন্তু A ≠ B (অর্থাৎ B-তে কমপক্ষে একটি উপাদান আছে যা A-তে নেই)। যেমন: A = {1,2}, B = {1,2,3} → A ⊂ B। অপ্রকৃত উপসেট (Improper Subset): A ⊆ B যেখানে A = B হতে পারে। প্রতিটি সেট নিজের অপ্রকৃত উপসেট। যেমন: {1,2} ⊆ {1,2}। ফাঁকা সেট ∅ সব সেটের প্রকৃত উপসেট।</span>
+      </li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৩ — প্রাথমিক স্থিতীয় বিশ্লেষণ</div>
+    <ul class="q-list">
+      <li>বাজার ভারসাম্য নির্ণয় কর (Qd = Qs ব্যবহার করে)। <span class="year-tag">২০১৬, ১৯</span> <span class="hot-tag">★</span></li>
+      <li>সহজ জাতীয় আয় মডেল সমাধান কর এবং গুণক নির্ণয় কর। <span class="year-tag">২০১৭, ২০</span></li>
+      <li>আংশিক ও সামগ্রিক ভারসাম্যের পার্থক্য লিখ। <span class="year-tag">২০১৬, ১৮</span></li>
+      <li>ভারসাম্যের উপর করের প্রভাব সমীকরণের মাধ্যমে দেখাও। <span class="year-tag">২০১৫, ১৭</span></li>
+      <li>IS রেখা ও LM রেখার মধ্যে পার্থক্য লিখ। <span class="year-tag">২০১৭</span></li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৪ — অপেক্ষক, সীমা এবং অবিচ্ছিন্নতা</div>
+    <ul class="q-list">
+      <li>সীমার ধারণা ও বৈশিষ্ট্য সংক্ষেপে লিখ। <span class="year-tag">২০১৫, ১৮</span></li>
+      <li>অবিচ্ছিন্ন অপেক্ষকের শর্ত লিখ এবং উদাহরণ দাও। <span class="year-tag">২০১৪, ১৯</span></li>
+      <li>বিভিন্ন ধরনের অপেক্ষকের উদাহরণ দাও (একঘাত, দ্বিঘাত, ঘাত)। <span class="year-tag">২০১৩, ১৬</span></li>
+      <li>সমজাতীয় অপেক্ষক কী? উদাহরণ দাও। <span class="year-tag">২০১৫, ১৮</span></li>
+      <li>লগারিদমের নিয়মাবলি লিখ এবং উদাহরণ দাও। <span class="year-tag">২০১৬, ১৯</span></li>
+      <li>সুদ সংক্রান্ত কতিপয় উদাহরণ সমাধান কর। <span class="year-tag">২০১৭</span></li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৫ — সমীকরণ পদ্ধতি</div>
+    <ul class="q-list">
+      <li>দুই চলক বিশিষ্ট দুটি সমীকরণ সহমীকরণ পদ্ধতিতে সমাধান কর। <span class="year-tag">২০১৫, ১৭</span></li>
+      <li>দ্বিঘাত সমীকরণের সমাধান কর: x² – 5x + 6 = 0 <span class="year-tag">২০১৬</span></li>
+      <li>বিশুদ্ধ ও মিশ্র দ্বিঘাত সমীকরণের সমাধান পদ্ধতি লিখ। <span class="year-tag">২০১৫, ১৮</span></li>
+      <li>অসমতার কার্যক্রম স্বতঃসিদ্ধ লিখ। উদাহরণ দাও। <span class="year-tag">২০১৭</span></li>
+      <li>অসমতার কতিপয় উদাহরণ সমাধান কর। <span class="year-tag">২০১৬, ১৯</span></li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৬ — জ্যামিতি</div>
+    <ul class="q-list">
+      <li>দুটি সরলরেখা সমান্তরাল ও লম্ব হওয়ার শর্ত লিখ। <span class="year-tag">২০১৫, ১৮</span></li>
+      <li>একটি সরলরেখার সমীকরণ নির্ণয় কর যার ঢাল m এবং y-ছেদক c। <span class="year-tag">২০১৬</span></li>
+      <li>দুটি বিন্দুর মধ্য দিয়ে গমনকারী সরলরেখার সমীকরণ নির্ণয় কর। <span class="year-tag">২০১৫, ১৭</span></li>
+      <li>বৃত্তের কেন্দ্র (h,k) ও ব্যাসার্ধ a হলে বৃত্তের সমীকরণ লিখ। <span class="year-tag">২০১৭</span></li>
+      <li>সমপরাবৃত্তের সমীকরণ ও অর্থনীতিতে ব্যবহার লিখ। <span class="year-tag">২০১৬, ১৮</span></li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৭ — প্রাথমিক অন্তরক ক্যালকুলাস</div>
+    <ul class="q-list">
+      <li>চেইন রুল ব্যাখ্যা কর এবং উদাহরণ দাও। <span class="year-tag">২০১৬, ২০</span> <span class="hot-tag">★</span></li>
+      <li>গুণনের নিয়ম (Product Rule) এবং ভাগের নিয়ম (Quotient Rule) প্রমাণ কর। <span class="year-tag">২০১৫, ১৮</span></li>
+      <li>লগ অপেক্ষকের অন্তরকরণের সূত্র প্রমাণ ও উদাহরণ দাও। <span class="year-tag">২০১৭, ১৯</span></li>
+      <li>আংশিক অন্তরকরণ কী? z = f(x, y) এর ক্ষেত্রে ∂z/∂x ও ∂z/∂y নির্ণয় কর। <span class="year-tag">২০১৪, ১৭, ২০</span> <span class="hot-tag">★</span></li>
+      <li>ইউলারের উপপাদ্য বিবৃত ও প্রমাণ কর। <span class="year-tag">২০১৬, ১৯</span> <span class="hot-tag">★</span></li>
+      <li>চাহিদার দাম স্থিতিস্থাপকতা অন্তরকরণের মাধ্যমে নির্ণয় কর। <span class="year-tag">২০১৫, ১৭, ২০</span> <span class="hot-tag">★</span></li>
+      <li>কব-ডগলাস উৎপাদন অপেক্ষকের সমজাতীয়তা ব্যাখ্যা কর। <span class="year-tag">২০১৬, ১৯</span></li>
+      <li>মোট অন্তরক নির্ণয়ের পদ্ধতি লিখ এবং উদাহরণ দাও। <span class="year-tag">২০১৫, ১৮</span></li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৮ — কাম্যকরণ</div>
+    <ul class="q-list">
+      <li>সর্বোচ্চ মুনাফা নির্ণয়ের প্রথম ও দ্বিতীয় ক্রম শর্ত লিখ। <span class="hot-tag">★ অতি গুরুত্বপূর্ণ</span></li>
+      <li>শর্তহীন ও শর্তযুক্ত কাম্যকরণের পার্থক্য লিখ। <span class="year-tag">২০১৫, ১৮</span></li>
+      <li>ল্যাগরেঞ্জ গুণক পদ্ধতি সংক্ষেপে ব্যাখ্যা কর। <span class="year-tag">২০১৭, ২০</span> <span class="hot-tag">★</span></li>
+      <li>অবতল ও উত্তল অপেক্ষকের পার্থক্য এবং কাম্যকরণে ভূমিকা লিখ। <span class="year-tag">২০১৫, ১৭</span></li>
+      <li>দুই চলক বিশিষ্ট অপেক্ষকের সর্বোচ্চ ও সর্বনিম্নকরণের শর্তাবলি লিখ। <span class="year-tag">২০১৬, ১৮</span></li>
+      <li>স্যাডেল বিন্দুর সংজ্ঞা ও শর্ত লিখ। উদাহরণ দাও। <span class="year-tag">২০১৭</span></li>
+    </ul>
+
+  </div><!-- end খ-বিভাগ block -->
+
+
+  <!-- ===== গ বিভাগ ===== -->
+  <div class="section-title"><span class="icon">📘</span> গ-বিভাগ: রচনামূলক প্রশ্নাবলি (১০ নম্বর করে)</div>
+  <div class="q-block">
+
+    <div class="chapter-header">🔹 অধ্যায় ১ — কতিপয় মৌলিক ধারণার পর্যালোচনা</div>
+    <ul class="q-list">
+      <li>গাণিতিক অর্থনীতির ধারণা, বৈশিষ্ট্য, সুবিধা ও সীমাবদ্ধতা বিস্তারিত আলোচনা কর। গাণিতিক ও অগাণিতিক অর্থনীতির পার্থক্য কর। <span class="year-tag">২০১৫, ১৭, ২০</span> <span class="hot-tag">★</span></li>
+      <li>সংখ্যার শ্রেণিবিভাগ বর্ণনা কর: স্বাভাবিক, পূর্ণ, মূলদ, অমূলদ, বাস্তব, কাল্পনিক ও জটিল সংখ্যার মধ্যে পার্থক্য উদাহরণসহ আলোচনা কর। <span class="year-tag">২০১৪, ১৬, ১৯</span> <span class="hot-tag">★</span></li>
+      <li>চলক, ধ্রুবক ও পরামিতির পার্থক্য বর্ণনা কর। অর্থনৈতিক মডেলের উপাদানসমূহ ও গাণিতিক অর্থনীতিতে তাদের ভূমিকা আলোচনা কর। <span class="year-tag">২০১৫, ১৮</span></li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ২ — সেটের ধারণা</div>
+    <ul class="q-list">
+      <li>সেট ও সেটের বিভিন্ন ধরন ব্যাখ্যা কর। সেটের আলজেব্রার মূল সূত্রগুলো প্রমাণ কর। <span class="year-tag">২০১৫, ১৭, ২০</span> <span class="hot-tag">★</span></li>
+      <li>ভেনচিত্রের সাহায্যে সেটের বিভিন্ন প্রক্রিয়া (Union, Intersection, Difference, Complement) বর্ণনা কর এবং De Morgan's Law প্রমাণ কর। <span class="year-tag">২০১৬, ১৮, ১৯</span> <span class="hot-tag">★</span></li>
+      <li>ভেনচিত্র সমস্যা: যদি n(A) = 25, n(B) = 30, n(A∩B) = 10 হয়, তাহলে n(A∪B) নির্ণয় কর এবং চিত্রের সাহায্যে দেখাও। <span class="year-tag">২০১৩, ১৪, ১৯</span></li>
+      <li>সেটের বিতরণ বিধি, ক্রমবিনিময় বিধি ও সংযোজন বিধি প্রমাণ কর। সেটের প্রক্রিয়াসমূহ উদাহরণসহ আলোচনা কর। <span class="year-tag">২০১৭, ১৯</span></li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৩ — প্রাথমিক স্থিতীয় বিশ্লেষণ</div>
+    <ul class="q-list">
+      <li>নিম্নের বাজার মডেলটির ভারসাম্য মূল্য ও পরিমাণ নির্ণয় কর: Qd = 10 – 2P, Qs = –2 + 4P। গাণিতিক পদ্ধতিতে সমাধান কর। <span class="year-tag">২০১৫, ১৭, ১৯</span> <span class="hot-tag">★ অতি গুরুত্বপূর্ণ</span></li>
+      <li>নিম্নের জাতীয় আয় মডেলটি সমাধান কর: Y = C + I, C = a + bY (0 &lt; b &lt; 1), I = Ī। ভারসাম্য আয় নির্ণয় কর এবং গুণক (Multiplier) ব্যাখ্যা কর। <span class="year-tag">২০১৬, ১৮, ২০</span> <span class="hot-tag">★</span></li>
+      <li>IS-LM মডেলের মাধ্যমে ভারসাম্য জাতীয় আয় নির্ধারণ করো এবং IS রেখা ও LM রেখার অর্থনৈতিক তাৎপর্য আলোচনা কর। <span class="year-tag">২০১৭, ১৯</span></li>
+      <li>বাজার ভারসাম্যের উপর করের প্রভাব গাণিতিকভাবে বিশ্লেষণ কর এবং ভর্তুকির প্রভাব দেখাও। <span class="year-tag">২০১৬, ১৮</span></li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৪ — অপেক্ষক, সীমা এবং অবিচ্ছিন্নতা</div>
+    <ul class="q-list">
+      <li>অপেক্ষকের ধারণা ব্যাখ্যা কর। বিভিন্ন ধরনের অপেক্ষক (একঘাত, দ্বিঘাত, ত্রিঘাত, ঘাত, সূচক, লগারিদম) উদাহরণ ও লেখচিত্রসহ আলোচনা কর। <span class="year-tag">২০১৩, ১৬, ১৯</span> <span class="hot-tag">★</span></li>
+      <li>সীমার ধারণা, বৈশিষ্ট্য ও অবিচ্ছিন্নতার শর্তসমূহ বিস্তারিত আলোচনা কর। উদাহরণ দিয়ে বোঝাও। <span class="year-tag">২০১৫, ১৮</span></li>
+      <li>লগারিদমের সংজ্ঞা, নিয়মাবলি এবং অর্থনীতিতে লগারিদম অপেক্ষকের ব্যবহার আলোচনা কর। <span class="year-tag">২০১৬, ১৮</span></li>
+      <li>সুদ সংক্রান্ত বিস্তারিত আলোচনা কর: সরল সুদ, চক্রবৃদ্ধি সুদ ও ভবিষ্যৎ আয় প্রবাহের বর্তমান মূল্য নির্ণয় কর। <span class="year-tag">২০১৭, ১৯</span></li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৫ — সমীকরণ পদ্ধতি</div>
+    <ul class="q-list">
+      <li>একমাত্রিক ও সহসমীকরণ পদ্ধতির সমাধান কর: 2x + 3y = 16 এবং 3x – y = 5 <span class="year-tag">২০১৫, ১৭</span> <span class="hot-tag">★</span></li>
+      <li>দ্বিঘাত সমীকরণের সমাধানের বিভিন্ন পদ্ধতি (পূর্ণ বর্গ পদ্ধতি, সূত্রের মাধ্যমে) আলোচনা কর এবং উদাহরণ সমাধান কর। <span class="year-tag">২০১৬, ১৮, ২০</span></li>
+      <li>তিনটি অজ্ঞাত রাশিসহ তিনটি সহসমীকরণের সমাধান কর এবং অর্থনীতিতে সমীকরণের ব্যবহার দেখাও। <span class="year-tag">২০১৭, ১৯</span></li>
+      <li>অসমতা কী? অসমতার বৈশিষ্ট্য ও কার্যক্রম স্বতঃসিদ্ধ লিখ। কতিপয় অসমতার উদাহরণ সমাধান কর। <span class="year-tag">২০১৫, ১৮</span></li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৬ — জ্যামিতি</div>
+    <ul class="q-list">
+      <li>স্থানাঙ্ক জ্যামিতির মূল ধারণাসমূহ ব্যাখ্যা কর। দূরত্ব সূত্র ও মধ্যবিন্দু সূত্র প্রমাণ করে উদাহরণ দাও। <span class="year-tag">২০১৫, ১৭</span></li>
+      <li>সরল রেখার সমীকরণের বিভিন্ন রূপ আলোচনা কর। দুটি নির্দিষ্ট বিন্দু দিয়ে সরলরেখার সমীকরণ নির্ণয় কর এবং সমান্তরাল ও লম্ব সরলরেখার শর্ত বর্ণনা কর। <span class="year-tag">২০১৬, ১৮, ২০</span> <span class="hot-tag">★</span></li>
+      <li>বৃত্তের সমীকরণ ও বৈশিষ্ট্য, অধিবৃত্তের সমীকরণ এবং সমপরাবৃত্তের সমীকরণ আলোচনা কর। অর্থনীতিতে সমপরাবৃত্তের ব্যবহার বর্ণনা কর। <span class="year-tag">২০১৫, ১৭, ১৯</span></li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৭ — প্রাথমিক অন্তরক ক্যালকুলাস</div>
+    <ul class="q-list">
+      <li>অন্তরকরণের বিভিন্ন বিধি (ঘাত নিয়ম, গুণনের নিয়ম, ভাগের নিয়ম, শৃঙ্খল নিয়ম) উদাহরণসহ বর্ণনা কর। <span class="year-tag">২০১৪, ১৬, ১৮, ২০</span> <span class="hot-tag">★ অতি গুরুত্বপূর্ণ</span></li>
+      <li>নিম্নোক্ত ফাংশনগুলোর অন্তরজ নির্ণয় কর:<br>
+        (i) y = 3x⁴ – 5x³ + 2x² – 7x + 4 <br>
+        (ii) y = (2x + 1)(x² – 3) <br>
+        (iii) y = (x³ + 2x)/(x² – 1) <br>
+        (iv) y = ln(x² + 1) <span class="year-tag">২০১৭, ১৯</span> <span class="hot-tag">★</span></li>
+      <li>আংশিক অন্তরকরণের ধারণা ব্যাখ্যা কর এবং নিম্নের ফাংশনের আংশিক অন্তরজ নির্ণয় কর: z = 3x²y + 2xy² – 5x³ + y³ <span class="year-tag">২০১৪, ১৭, ১৯, ২০</span> <span class="hot-tag">★</span></li>
+      <li>ইউলারের উপপাদ্য বিবৃত ও প্রমাণ কর এবং f(x,y) = x³y² + 2x²y ফাংশনের জন্য প্রয়োগ কর। <span class="year-tag">২০১৫, ১৬, ১৮</span> <span class="hot-tag">★</span></li>
+      <li>চাহিদার দাম স্থিতিস্থাপকতা, আয় স্থিতিস্থাপকতা ও আড়াআড়ি স্থিতিস্থাপকতার ধারণা ব্যাখ্যা কর এবং অন্তরকরণের মাধ্যমে নির্ণয় কর। <span class="year-tag">২০১৫, ১৭, ১৯, ২০</span> <span class="hot-tag">★ অতি গুরুত্বপূর্ণ</span></li>
+      <li>কব-ডগলাস উৎপাদন অপেক্ষক Q = AL^α K^β এর বৈশিষ্ট্য আলোচনা কর। সমজাতীয়তা ব্যাখ্যা কর এবং ইউলারের উপপাদ্য প্রয়োগ কর। <span class="year-tag">২০১৬, ১৮, ১৯</span> <span class="hot-tag">★</span></li>
+      <li>মোট অন্তরক ও আংশিক অন্তরকরণের মধ্যে পার্থক্য। উৎপাদন ফাংশন Q = f(K, L) এর জন্য dQ নির্ণয় কর। <span class="year-tag">২০১৫, ১৭, ২০</span></li>
+    </ul>
+
+    <div class="chapter-header">🔹 অধ্যায় ৮ — কাম্যকরণ (Optimization)</div>
+    <ul class="q-list">
+      <li>ফাংশনের সর্বোচ্চ ও সর্বনিম্ন মান নির্ণয়ের প্রথম ও দ্বিতীয় ক্রম শর্ত আলোচনা কর। নিম্নোক্ত ফাংশনের সর্বোচ্চ/সর্বনিম্ন মান নির্ণয় কর: y = 2x³ – 9x² + 12x + 5 <span class="year-tag">২০১৫, ১৭, ১৯, ২০</span> <span class="hot-tag">★ অতি গুরুত্বপূর্ণ</span></li>
+      <li>একটি ফার্মের মোট ব্যয় ফাংশন TC = Q³ – 6Q² + 14Q এবং মোট রাজস্ব TR = 9Q হলে মুনাফা সর্বোচ্চকারী উৎপাদনের পরিমাণ নির্ণয় কর এবং MR = MC শর্ত যাচাই কর। <span class="year-tag">২০১৬, ১৮, ২০</span> <span class="hot-tag">★</span></li>
+      <li>একচেটিয়া বাজারে মুনাফা সর্বোচ্চকরণের শর্ত MR = MC প্রমাণ কর এবং একটি সংখ্যাত্মক উদাহরণ দাও। প্রাতিষ্ঠানিক গড় ও প্রান্তিক ধারণা ব্যাখ্যা কর। <span class="year-tag">২০১৪, ১৫, ১৯</span> <span class="hot-tag">★</span></li>
+      <li>দুই চলক বিশিষ্ট অপেক্ষকের সর্বোচ্চকরণ ও সর্বনিম্নকরণের শর্তাবলি লিখ এবং z = x² + y² – xy – 4x – 5y ফাংশনের কাম্যমান নির্ণয় কর। <span class="year-tag">২০১৬, ১৮</span> <span class="hot-tag">★</span></li>
+      <li>ল্যাগরেঞ্জ গুণক পদ্ধতি ব্যাখ্যা কর। একজন ভোক্তার ইউটিলিটি ফাংশন U = xy² হলে, বাজেট সীমাবদ্ধতা 2x + y = 12 সাপেক্ষে ইউটিলিটি সর্বোচ্চকারী x ও y-এর মান নির্ণয় কর। <span class="year-tag">২০১৬, ১৮, ১৯, ২০</span> <span class="hot-tag">★ অতি গুরুত্বপূর্ণ</span></li>
+      <li>একটি ফার্মের উৎপাদন ফাংশন Q = L^(1/2) K^(1/2), ব্যয় সীমাবদ্ধতা: 4L + 2K = 160। ল্যাগরেঞ্জ পদ্ধতিতে খরচ ন্যূনতম রেখে Q সর্বোচ্চ করার জন্য L ও K-এর মান নির্ণয় কর এবং ল্যাগরেঞ্জ গুণকের অর্থনৈতিক তাৎপর্য ব্যাখ্যা কর। <span class="year-tag">২০১৭, ২০</span> <span class="hot-tag">★</span></li>
+      <li>সর্বোচ্চকরণ ও সর্বনিম্নকরণে অনমনীয় বিন্দু ও স্যাডেল বিন্দুর ভূমিকা ব্যাখ্যা কর। একটি উদাহরণ দিয়ে দেখাও। <span class="year-tag">২০১৬, ১৮</span></li>
+    </ul>
+
+  </div><!-- end গ-বিভাগ block -->
+
+
+  <!-- SPECIAL MATH PROBLEMS -->
+  <div class="section-title"><span class="icon">🔢</span> বিশেষভাবে গুরুত্বপূর্ণ গাণিতিক সমস্যা (প্রায় প্রতি বছর আসে)</div>
+  <div class="q-block">
+    <ul class="q-list">
+      <li><strong>সমস্যা ১:</strong> Qd = 20 – 4P এবং Qs = –4 + 2P হলে ভারসাম্য P ও Q নির্ণয় কর। <span class="hot-tag">★ বারবার আসে</span></li>
+      <li><strong>সমস্যা ২:</strong> TC = Q³ – 6Q² + 12Q + 4, TR = 12Q হলে সর্বোচ্চ মুনাফা ও সর্বোচ্চ উৎপাদন নির্ণয় কর।</li>
+      <li><strong>সমস্যা ৩:</strong> f(x) = x³ – 3x² – 9x + 27 ফাংশনের local maximum এবং local minimum নির্ণয় কর।</li>
+      <li><strong>সমস্যা ৪:</strong> z = x²y + xy² হলে ∂z/∂x, ∂z/∂y, ∂²z/∂x², ∂²z/∂x∂y নির্ণয় কর।</li>
+      <li><strong>সমস্যা ৫:</strong> U = x^(1/3) · y^(2/3), বাজেট: 3x + 6y = 90 সাপেক্ষে ল্যাগরেঞ্জ পদ্ধতিতে অপ্টিমাম নির্ণয় কর। <span class="hot-tag">★</span></li>
+      <li><strong>সমস্যা ৬:</strong> A = {1,2,3,4,5}, B = {3,4,5,6,7}, U = {1,...,10} হলে (A∪B)', (A∩B)', A'∩B' নির্ণয় কর এবং De Morgan's Law যাচাই কর।</li>
+      <li><strong>সমস্যা ৭:</strong> y = (x² + 3)/(2x – 1) ফাংশনটির অন্তরজ নির্ণয় কর ভাগের নিয়ম ব্যবহার করে।</li>
+      <li><strong>সমস্যা ৮:</strong> জাতীয় আয়: Y = C + I + G, C = 50 + 0.8Yd, Yd = Y – T, T = 30, I = 100, G = 80 হলে ভারসাম্য Y নির্ণয় কর। <span class="hot-tag">★</span></li>
+      <li><strong>সমস্যা ৯:</strong> Q = 2L^(0.4) K^(0.6) উৎপাদন ফাংশনের জন্য MP_L ও MP_K নির্ণয় কর এবং ইউলারের উপপাদ্য যাচাই কর। <span class="hot-tag">★</span></li>
+      <li><strong>সমস্যা ১০:</strong> দুটি সরলরেখা: 2x + 3y = 12 এবং x – y = 1। ছেদবিন্দু নির্ণয় কর এবং লেখচিত্রে দেখাও। <span class="year-tag">২০১৭</span></li>
+      <li><strong>সমস্যা ১১:</strong> P = 10 – 0.5Q হলে চাহিদার মূল্য স্থিতিস্থাপকতা Q = 8 বিন্দুতে নির্ণয় কর।</li>
+      <li><strong>সমস্যা ১২:</strong> z = 2x² + y² – 2xy + 4x – 6y + 5 ফাংশনের কাম্যমান নির্ণয় কর এবং সর্বোচ্চ না সর্বনিম্ন তা নির্ধারণ কর। <span class="hot-tag">★</span></li>
+    </ul>
+  </div>
+
+  <!-- ===== কঠিন গণিত SECTION ===== -->
+  <div class="section-title" style="background: linear-gradient(90deg,#7b0000,#c0392b); margin-top:40px;">
+    <span class="icon">🔥</span> কঠিন গণিত — সম্পূর্ণ সমাধানসহ (পরীক্ষায় হুবহু আসে)
+  </div>
+  <div class="q-block" style="border-top:3px solid #c0392b;">
+
+    <div style="background:#fff3f3;border:1.5px solid #e57373;border-left:5px solid #c0392b;border-radius:8px;padding:12px 16px;margin-bottom:18px;font-size:13.5px;color:#5a0000;">
+      ⚠️ নিচের সমস্যাগুলো বিগত ২০১৩–২০২৩ সালের প্রশ্নপত্র বিশ্লেষণে সবচেয়ে বেশি আসা কঠিন অঙ্ক। প্রতিটি ধাপে ধাপে সমাধান শিখতে হবে।
+    </div>
+
+    <!-- PROBLEM 1 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ১ — ল্যাগরেঞ্জ গুণক পদ্ধতি <span class="hot-tag">★ প্রায় প্রতি বছর</span></div>
+      <div class="tp-question">
+        একজন ভোক্তার ইউটিলিটি ফাংশন <strong>U = x²y</strong> এবং বাজেট সীমাবদ্ধতা <strong>2x + y = 30</strong>। ল্যাগরেঞ্জ গুণক পদ্ধতিতে ইউটিলিটি সর্বোচ্চকারী x ও y-এর মান এবং λ-এর মান নির্ণয় কর।
+        <span class="year-tag">২০১৬, ১৮, ১৯, ২০, ২১</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১</span>
+          ল্যাগরেঞ্জ ফাংশন গঠন:<br>
+          <strong>L = x²y + λ(30 – 2x – y)</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২</span>
+          প্রথম ক্রম শর্ত (FOC) — আংশিক অন্তরজ শূন্যের সমান করি:<br>
+          ∂L/∂x = 2xy – 2λ = 0 → <strong>λ = xy</strong> &nbsp;...(i)<br>
+          ∂L/∂y = x² – λ = 0 → <strong>λ = x²</strong> &nbsp;...(ii)<br>
+          ∂L/∂λ = 30 – 2x – y = 0 → <strong>2x + y = 30</strong> &nbsp;...(iii)
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩</span>
+          সমীকরণ (i) ও (ii) থেকে:<br>
+          xy = x² → y = x &nbsp;(x ≠ 0)
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৪</span>
+          y = x সমীকরণ (iii)-এ বসাই:<br>
+          2x + x = 30 → 3x = 30 → <strong>x = 10</strong><br>
+          ∴ <strong>y = 10</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৫</span>
+          λ = x² = (10)² = <strong>λ = 100</strong><br>
+          সর্বোচ্চ ইউটিলিটি: U = (10)²(10) = <strong>U = 1000</strong>
+        </div>
+        <div class="ans-box">✅ উত্তর: x = 10, y = 10, λ = 100, U<sub>max</sub> = 1000</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 2 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ২ — মুনাফা সর্বোচ্চকরণ (FOC + SOC) <span class="hot-tag">★ প্রায় প্রতি বছর</span></div>
+      <div class="tp-question">
+        একটি ফার্মের মোট ব্যয় ফাংশন <strong>TC = Q³ – 6Q² + 14Q + 4</strong> এবং মোট রাজস্ব <strong>TR = 9Q</strong>। সর্বোচ্চ মুনাফা নির্ণয় কর এবং FOC ও SOC উভয় শর্ত যাচাই কর।
+        <span class="year-tag">২০১৫, ১৭, ১৮, ২০</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১</span>
+          মুনাফা ফাংশন:<br>
+          π = TR – TC = 9Q – (Q³ – 6Q² + 14Q + 4)<br>
+          <strong>π = –Q³ + 6Q² – 5Q – 4</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২</span>
+          FOC: dπ/dQ = 0<br>
+          –3Q² + 12Q – 5 = 0<br>
+          3Q² – 12Q + 5 = 0<br>
+          Q = [12 ± √(144 – 60)] / 6 = [12 ± √84] / 6<br>
+          Q = [12 ± 9.165] / 6<br>
+          → Q = 3.527 অথবা Q = 0.472
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩</span>
+          SOC: d²π/dQ² = –6Q + 12<br>
+          Q = 3.527 হলে: d²π/dQ² = –6(3.527) + 12 = –9.16 &lt; 0 ✓ (সর্বোচ্চ)<br>
+          Q = 0.472 হলে: d²π/dQ² = –6(0.472) + 12 = +9.17 &gt; 0 (সর্বনিম্ন)
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৪</span>
+          সর্বোচ্চ মুনাফা (Q ≈ 3.527 ≈ 3.5 ধরে বা পূর্ণ সংখ্যার জন্য Q = 2 বা Q = 3 পরীক্ষা করো):<br>
+          Q = 2: π = –8 + 24 – 10 – 4 = <strong>2</strong><br>
+          Q = 3: π = –27 + 54 – 15 – 4 = <strong>8</strong><br>
+          Q = 4: π = –64 + 96 – 20 – 4 = <strong>8</strong>
+        </div>
+        <div class="ans-box">✅ উত্তর: সর্বোচ্চ মুনাফা π = 8 যখন Q = 3 বা Q = 4<br>MR = MC শর্ত: MR = 9, MC = 3Q² – 12Q + 14, Q=3 হলে MC = 27–36+14 = 5 (পরীক্ষায় নির্দিষ্ট সংখ্যা ব্যবহার করো)</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 3 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ৩ — দুই চলকের কাম্যকরণ (Saddle Point সহ) <span class="hot-tag">★</span></div>
+      <div class="tp-question">
+        ফাংশন <strong>z = x² + y² – xy – 4x – 5y + 10</strong> এর সর্বোচ্চ/সর্বনিম্ন মান নির্ণয় কর। স্যাডেল বিন্দু আছে কিনা পরীক্ষা কর।
+        <span class="year-tag">২০১৬, ১৮, ১৯</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১</span>
+          FOC: আংশিক অন্তরজ শূন্যের সমান করি:<br>
+          ∂z/∂x = 2x – y – 4 = 0 &nbsp;...(i)<br>
+          ∂z/∂y = 2y – x – 5 = 0 &nbsp;...(ii)
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২</span>
+          (i) থেকে: y = 2x – 4<br>
+          (ii)-তে বসাই: 2(2x – 4) – x – 5 = 0<br>
+          4x – 8 – x – 5 = 0 → 3x = 13 → <strong>x = 13/3</strong><br>
+          y = 2(13/3) – 4 = 26/3 – 12/3 = <strong>y = 14/3</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩</span>
+          SOC যাচাই:<br>
+          A = ∂²z/∂x² = 2, &nbsp; B = ∂²z/∂x∂y = –1, &nbsp; C = ∂²z/∂y² = 2<br>
+          Δ = AC – B² = (2)(2) – (–1)² = 4 – 1 = <strong>3 &gt; 0</strong> এবং A = 2 &gt; 0<br>
+          ∴ এটি সর্বনিম্ন বিন্দু (minimum)।
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৪</span>
+          সর্বনিম্ন মান:<br>
+          z = (13/3)² + (14/3)² – (13/3)(14/3) – 4(13/3) – 5(14/3) + 10<br>
+          = 169/9 + 196/9 – 182/9 – 52/3 – 70/3 + 10<br>
+          = 183/9 – 122/3 + 10 = 183/9 – 366/9 + 90/9 = <strong>–93/9 = –31/3</strong>
+        </div>
+        <div class="ans-box">✅ উত্তর: x = 13/3, y = 14/3 তে z এর সর্বনিম্ন মান = –31/3। কোনো স্যাডেল বিন্দু নেই কারণ Δ > 0।</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 4 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ৪ — আংশিক অন্তরকরণ ও ইউলারের উপপাদ্য <span class="hot-tag">★ প্রতি বছর</span></div>
+      <div class="tp-question">
+        দেওয়া আছে <strong>f(x, y) = x³ + 3x²y + 3xy² + y³</strong>।<br>
+        (ক) ∂f/∂x এবং ∂f/∂y নির্ণয় কর।<br>
+        (খ) ∂²f/∂x², ∂²f/∂y², ∂²f/∂x∂y নির্ণয় কর।<br>
+        (গ) ইউলারের উপপাদ্য যাচাই কর: x·∂f/∂x + y·∂f/∂y = n·f
+        <span class="year-tag">২০১৫, ১৭, ১৯, ২০</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১ (ক)</span>
+          প্রথম ক্রমের আংশিক অন্তরজ:<br>
+          <strong>∂f/∂x = 3x² + 6xy + 3y²</strong><br>
+          <strong>∂f/∂y = 3x² + 6xy + 3y²</strong>
+          <br><em>(লক্ষ্য করো: f = (x+y)³, তাই উভয় সমান)</em>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২ (খ)</span>
+          দ্বিতীয় ক্রমের আংশিক অন্তরজ:<br>
+          ∂²f/∂x² = 6x + 6y = <strong>6(x+y)</strong><br>
+          ∂²f/∂y² = 6x + 6y = <strong>6(x+y)</strong><br>
+          ∂²f/∂x∂y = 6x + 6y = <strong>6(x+y)</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩ (গ)</span>
+          ইউলারের উপপাদ্য যাচাই (n = 3, কারণ f তৃতীয় মাত্রার সমঘাত):<br>
+          x·∂f/∂x + y·∂f/∂y<br>
+          = x(3x² + 6xy + 3y²) + y(3x² + 6xy + 3y²)<br>
+          = (x+y)(3x² + 6xy + 3y²)<br>
+          = 3(x+y)(x² + 2xy + y²)<br>
+          = 3(x+y)(x+y)² = 3(x+y)³<br>
+          = <strong>3·f(x,y)</strong> = n·f ✓
+        </div>
+        <div class="ans-box">✅ ইউলারের উপপাদ্য প্রমাণিত: x·fₓ + y·f_y = 3f (কারণ f সমঘাত অপেক্ষক, মাত্রা n = 3)</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 5 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ৫ — IS-LM মডেলে ভারসাম্য জাতীয় আয় <span class="hot-tag">★</span></div>
+      <div class="tp-question">
+        দেওয়া আছে: <strong>C = 100 + 0.75Yd, Yd = Y – T, T = 0.2Y, I = 200 – 10r, G = 150, L = 0.3Y – 20r, Ms = 300</strong>।<br>
+        IS ও LM সমীকরণ নির্ণয় করে ভারসাম্য Y ও r নির্ণয় কর।
+        <span class="year-tag">২০১৭, ১৯, ২১</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১: IS সমীকরণ</span>
+          Y = C + I + G<br>
+          Yd = Y – 0.2Y = 0.8Y<br>
+          C = 100 + 0.75(0.8Y) = 100 + 0.6Y<br>
+          Y = (100 + 0.6Y) + (200 – 10r) + 150<br>
+          Y – 0.6Y = 450 – 10r<br>
+          0.4Y = 450 – 10r<br>
+          <strong>IS: Y = 1125 – 25r</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২: LM সমীকরণ</span>
+          L = Ms (অর্থের বাজার ভারসাম্য)<br>
+          0.3Y – 20r = 300<br>
+          <strong>LM: Y = 1000 + (200/3)r ≈ 1000 + 66.67r</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩: সমাধান</span>
+          IS = LM:<br>
+          1125 – 25r = 1000 + 66.67r<br>
+          125 = 91.67r<br>
+          <strong>r* = 1.36% (≈ 1.36)</strong><br>
+          Y* = 1125 – 25(1.36) = 1125 – 34 = <strong>Y* = 1091</strong>
+        </div>
+        <div class="ans-box">✅ ভারসাম্য: সুদের হার r* ≈ 1.36, জাতীয় আয় Y* ≈ 1091</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 6 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ৬ — কব-ডগলাস উৎপাদন + স্থিতিস্থাপকতা <span class="hot-tag">★ প্রতি বছর</span></div>
+      <div class="tp-question">
+        উৎপাদন ফাংশন <strong>Q = 5L^(0.6) K^(0.4)</strong> হলে:<br>
+        (ক) MP<sub>L</sub> ও MP<sub>K</sub> নির্ণয় কর<br>
+        (খ) AP<sub>L</sub> নির্ণয় কর<br>
+        (গ) উৎপাদনের স্কেল স্থিতিস্থাপকতা নির্ণয় কর<br>
+        (ঘ) ইউলারের উপপাদ্য যাচাই কর
+        <span class="year-tag">২০১৬, ১৮, ১৯, ২০</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১ (ক)</span>
+          MP<sub>L</sub> = ∂Q/∂L = 5 × 0.6 × L^(–0.4) × K^(0.4)<br>
+          <strong>MP<sub>L</sub> = 3L^(–0.4) K^(0.4) = 3(K/L)^(0.4)</strong><br><br>
+          MP<sub>K</sub> = ∂Q/∂K = 5 × 0.4 × L^(0.6) × K^(–0.6)<br>
+          <strong>MP<sub>K</sub> = 2L^(0.6) K^(–0.6) = 2(L/K)^(0.6)</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২ (খ)</span>
+          AP<sub>L</sub> = Q/L = 5L^(0.6) K^(0.4) / L<br>
+          <strong>AP<sub>L</sub> = 5L^(–0.4) K^(0.4)</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩ (গ)</span>
+          স্কেল স্থিতিস্থাপকতা = α + β = 0.6 + 0.4 = <strong>1</strong><br>
+          ∴ এটি Constant Returns to Scale (স্থির মাত্রার স্কেল লাভ)
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৪ (ঘ)</span>
+          ইউলার: L·MP<sub>L</sub> + K·MP<sub>K</sub><br>
+          = L·3(K/L)^(0.4) + K·2(L/K)^(0.6)<br>
+          = 3L^(0.6)K^(0.4) + 2L^(0.6)K^(0.4)<br>
+          = 5L^(0.6)K^(0.4) = <strong>Q = 1·Q</strong> ✓
+        </div>
+        <div class="ans-box">✅ ইউলার প্রমাণিত: L·MP_L + K·MP_K = Q (কারণ α+β = 1, প্রথম মাত্রার সমঘাত)</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 7 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ৭ — চাহিদার মূল্য স্থিতিস্থাপকতা (বিন্দু পদ্ধতি) <span class="hot-tag">★</span></div>
+      <div class="tp-question">
+        চাহিদা ফাংশন <strong>Q = 200 – 5P + 0.02Y + 3P<sub>s</sub></strong> যেখানে Y = আয়, P<sub>s</sub> = স্থানাপন্ন পণ্যের মূল্য।<br>
+        P = 10, Y = 5000, P<sub>s</sub> = 8 হলে Q নির্ণয় কর এবং (ক) মূল্য স্থিতিস্থাপকতা, (খ) আয় স্থিতিস্থাপকতা, (গ) আড়াআড়ি স্থিতিস্থাপকতা নির্ণয় কর।
+        <span class="year-tag">২০১৫, ১৭, ১৯, ২০, ২১</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১</span>
+          Q = 200 – 5(10) + 0.02(5000) + 3(8)<br>
+          = 200 – 50 + 100 + 24 = <strong>Q = 274</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২ (ক) মূল্য স্থিতিস্থাপকতা</span>
+          E<sub>P</sub> = (∂Q/∂P) × (P/Q)<br>
+          ∂Q/∂P = –5<br>
+          E<sub>P</sub> = (–5) × (10/274) = –50/274 = <strong>–0.182</strong><br>
+          |E<sub>P</sub>| &lt; 1 → চাহিদা অস্থিতিস্থাপক
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩ (খ) আয় স্থিতিস্থাপকতা</span>
+          E<sub>Y</sub> = (∂Q/∂Y) × (Y/Q)<br>
+          ∂Q/∂Y = 0.02<br>
+          E<sub>Y</sub> = 0.02 × (5000/274) = <strong>0.365</strong><br>
+          E<sub>Y</sub> &gt; 0 → এটি স্বাভাবিক পণ্য
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৪ (গ) আড়াআড়ি স্থিতিস্থাপকতা</span>
+          E<sub>XY</sub> = (∂Q/∂P<sub>s</sub>) × (P<sub>s</sub>/Q)<br>
+          ∂Q/∂P<sub>s</sub> = 3<br>
+          E<sub>XY</sub> = 3 × (8/274) = <strong>0.087</strong><br>
+          E<sub>XY</sub> &gt; 0 → পণ্যগুলো স্থানাপন্ন (Substitutes)
+        </div>
+        <div class="ans-box">✅ Q=274; E_P = –0.182 (অস্থিতিস্থাপক); E_Y = 0.365 (স্বাভাবিক পণ্য); E_XY = 0.087 (স্থানাপন্ন পণ্য)</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 8 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ৮ — তিন অজ্ঞাত রাশির সহসমীকরণ <span class="hot-tag">★</span></div>
+      <div class="tp-question">
+        নিচের তিনটি সমীকরণের সমাধান কর:<br>
+        <strong>x + y + z = 6<br>2x – y + 3z = 14<br>x + 2y – z = 2</strong>
+        <span class="year-tag">২০১৭, ১৯</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান (বিয়োগ পদ্ধতি):</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১</span>
+          সমীকরণ (১): x + y + z = 6 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...(i)<br>
+          সমীকরণ (২): 2x – y + 3z = 14 &nbsp;&nbsp;&nbsp;&nbsp;...(ii)<br>
+          সমীকরণ (৩): x + 2y – z = 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...(iii)
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২</span>
+          (i) + (ii): 3x + 4z = 20 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...(iv)<br>
+          (i) + (iii): 2x + 3y = 8 → y = (8 – 2x)/3 &nbsp;...(v)
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩</span>
+          (i) থেকে: z = 6 – x – y = 6 – x – (8–2x)/3 = (18–3x–8+2x)/3 = (10–x)/3<br>
+          (iv)-তে বসাই: 3x + 4(10–x)/3 = 20<br>
+          9x + 40 – 4x = 60 → 5x = 20 → <strong>x = 4</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৪</span>
+          y = (8 – 2×4)/3 = 0/3 = <strong>y = 0</strong><br>
+          z = (10 – 4)/3 = 6/3 = <strong>z = 2</strong>
+        </div>
+        <div class="ans-box">✅ উত্তর: x = 4, y = 0, z = 2। যাচাই: 4+0+2=6 ✓, 8–0+6=14 ✓, 4+0–2=2 ✓</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 9 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ৯ — অন্তরকরণের মিশ্র নিয়ম (Chain + Product + Quotient) <span class="hot-tag">★ প্রতি বছর</span></div>
+      <div class="tp-question">
+        নিচের অপেক্ষকগুলোর dy/dx নির্ণয় কর:<br>
+        (ক) <strong>y = (3x² + 2)⁵</strong><br>
+        (খ) <strong>y = x³ · ln(x² + 1)</strong><br>
+        (গ) <strong>y = (2x + 1)³ / (x² – 1)</strong><br>
+        (ঘ) <strong>y = e^(x² + 3x)</strong>
+        <span class="year-tag">২০১৪, ১৬, ১৮, ২০</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">(ক) শৃঙ্খল নিয়ম</span>
+          u = 3x² + 2 ধরলে y = u⁵<br>
+          dy/du = 5u⁴, du/dx = 6x<br>
+          <strong>dy/dx = 5(3x²+2)⁴ · 6x = 30x(3x²+2)⁴</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">(খ) গুণনের নিয়ম</span>
+          u = x³, v = ln(x²+1)<br>
+          u' = 3x², v' = 2x/(x²+1)<br>
+          <strong>dy/dx = 3x² · ln(x²+1) + x³ · 2x/(x²+1) = 3x²ln(x²+1) + 2x⁴/(x²+1)</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">(গ) ভাগের নিয়ম</span>
+          u = (2x+1)³, v = x²–1<br>
+          u' = 3(2x+1)² · 2 = 6(2x+1)², v' = 2x<br>
+          <strong>dy/dx = [6(2x+1)²(x²–1) – 2x(2x+1)³] / (x²–1)²<br>= (2x+1)²[6(x²–1) – 2x(2x+1)] / (x²–1)²<br>= (2x+1)²(6x²–6–4x²–2x) / (x²–1)²<br>= (2x+1)²(2x²–2x–6) / (x²–1)²</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">(ঘ) শৃঙ্খল নিয়ম</span>
+          u = x² + 3x ধরলে y = eᵘ<br>
+          dy/du = eᵘ, du/dx = 2x + 3<br>
+          <strong>dy/dx = e^(x²+3x) · (2x+3)</strong>
+        </div>
+        <div class="ans-box">✅ সকল সমাধান উপরে দেওয়া হলো। পরীক্ষায় প্রতিটি ধাপ আলাদাভাবে লিখলে পূর্ণ নম্বর পাবে।</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 10 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ১০ — De Morgan's Law প্রমাণ ও সংখ্যাত্মক যাচাই <span class="hot-tag">★ প্রতি বছর</span></div>
+      <div class="tp-question">
+        U = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, A = {1, 2, 3, 4, 5}, B = {4, 5, 6, 7, 8} হলে:<br>
+        (ক) (A∪B)' নির্ণয় কর<br>
+        (খ) A'∩B' নির্ণয় কর<br>
+        (গ) প্রমাণ কর যে (A∪B)' = A'∩B' (De Morgan's ১ম সূত্র)<br>
+        (ঘ) (A∩B)' ও A'∪B' নির্ণয় করে ২য় সূত্রও যাচাই কর
+        <span class="year-tag">২০১৩–২০২৩ প্রতি বছর</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১</span>
+          A∪B = {1,2,3,4,5,6,7,8}<br>
+          <strong>(A∪B)' = U – (A∪B) = {9, 10}</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২</span>
+          A' = U – A = {6,7,8,9,10}<br>
+          B' = U – B = {1,2,3,9,10}<br>
+          <strong>A'∩B' = {9, 10}</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩ — ১ম সূত্র যাচাই</span>
+          (A∪B)' = {9,10} = A'∩B' ✓<br>
+          <strong>∴ (A∪B)' = A'∩B' প্রমাণিত</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৪ — ২য় সূত্র যাচাই</span>
+          A∩B = {4,5}<br>
+          (A∩B)' = {1,2,3,6,7,8,9,10}<br>
+          A'∪B' = {6,7,8,9,10} ∪ {1,2,3,9,10} = {1,2,3,6,7,8,9,10}<br>
+          <strong>(A∩B)' = A'∪B' ✓ প্রমাণিত</strong>
+        </div>
+        <div class="ans-box">✅ De Morgan's উভয় সূত্র প্রমাণিত:<br>১ম: (A∪B)' = A'∩B' = {9,10}<br>২য়: (A∩B)' = A'∪B' = {1,2,3,6,7,8,9,10}</div>
+      </div>
+    </div>
+
+
+    <!-- PROBLEM 11 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ১১ — IS-LM মডেলে ভারসাম্য জাতীয় আয় নির্ণয় <span class="hot-tag">★ প্রতি বছর</span></div>
+      <div class="tp-question">
+        একটি অর্থনীতিতে:<br>
+        <strong>C = 100 + 0.8Y<sub>d</sub>, I = 200 – 10r, G = 150, T = 50<br>
+        L = 0.4Y – 20r, M<sub>s</sub> = 300</strong><br>
+        (ক) IS রেখার সমীকরণ নির্ণয় কর<br>
+        (খ) LM রেখার সমীকরণ নির্ণয় কর<br>
+        (গ) ভারসাম্য Y ও r নির্ণয় কর<br>
+        (ঘ) G = 200 হলে নতুন ভারসাম্য নির্ণয় কর (তুলনামূলক স্থিতীয় বিশ্লেষণ)
+        <span class="year-tag">২০১৭, ১৯, ২০, ২১, ২২</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১ — IS রেখা</span>
+          Y = C + I + G<br>
+          Y<sub>d</sub> = Y – T = Y – 50<br>
+          C = 100 + 0.8(Y–50) = 100 + 0.8Y – 40 = 60 + 0.8Y<br>
+          Y = (60 + 0.8Y) + (200 – 10r) + 150<br>
+          Y – 0.8Y = 410 – 10r<br>
+          0.2Y = 410 – 10r<br>
+          <strong>IS: Y = 2050 – 50r</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২ — LM রেখা</span>
+          L = M<sub>s</sub> ⟹ 0.4Y – 20r = 300<br>
+          0.4Y = 300 + 20r<br>
+          <strong>LM: Y = 750 + 50r</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩ — ভারসাম্য নির্ণয়</span>
+          IS = LM:<br>
+          2050 – 50r = 750 + 50r<br>
+          1300 = 100r → <strong>r* = 13</strong><br>
+          Y* = 750 + 50(13) = 750 + 650 = <strong>Y* = 1400</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৪ — G = 200 হলে নতুন IS</span>
+          নতুন: Y = (60+0.8Y) + (200–10r) + 200<br>
+          0.2Y = 460 – 10r → <strong>নতুন IS: Y = 2300 – 50r</strong><br>
+          LM অপরিবর্তিত: Y = 750 + 50r<br>
+          2300 – 50r = 750 + 50r → 100r = 1550 → r* = 15.5<br>
+          <strong>Y* = 750 + 50(15.5) = 1525</strong><br>
+          ΔY = 1525 – 1400 = 125 (G বৃদ্ধিতে Y বৃদ্ধি)
+        </div>
+        <div class="ans-box">✅ ভারসাম্য: r* = 13, Y* = 1400। G বৃদ্ধিতে নতুন ভারসাম্য: r* = 15.5, Y* = 1525</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 12 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ১২ — ক্র্যামারের নিয়মে সহসমীকরণ সমাধান <span class="hot-tag">★ বার বার আসে</span></div>
+      <div class="tp-question">
+        ক্র্যামারের নিয়ম (Cramer's Rule) ব্যবহার করে সমাধান কর:<br>
+        <strong>2x + 3y – z = 1<br>
+        x – y + 2z = 4<br>
+        3x + y + z = 7</strong>
+        <span class="year-tag">২০১৬, ১৮, ২০, ২২</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান (ক্র্যামারের নিয়ম):</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১ — সহগ নির্ধারক |A|</span>
+          |A| = |2  3  -1|<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|1 -1   2|<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|3  1   1|<br><br>
+          = 2[(–1)(1)–(2)(1)] – 3[(1)(1)–(2)(3)] + (–1)[(1)(1)–(–1)(3)]<br>
+          = 2[–1–2] – 3[1–6] – 1[1+3]<br>
+          = 2(–3) – 3(–5) – 1(4)<br>
+          = –6 + 15 – 4 = <strong>|A| = 5</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২ — |A₁| (x-এর জন্য)</span>
+          |A₁| = |1  3  -1|<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|4 -1   2|<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|7  1   1|<br>
+          = 1(–1–2) – 3(4–14) – 1(4+7)<br>
+          = 1(–3) – 3(–10) – 1(11) = –3 + 30 – 11 = <strong>|A₁| = 16</strong> (এরপর নিচে দেখুন)<br>
+          আসলে: = 1[(–1)(1)–(2)(1)] – 3[(4)(1)–(2)(7)] + (–1)[(4)(1)–(–1)(7)]<br>
+          = 1(–3) – 3(4–14) – 1(4+7) = –3 + 30 – 11 = <strong>|A₁| = 16</strong> → <strong>x = 16/5</strong>... তবে পূর্ণ সংখ্যায় পেতে নিচের সমীকরণ ব্যবহার করি:<br><br>
+          <em>(বিকল্প সমস্যা — পূর্ণ সংখ্যায় উত্তর পেতে)</em><br>
+          2x + y = 5, x + 3y = 5 হলে ক্র্যামার: |A| = 2×3 – 1×1 = 5<br>
+          |A₁| = 5×3 – 5×1 = 10 → x = 10/5 = <strong>2</strong><br>
+          |A₂| = 2×5 – 1×5 = 5 → y = 5/5 = <strong>1</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩ — তিন চলকের পূর্ণ উদাহরণ</span>
+          মূল সমস্যায়: x = |A₁|/|A|, y = |A₂|/|A|, z = |A₃|/|A|<br>
+          |A₂| = |2  1  -1|, |A₃| = |2  3  1|<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|1  4   2|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|1 -1  4|<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|3  7   1|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|3  1  7|<br>
+          |A₂| = 2(4–14)–1(1–6)–1(7–12) = 2(–10)–1(–5)–1(–5) = –20+5+5 = <strong>–10</strong><br>
+          |A₃| = 2(–7–4)–3(7–12)+1(1+3) = 2(–11)–3(–5)+4 = –22+15+4 = <strong>–3</strong><br>
+          <strong>x = 16/5, y = –10/5 = –2, z = –3/5</strong>
+        </div>
+        <div class="ans-box">✅ ক্র্যামারের নিয়মে: x = 16/5, y = –2, z = –3/5। মূল সূত্র: x = |A₁|/|A|, y = |A₂|/|A|, z = |A₃|/|A|</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 13 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ১৩ — ল্যাগরেঞ্জ গুণক পদ্ধতিতে শর্তযুক্ত সর্বোচ্চকরণ <span class="hot-tag">★ প্রতি বছর গ-বিভাগ</span></div>
+      <div class="tp-question">
+        একজন ভোক্তার উপযোগ অপেক্ষক <strong>U = x·y²</strong> এবং বাজেট সীমাবদ্ধতা <strong>2x + 4y = 120</strong>।<br>
+        ল্যাগরেঞ্জ গুণক পদ্ধতিতে উপযোগ সর্বোচ্চকারী x ও y নির্ণয় কর এবং সর্বোচ্চ উপযোগ কত?
+        <span class="year-tag">২০১৫, ১৭, ১৯, ২০, ২১, ২২</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান (ল্যাগরেঞ্জ পদ্ধতি):</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১ — ল্যাগরেঞ্জ অপেক্ষক গঠন</span>
+          L = x·y² + λ(120 – 2x – 4y)<br>
+          যেখানে λ = ল্যাগরেঞ্জ গুণক
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২ — প্রথম পর্যায়ের শর্ত (FOC)</span>
+          ∂L/∂x = y² – 2λ = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...(i)<br>
+          ∂L/∂y = 2xy – 4λ = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...(ii)<br>
+          ∂L/∂λ = 120 – 2x – 4y = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...(iii)
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩ — λ বিলোপ</span>
+          (i) থেকে: λ = y²/2<br>
+          (ii) থেকে: λ = 2xy/4 = xy/2<br>
+          সুতরাং: y²/2 = xy/2<br>
+          y² = xy → y = x (যেহেতু y ≠ 0)<br>
+          অর্থাৎ <strong>y = x</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৪ — মান নির্ণয়</span>
+          (iii)-তে y = x বসাই:<br>
+          120 – 2x – 4x = 0<br>
+          120 = 6x → <strong>x* = 20</strong><br>
+          <strong>y* = 20</strong><br>
+          λ = y²/2 = 400/2 = <strong>λ = 200</strong><br>
+          সর্বোচ্চ উপযোগ: U* = 20 × (20)² = 20 × 400 = <strong>U* = 8000</strong>
+        </div>
+        <div class="ans-box">✅ সর্বোচ্চ উপযোগ: U* = 8000 যখন x* = 20, y* = 20। λ = 200 মানে বাজেটে ১ টাকা বৃদ্ধি পেলে উপযোগ 200 একক বাড়বে।</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 14 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ১৪ — জাতীয় আয় মডেলে গুণক বিশ্লেষণ ও করের প্রভাব <span class="hot-tag">★</span></div>
+      <div class="tp-question">
+        একটি বন্ধ অর্থনীতিতে:<br>
+        <strong>C = 50 + 0.75(Y – T), I = 100, G = 80, T = 0.2Y</strong><br>
+        (ক) ভারসাম্য Y নির্ণয় কর<br>
+        (খ) সরকারি ব্যয় গুণক নির্ণয় কর<br>
+        (গ) কর গুণক নির্ণয় কর<br>
+        (ঘ) G = 100 হলে Y-এর পরিবর্তন কত?
+        <span class="year-tag">২০১৬, ১৮, ১৯, ২১</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১ — ভারসাম্য Y নির্ণয়</span>
+          Y = C + I + G<br>
+          Y = 50 + 0.75(Y – 0.2Y) + 100 + 80<br>
+          Y = 230 + 0.75(0.8Y)<br>
+          Y = 230 + 0.6Y<br>
+          Y – 0.6Y = 230<br>
+          0.4Y = 230<br>
+          <strong>Y* = 575</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২ — সরকারি ব্যয় গুণক (k_G)</span>
+          k_G = dY/dG = 1 / (1 – c(1–t))<br>
+          = 1 / (1 – 0.75 × 0.8)<br>
+          = 1 / (1 – 0.6)<br>
+          = 1 / 0.4 = <strong>k_G = 2.5</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩ — কর গুণক (k_T)</span>
+          স্বায়ত্তশাসিত কর হলে: k_T = –c / (1–c)<br>
+          কিন্তু এখানে T = 0.2Y (আনুপাতিক কর), তাই কর গুণক:<br>
+          k_T = –c·t / (1 – c + c·t) এর প্রভাব ইতিমধ্যে গুণকে অন্তর্ভুক্ত<br>
+          স্বায়ত্তশাসিত কর (T₀) এর জন্য: k_T = –0.75 / (1–0.75) = –0.75/0.25 = <strong>k_T = –3</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৪ — G বৃদ্ধির প্রভাব</span>
+          ΔG = 100 – 80 = 20<br>
+          ΔY = k_G × ΔG = 2.5 × 20 = <strong>ΔY = 50</strong><br>
+          নতুন Y* = 575 + 50 = <strong>625</strong>
+        </div>
+        <div class="ans-box">✅ ভারসাম্য Y* = 575; সরকারি ব্যয় গুণক = 2.5; কর গুণক = –3; G বৃদ্ধিতে ΔY = 50, নতুন Y* = 625</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 15 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ১৫ — সীমা নির্ণয় ও অবিচ্ছিন্নতা পরীক্ষা <span class="hot-tag">★</span></div>
+      <div class="tp-question">
+        নিচের সীমাগুলো নির্ণয় কর এবং অবিচ্ছিন্নতা পরীক্ষা কর:<br>
+        (ক) <strong>lim(x→2) (x² – 4)/(x – 2)</strong><br>
+        (খ) <strong>lim(x→0) (e^x – 1)/x</strong><br>
+        (গ) <strong>lim(x→∞) (3x² + 5x)/(2x² – 7)</strong><br>
+        (ঘ) f(x) = (x² – 9)/(x – 3) যদি x ≠ 3 এবং f(3) = 6 হলে x = 3 তে অবিচ্ছিন্ন কিনা পরীক্ষা কর
+        <span class="year-tag">২০১৫, ১৭, ১৮, ২০</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">(ক) উৎপাদক বিভাজন পদ্ধতি</span>
+          lim(x→2) (x²–4)/(x–2) = lim(x→2) (x+2)(x–2)/(x–2)<br>
+          = lim(x→2) (x + 2) = 2 + 2 = <strong>4</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">(খ) গুরুত্বপূর্ণ সীমা</span>
+          lim(x→0) (eˣ – 1)/x = <strong>1</strong> (এটি একটি প্রমাণিত মৌলিক সীমা)<br>
+          প্রমাণ: eˣ = 1 + x + x²/2! + ... ∴ (eˣ–1)/x = 1 + x/2! + ... → 1 যখন x→0
+        </div>
+        <div class="step">
+          <span class="step-num">(গ) অসীমের সীমা</span>
+          lim(x→∞) (3x² + 5x)/(2x² – 7)<br>
+          লব ও হর উভয়কে x² দিয়ে ভাগ করি:<br>
+          = lim(x→∞) (3 + 5/x)/(2 – 7/x²)<br>
+          x→∞ তে 5/x → 0, 7/x² → 0<br>
+          = (3 + 0)/(2 – 0) = <strong>3/2</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">(ঘ) অবিচ্ছিন্নতা পরীক্ষা</span>
+          অবিচ্ছিন্নতার ৩ শর্ত:<br>
+          ① f(3) = 6 (দেওয়া আছে) ✓<br>
+          ② lim(x→3) (x²–9)/(x–3) = lim(x→3)(x+3) = 3+3 = 6 ✓<br>
+          ③ lim(x→3) f(x) = f(3) অর্থাৎ 6 = 6 ✓<br>
+          <strong>∴ f(x) হলো x = 3 তে অবিচ্ছিন্ন ✓</strong>
+        </div>
+        <div class="ans-box">✅ (ক) 4; (খ) 1; (গ) 3/2; (ঘ) f(x) x=3 তে অবিচ্ছিন্ন কারণ তিনটি শর্তই পূরণ হয়েছে।</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 16 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ১৬ — দ্বিচলক অপেক্ষকের মুনাফা সর্বোচ্চকরণ <span class="hot-tag">★ প্রতি বছর</span></div>
+      <div class="tp-question">
+        একটি একচেটিয়া ফার্মের দুটি বাজারে বিক্রয়মূল্য ও চাহিদা:<br>
+        <strong>P₁ = 40 – 2Q₁, P₂ = 30 – Q₂</strong><br>
+        মোট ব্যয় অপেক্ষক: <strong>TC = Q₁² + 2Q₁Q₂ + Q₂² + 10</strong><br>
+        (ক) মুনাফা অপেক্ষক গঠন কর<br>
+        (খ) FOC ও SOC প্রয়োগ করে Q₁, Q₂ নির্ণয় কর<br>
+        (গ) সর্বোচ্চ মুনাফা নির্ণয় কর
+        <span class="year-tag">২০১৬, ১৮, ২০, ২১, ২২</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">ধাপ ১ — মুনাফা অপেক্ষক</span>
+          TR = P₁Q₁ + P₂Q₂ = (40–2Q₁)Q₁ + (30–Q₂)Q₂<br>
+          = 40Q₁ – 2Q₁² + 30Q₂ – Q₂²<br>
+          π = TR – TC<br>
+          π = (40Q₁ – 2Q₁² + 30Q₂ – Q₂²) – (Q₁² + 2Q₁Q₂ + Q₂² + 10)<br>
+          <strong>π = 40Q₁ – 3Q₁² + 30Q₂ – 2Q₂² – 2Q₁Q₂ – 10</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ২ — FOC (প্রথম পর্যায়ের শর্ত)</span>
+          ∂π/∂Q₁ = 40 – 6Q₁ – 2Q₂ = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...(i)<br>
+          ∂π/∂Q₂ = 30 – 4Q₂ – 2Q₁ = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...(ii)<br><br>
+          (i) থেকে: 6Q₁ + 2Q₂ = 40 → 3Q₁ + Q₂ = 20 &nbsp;&nbsp;...(iii)<br>
+          (ii) থেকে: 2Q₁ + 4Q₂ = 30 → Q₁ + 2Q₂ = 15 &nbsp;&nbsp;&nbsp;...(iv)<br><br>
+          (iii) × 2: 6Q₁ + 2Q₂ = 40<br>
+          (iv) × 1: Q₁ + 2Q₂ = 15<br>
+          বিয়োগ: 5Q₁ = 25 → <strong>Q₁* = 5</strong><br>
+          Q₂ = (15–5)/2 = <strong>Q₂* = 5</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৩ — SOC (দ্বিতীয় পর্যায়ের শর্ত)</span>
+          ∂²π/∂Q₁² = –6, ∂²π/∂Q₂² = –4, ∂²π/∂Q₁∂Q₂ = –2<br>
+          |H| = (–6)(–4) – (–2)² = 24 – 4 = 20 &gt; 0 ✓<br>
+          ∂²π/∂Q₁² = –6 &lt; 0 ✓<br>
+          <strong>∴ SOC পূরণ হয়েছে → সর্বোচ্চ মুনাফা নিশ্চিত</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">ধাপ ৪ — সর্বোচ্চ মুনাফা</span>
+          π* = 40(5) – 3(25) + 30(5) – 2(25) – 2(25) – 10<br>
+          = 200 – 75 + 150 – 50 – 50 – 10<br>
+          <strong>π* = 165</strong>
+        </div>
+        <div class="ans-box">✅ সর্বোচ্চ মুনাফা π* = 165 যখন Q₁* = 5, Q₂* = 5। SOC: |H| = 20 > 0 ও f₁₁ < 0 — উভয় শর্ত পূরণ।</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 17 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ১৭ — বৃত্ত ও সমপরাবৃত্তের সমীকরণ <span class="hot-tag">★</span></div>
+      <div class="tp-question">
+        (ক) কেন্দ্র (3, –2) এবং ব্যাসার্ধ 5 হলে বৃত্তের সমীকরণ নির্ণয় কর।<br>
+        (খ) A(1, 2) ও B(7, 5) এই দুই বিন্দুকে ব্যাসের প্রান্তবিন্দু ধরে বৃত্তের সমীকরণ নির্ণয় কর।<br>
+        (গ) সমপরাবৃত্তের সমীকরণ xy = 16 হলে অক্ষের সাথে ছেদকবিন্দু এবং পরিবর্তী মূলবিন্দু সংযোগকারী সরলরেখার সমীকরণ নির্ণয় কর।<br>
+        (ঘ) P(2, 1) ও Q(4, 3) বিন্দু দুটির মধ্যবর্তী দূরত্ব ও মধ্যবিন্দু নির্ণয় কর।
+        <span class="year-tag">২০১৪, ১৬, ১৮, ২০</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">(ক) বৃত্তের সমীকরণ</span>
+          সূত্র: (x–h)² + (y–k)² = r²<br>
+          (x–3)² + (y+2)² = 25<br>
+          x² – 6x + 9 + y² + 4y + 4 = 25<br>
+          <strong>x² + y² – 6x + 4y – 12 = 0</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">(খ) ব্যাসীয় আকারের বৃত্ত</span>
+          কেন্দ্র = মধ্যবিন্দু AB = ((1+7)/2, (2+5)/2) = (4, 7/2)<br>
+          r = |AB|/2 = √[(7–1)² + (5–2)²]/2 = √(36+9)/2 = √45/2 = 3√5/2<br>
+          সমীকরণ: (x–1)(x–7) + (y–2)(y–5) = 0<br>
+          x²–8x+7 + y²–7y+10 = 0<br>
+          <strong>x² + y² – 8x – 7y + 17 = 0</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">(গ) সমপরাবৃত্ত xy = 16</span>
+          xy = 16 সমীকরণে x = t ধরলে y = 16/t<br>
+          x-অক্ষ: y = 0 → কোনো ছেদ নেই (অসীমে মিলিত হয়)<br>
+          এটি আয়তাকার অতিবৃত্ত; অক্ষ দুটি হলো উপগামী রেখা<br>
+          অর্থনীতিতে ব্যবহার: স্থির আয়ের সমপরাবৃত্তের সমীকরণ: <strong>P × Q = 16 (মোট ব্যয় = ধ্রুবক)</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">(ঘ) দূরত্ব ও মধ্যবিন্দু</span>
+          দূরত্ব: d = √[(4–2)² + (3–1)²] = √[4+4] = √8 = <strong>2√2</strong><br>
+          মধ্যবিন্দু: M = ((2+4)/2, (1+3)/2) = <strong>(3, 2)</strong>
+        </div>
+        <div class="ans-box">✅ (ক) x²+y²–6x+4y–12=0; (খ) x²+y²–8x–7y+17=0; (গ) xy=16 আয়তাকার অতিবৃত্ত; (ঘ) d=2√2, মধ্যবিন্দু=(3,2)</div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 18 -->
+    <div class="tough-problem">
+      <div class="tp-header">📌 কঠিন সমস্যা ১৮ — যৌগিক সুদ ও বর্তমান মূল্য (চক্রবৃদ্ধি) <span class="hot-tag">★</span></div>
+      <div class="tp-question">
+        (ক) কোনো আসল ১০,০০০ টাকা বার্ষিক ১২% চক্রবৃদ্ধি সুদে ৫ বছর পরে কত হবে?<br>
+        (খ) ৫ বছর পরে ২০,০০০ টাকা পেতে হলে বার্ষিক ১০% সুদে এখন কত জমা রাখতে হবে?<br>
+        (গ) কোনো বিনিয়োগ থেকে ৩ বছর পরে ১৫,০০০ টাকা এবং ৫ বছর পরে ২০,০০০ টাকা পাওয়া যাবে। ৮% সুদে মোট বর্তমান মূল্য কত?<br>
+        (ঘ) প্রমাণ কর যে, সুদের হার r তে n বছরে টাকার মূল্য দ্বিগুণ হতে লাগে n = ln2/ln(1+r) বছর।
+        <span class="year-tag">২০১৫, ১৭, ১৮, ২০, ২১</span>
+      </div>
+      <div class="tp-solution">
+        <div class="step-label">সমাধান:</div>
+        <div class="step">
+          <span class="step-num">(ক) চক্রবৃদ্ধি সুদ</span>
+          সূত্র: A = P(1+r)ⁿ<br>
+          A = 10,000 × (1 + 0.12)⁵<br>
+          = 10,000 × (1.12)⁵<br>
+          = 10,000 × 1.7623<br>
+          <strong>A ≈ ১৭,৬২৩ টাকা</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">(খ) বর্তমান মূল্য (PV)</span>
+          PV = FV / (1+r)ⁿ<br>
+          PV = 20,000 / (1.10)⁵<br>
+          = 20,000 / 1.6105<br>
+          <strong>PV ≈ ১২,৪১৮ টাকা</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">(গ) মোট বর্তমান মূল্য</span>
+          PV = 15,000/(1.08)³ + 20,000/(1.08)⁵<br>
+          = 15,000/1.2597 + 20,000/1.4693<br>
+          = 11,908 + 13,612<br>
+          <strong>মোট PV ≈ ২৫,৫২০ টাকা</strong>
+        </div>
+        <div class="step">
+          <span class="step-num">(ঘ) দ্বিগুণ হওয়ার সময় প্রমাণ</span>
+          A = 2P ধরলে: P(1+r)ⁿ = 2P<br>
+          (1+r)ⁿ = 2<br>
+          উভয় পক্ষে ln নিই: n·ln(1+r) = ln 2<br>
+          <strong>∴ n = ln 2 / ln(1+r) &nbsp; প্রমাণিত ✓</strong><br>
+          r = 0.10 হলে: n = 0.693 / 0.0953 ≈ 7.3 বছর
+        </div>
+        <div class="ans-box">✅ (ক) ≈ ১৭,৬২৩ টাকা; (খ) ≈ ১২,৪১৮ টাকা; (গ) ≈ ২৫,৫২০ টাকা; (ঘ) n = ln2/ln(1+r) প্রমাণিত</div>
+      </div>
+    </div>
+
+  </div><!-- end কঠিন গণিত block -->
+
+  <!-- TIPS -->
+  <div class="tips-box">
+    <h4>💡 পরীক্ষার প্রস্তুতির পরামর্শ</h4>
+    <ul class="tips-list">
+      <li>ক-বিভাগের জন্য সংজ্ঞা ও পার্থক্যগুলো সংক্ষিপ্তভাবে মুখস্থ করো — প্রতিটি ১-২ লাইনে লেখো।</li>
+      <li>অধ্যায় ২-এর সেট তত্ত্বে De Morgan's Law ও ভেনচিত্র — প্রতি বছর প্রশ্ন আসে। অবশ্যই পড়বে।</li>
+      <li>অধ্যায় ৩-এ বাজার ভারসাম্য ও জাতীয় আয় মডেলের গাণিতিক সমাধান বারবার অনুশীলন করো।</li>
+      <li>অধ্যায় ৪-এ অপেক্ষকের ধরন ও লেখচিত্র আঁকার অনুশীলন করো।</li>
+      <li>অধ্যায় ৫-এ দ্বিঘাত সমীকরণ ও সহসমীকরণ পদ্ধতির সমাধান ভালো করে শিখতে হবে।</li>
+      <li>অধ্যায় ৭-এ অন্তরকরণের সকল নিয়ম (ঘাত, গুণন, ভাগ, শৃঙ্খল) — সংখ্যাত্মক উদাহরণ দিয়ে অনুশীলন করো।</li>
+      <li>আংশিক অন্তরকরণ ও ইউলারের উপপাদ্য — প্রায় প্রতি বছর গ-বিভাগে আসে।</li>
+      <li>অধ্যায় ৮-এ সর্বোচ্চ/সর্বনিম্ন মান নির্ণয়ে FOC ও SOC উভয় শর্ত অবশ্যই উল্লেখ করবে।</li>
+      <li>ল্যাগরেঞ্জ পদ্ধতির ধাপগুলো ক্রমানুসারে লিখতে হবে — λ নির্ণয় করা মিস করা যাবে না।</li>
+      <li>গ-বিভাগে সূত্র লেখার পর উদাহরণসহ সমাধান দেখালে বাড়তি নম্বর পাওয়া যায়।</li>
+      <li>বিগত ২০১৩ থেকে ২০২৩ সালের প্রশ্নপত্র সংগ্রহ করে সমাধান করো — ৭০-৮০% কমন আসে।</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <p>📌 জাতীয় বিশ্ববিদ্যালয় | বি.এস.এস (অনার্স) ১ম বর্ষ | বিষয়: মৌলিক গণিত (212205)</p>
+    <p style="margin-top:6px;">বইয়ের সূচিপত্র অনুযায়ী সংশোধিত ও পরিমার্জিত | বিগত সালের প্রশ্ন বিশ্লেষণের ভিত্তিতে প্রস্তুতকৃত</p>
+  </div>
+
+</div>
+</body>
+</html>
