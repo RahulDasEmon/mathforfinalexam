@@ -353,14 +353,18 @@
   }
 
   @media (max-width: 600px) {
-    .top-navbar { height: 48px; padding: 0 10px; gap: 6px; }
+    .top-navbar { height: 48px; padding: 0 8px; gap: 4px; }
     body { padding-top: 48px; }
     .sort-btn { font-size: 12px; padding: 6px 10px; }
-    .nav-action-btn { font-size: 12px; padding: 6px 10px; }
+    .nav-action-btn { font-size: 11px; padding: 5px 8px; }
+    .jump-btn { font-size: 11px; padding: 5px 8px; }
+    .navbar-right { gap: 4px; }
+    .navbar-jump { gap: 4px; }
     .sort-dropdown { min-width: 230px; }
     .sd-item { font-size: 12px; padding: 6px 12px 6px 22px; }
     .sd-chapter-label { font-size: 12px; padding: 7px 12px 3px; }
     .sd-section-header { font-size: 9.5px; padding: 5px 12px 3px; }
+    .btn-label { display: none; }
   }
 
   @media (max-width: 600px) {
@@ -403,6 +407,7 @@
     padding: 0 16px;
     height: 54px;
     gap: 10px;
+    overflow: hidden;
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.4s ease, transform 0.4s ease;
@@ -1081,10 +1086,10 @@
 
   <div class="navbar-right">
     <button class="nav-action-btn" onclick="openSearch()" title="পেজে খুঁজুন">
-      🔍 খুঁজুন
+      🔍 <span class="btn-label">খুঁজুন</span>
     </button>
     <button class="nav-action-btn btn-gold" onclick="document.getElementById('formulaOverlay').classList.add('open')" title="সকল সূত্র দেখুন">
-      📐 সূত্র
+      📐 <span class="btn-label">সূত্র</span>
     </button>
   </div>
 </nav>
