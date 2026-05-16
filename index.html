@@ -29,13 +29,15 @@
     color: var(--text-dark);
     line-height: 1.8;
     font-size: 15px;
+    padding-top: 54px;
   }
 
   .main-header {
     background: linear-gradient(135deg, var(--deep-green) 0%, var(--mid-green) 60%, var(--light-green) 100%);
     color: white;
     text-align: center;
-    padding: 40px 20px 32px;
+    padding: 94px 20px 32px;
+    margin-top: -54px;
     position: relative;
     overflow: hidden;
   }
@@ -351,6 +353,17 @@
   }
 
   @media (max-width: 600px) {
+    .top-navbar { height: 48px; padding: 0 10px; gap: 6px; }
+    body { padding-top: 48px; }
+    .sort-btn { font-size: 12px; padding: 6px 10px; }
+    .nav-action-btn { font-size: 12px; padding: 6px 10px; }
+    .sort-dropdown { min-width: 230px; }
+    .sd-item { font-size: 12px; padding: 6px 12px 6px 22px; }
+    .sd-chapter-label { font-size: 12px; padding: 7px 12px 3px; }
+    .sd-section-header { font-size: 9.5px; padding: 5px 12px 3px; }
+  }
+
+  @media (max-width: 600px) {
     .marks-table-wrap { display: none; }
     .marks-cards { display: block; }
   }
@@ -373,6 +386,565 @@
     margin-bottom: 24px;
     font-size: 14px;
     color: #0d2a4a;
+  }
+
+  /* ===== TOP NAVIGATION BAR ===== */
+  .top-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: linear-gradient(135deg, var(--deep-green) 0%, var(--mid-green) 100%);
+    box-shadow: 0 3px 18px rgba(10,77,60,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 54px;
+    gap: 10px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .top-navbar.nav-hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+  }
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .navbar-left::-webkit-scrollbar { display: none; }
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .navbar-jump {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+  }
+  .jump-btn {
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: white;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .jump-btn:hover {
+    background: rgba(255,255,255,0.28);
+    transform: translateY(-1px);
+  }
+  .jump-btn:active { transform: translateY(0); }
+
+  /* Sort dropdown */
+  .sort-wrapper {
+    position: relative;
+    flex-shrink: 0;
+  }
+  .sort-btn {
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: white;
+    border-radius: 8px;
+    padding: 7px 13px;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .sort-btn:hover { background: rgba(255,255,255,0.25); }
+  .sort-btn .sb-arrow { font-size: 10px; transition: transform 0.2s; }
+  .sort-btn.open .sb-arrow { transform: rotate(180deg); }
+
+  .sort-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    background: #fff;
+    border: 1.5px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(10,77,60,0.18);
+    min-width: 260px;
+    max-height: 70vh;
+    overflow-y: auto;
+    z-index: 10001;
+    padding: 8px 0;
+  }
+  .sort-dropdown.open { display: block; }
+
+  .sd-section-header {
+    padding: 6px 16px 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--mid-green);
+    border-top: 1px solid #e0ede8;
+    margin-top: 4px;
+  }
+  .sd-section-header:first-child { border-top: none; margin-top: 0; }
+
+  .sd-chapter-group { margin-bottom: 2px; }
+  .sd-chapter-label {
+    padding: 8px 16px 4px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--deep-green);
+    background: var(--bg-light);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .sd-chapter-label:hover { background: #d8ede4; }
+  .sd-chapter-label .sdch-arrow { font-size: 9px; margin-left: auto; color: #888; transition: transform 0.2s; }
+  .sd-chapter-label.open .sdch-arrow { transform: rotate(180deg); }
+
+  .sd-sub-items { display: none; }
+  .sd-sub-items.open { display: block; }
+
+  .sd-item {
+    padding: 7px 16px 7px 28px;
+    font-size: 13px;
+    color: var(--text-mid);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s;
+    border-bottom: 1px dashed #edf6f1;
+  }
+  .sd-item:last-child { border-bottom: none; }
+  .sd-item:hover { background: #f0faf5; color: var(--deep-green); }
+  .sd-item .sd-badge {
+    background: var(--accent-gold);
+    color: #4a2800;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 8px;
+    white-space: nowrap;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .sd-divider {
+    height: 1px;
+    background: #ddeee5;
+    margin: 4px 10px;
+  }
+
+  /* Navbar action buttons */
+  .nav-action-btn {
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: white;
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    transition: background 0.2s, box-shadow 0.2s;
+    flex-shrink: 0;
+  }
+  .nav-action-btn:hover {
+    background: rgba(255,255,255,0.28);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  .nav-action-btn.btn-gold {
+    background: linear-gradient(135deg, rgba(212,160,23,0.7), rgba(230,126,34,0.7));
+    border-color: rgba(212,160,23,0.5);
+  }
+  .nav-action-btn.btn-gold:hover {
+    background: linear-gradient(135deg, rgba(212,160,23,0.9), rgba(230,126,34,0.9));
+  }
+
+  /* ===== FLOATING BUTTONS WRAPPER (kept for back compat, now hidden) ===== */
+  .floating-btns { display: none; }
+  .formula-fab, .search-fab { display: none; }
+
+  /* ===== PERMANENT FLOATING SORT BUTTON ===== */
+  .float-sort-wrapper {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .float-sort-btn {
+    background: linear-gradient(135deg, var(--deep-green), var(--mid-green));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 22px;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(10,77,60,0.45);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    transition: box-shadow 0.25s, transform 0.2s;
+    letter-spacing: 0.2px;
+  }
+  .float-sort-btn:hover {
+    transform: translateX(-50%) translateY(-2px) !important;
+    box-shadow: 0 8px 28px rgba(10,77,60,0.55);
+  }
+  .float-sort-btn .fsb-arrow { font-size: 11px; transition: transform 0.2s; }
+  .float-sort-btn.open .fsb-arrow { transform: rotate(180deg); }
+
+  .float-sort-dropdown {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border: 1.5px solid var(--border-color);
+    border-radius: 14px;
+    box-shadow: 0 8px 40px rgba(10,77,60,0.22);
+    width: 310px;
+    max-height: 65vh;
+    overflow-y: auto;
+    z-index: 9999;
+    padding: 8px 0;
+  }
+  .float-sort-dropdown.open { display: block; }
+  .float-sort-dropdown::-webkit-scrollbar { width: 4px; }
+  .float-sort-dropdown::-webkit-scrollbar-thumb { background: #b8d8c8; border-radius: 2px; }
+
+  /* Reuse sd- classes for dropdown content */
+  @media (max-width: 600px) {
+    .float-sort-wrapper { bottom: 16px; }
+    .float-sort-btn { font-size: 13px; padding: 10px 18px; }
+    .float-sort-dropdown { width: 280px; }
+  }
+
+  /* ===== SEARCH MODAL ===== */
+  .search-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,30,20,0.72);
+    z-index: 10000;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    align-items: flex-start;
+    justify-content: center;
+    padding: 16px;
+  }
+  .search-overlay.open { display: flex; }
+  .search-modal {
+    background: #fff;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 720px;
+    max-height: 88vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+    margin-top: 10px;
+  }
+  .search-modal-head {
+    background: linear-gradient(135deg, #0a4d3c, #1a7a5e);
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .search-input-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    border-radius: 10px;
+    padding: 0 12px;
+    gap: 8px;
+  }
+  .search-input-wrap span { font-size: 18px; flex-shrink: 0; }
+  #searchInput {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 15px;
+    width: 100%;
+    padding: 10px 0;
+  }
+  #searchInput::placeholder { color: rgba(255,255,255,0.6); }
+  .search-close-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .search-close-btn:hover { background: rgba(255,255,255,0.35); }
+  .search-stats {
+    padding: 8px 18px;
+    font-size: 12.5px;
+    color: #5a7a65;
+    background: #f4f9f6;
+    border-bottom: 1px solid #b8d8c8;
+    flex-shrink: 0;
+    min-height: 34px;
+    display: flex;
+    align-items: center;
+  }
+  .search-results-body {
+    overflow-y: auto;
+    flex: 1;
+  }
+  .search-result-item {
+    padding: 14px 18px;
+    border-bottom: 1px solid #e0ede8;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .search-result-item:hover { background: #f0faf5; }
+  .search-result-item:last-child { border-bottom: none; }
+  .sr-context {
+    font-size: 11px;
+    color: #1a7a5e;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 4px;
+  }
+  .sr-text {
+    font-size: 14px;
+    color: #1a2a20;
+    line-height: 1.65;
+  }
+  .sr-text mark {
+    background: #fff176;
+    color: #0a4d3c;
+    border-radius: 3px;
+    padding: 0 2px;
+    font-weight: 700;
+  }
+  .search-empty {
+    padding: 40px 20px;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+  }
+  .search-empty .se-icon { font-size: 36px; margin-bottom: 10px; }
+
+  @media (max-width: 600px) {
+    .floating-btns { top: 10px; right: 10px; gap: 8px; }
+    .formula-fab, .search-fab { padding: 10px 14px; font-size: 13px; }
+    .search-modal { max-height: 92vh; }
+    #searchInput { font-size: 14px; }
+  }
+
+  /* ===== FORMULA MODAL OVERLAY ===== */
+  .formula-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,30,20,0.72);
+    z-index: 10000;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+  .formula-overlay.open { display: flex; align-items: flex-start; justify-content: center; padding: 16px; }
+
+  .formula-modal {
+    background: #fff;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 860px;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+    margin-top: 10px;
+  }
+  .formula-modal-head {
+    background: linear-gradient(135deg, #0a4d3c, #1a7a5e);
+    color: white;
+    padding: 18px 22px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .formula-modal-head h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+  }
+  .formula-modal-head p {
+    font-size: 12px;
+    opacity: 0.8;
+    margin: 2px 0 0;
+  }
+  .formula-close-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .formula-close-btn:hover { background: rgba(255,255,255,0.35); }
+
+  /* Chapter tabs */
+  .formula-tabs {
+    display: flex;
+    gap: 4px;
+    padding: 10px 16px 0;
+    background: #f4f9f6;
+    border-bottom: 2px solid #b8d8c8;
+    overflow-x: auto;
+    flex-shrink: 0;
+    scrollbar-width: none;
+  }
+  .formula-tabs::-webkit-scrollbar { display: none; }
+  .f-tab {
+    background: transparent;
+    border: 1.5px solid #b8d8c8;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    padding: 7px 13px;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #2d4a35;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .f-tab.active {
+    background: white;
+    border-color: #1a7a5e;
+    color: #0a4d3c;
+    border-bottom: 2px solid white;
+    margin-bottom: -2px;
+  }
+  .f-tab:hover:not(.active) { background: #e0f0ea; }
+
+  /* Formula body */
+  .formula-body {
+    overflow-y: auto;
+    padding: 20px 22px;
+    flex: 1;
+  }
+  .formula-chapter { display: none; }
+  .formula-chapter.active { display: block; }
+
+  .f-section-title {
+    background: linear-gradient(90deg, #0a4d3c, #1a7a5e);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 18px 0 10px;
+  }
+  .f-section-title:first-child { margin-top: 0; }
+
+  .formula-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 6px;
+    font-size: 13.5px;
+  }
+  .formula-table th {
+    background: #eaf6f0;
+    color: #0a4d3c;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 700;
+    border: 1px solid #b8d8c8;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .formula-table td {
+    padding: 9px 12px;
+    border: 1px solid #ddeee5;
+    vertical-align: top;
+    line-height: 1.7;
+  }
+  .formula-table tr:nth-child(even) td { background: #f8fcfa; }
+  .formula-table td:first-child {
+    font-weight: 700;
+    color: #c0392b;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    white-space: nowrap;
+    min-width: 180px;
+    background: #fff8f8;
+  }
+  .formula-table td:nth-child(2) {
+    color: #0a4d3c;
+    font-weight: 600;
+  }
+  .formula-table td:nth-child(3) {
+    color: #444;
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    .formula-modal { max-height: 92vh; margin-top: 4px; }
+    .formula-modal-head h2 { font-size: 15px; }
+    .formula-body { padding: 14px 12px; }
+    .formula-table td:first-child { min-width: 130px; font-size: 12px; }
+    .formula-table td { font-size: 12.5px; padding: 7px 8px; }
+    .f-tab { font-size: 11.5px; padding: 6px 10px; }
+    .formula-table { display: block; overflow-x: auto; }
   }
 
   @media (max-width: 600px) {
@@ -498,6 +1070,697 @@
 </head>
 <body>
 
+<!-- ===== TOP NAVIGATION BAR ===== -->
+<nav class="top-navbar" id="topNavbar">
+
+  <div class="navbar-jump">
+    <button class="jump-btn" onclick="navTo('ka-section')">✏️ ক</button>
+    <button class="jump-btn" onclick="navTo('kha-section')">📝 খ</button>
+    <button class="jump-btn" onclick="navTo('ga-section')">📘 গ</button>
+  </div>
+
+  <div class="navbar-right">
+    <button class="nav-action-btn" onclick="openSearch()" title="পেজে খুঁজুন">
+      🔍 খুঁজুন
+    </button>
+    <button class="nav-action-btn btn-gold" onclick="document.getElementById('formulaOverlay').classList.add('open')" title="সকল সূত্র দেখুন">
+      📐 সূত্র
+    </button>
+  </div>
+</nav>
+
+<!-- ===== OLD FLOATING BUTTONS (kept for JS compatibility) ===== -->
+<div class="floating-btns" id="floatingBtns" style="display:none!important"></div>
+
+
+<!-- ===== SEARCH MODAL ===== -->
+<div class="search-overlay" id="searchOverlay" onclick="if(event.target===this)closeSearch()">
+  <div class="search-modal">
+    <div class="search-modal-head">
+      <div class="search-input-wrap">
+        <span>🔍</span>
+        <input type="text" id="searchInput" placeholder="যা খুঁজছেন লিখুন... (বাংলা বা ইংরেজি)" oninput="doSearch()" autocomplete="off" />
+      </div>
+      <button class="search-close-btn" onclick="closeSearch()">✕</button>
+    </div>
+    <div class="search-stats" id="searchStats">টাইপ করুন — পুরো পেজ জুড়ে খোঁজা হবে</div>
+    <div class="search-results-body" id="searchResults">
+      <div class="search-empty"><div class="se-icon">🔎</div>এখানে ফলাফল দেখাবে</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FORMULA MODAL ===== -->
+<div class="formula-overlay" id="formulaOverlay" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="formula-modal">
+    <div class="formula-modal-head">
+      <div>
+        <h2>📐 সকল সূত্রসমূহ — মৌলিক গণিত (212205)</h2>
+        <p>অধ্যায় ১ থেকে ৮ পর্যন্ত সকল সূত্র বাংলা অর্থসহ</p>
+      </div>
+      <button class="formula-close-btn" onclick="document.getElementById('formulaOverlay').classList.remove('open')">✕</button>
+    </div>
+
+    <!-- CHAPTER TABS -->
+    <div class="formula-tabs">
+      <button class="f-tab active" onclick="showFormulaChapter(0,this)">অধ্যায় ১</button>
+      <button class="f-tab" onclick="showFormulaChapter(1,this)">অধ্যায় ২</button>
+      <button class="f-tab" onclick="showFormulaChapter(2,this)">অধ্যায় ৩</button>
+      <button class="f-tab" onclick="showFormulaChapter(3,this)">অধ্যায় ৪</button>
+      <button class="f-tab" onclick="showFormulaChapter(4,this)">অধ্যায় ৫</button>
+      <button class="f-tab" onclick="showFormulaChapter(5,this)">অধ্যায় ৬</button>
+      <button class="f-tab" onclick="showFormulaChapter(6,this)">অধ্যায় ৭</button>
+      <button class="f-tab" onclick="showFormulaChapter(7,this)">অধ্যায় ৮</button>
+    </div>
+
+    <!-- FORMULA BODY -->
+    <div class="formula-body">
+
+      <!-- ===== অধ্যায় ১: কতিপয় মৌলিক ধারণা ===== -->
+      <div class="formula-chapter active" id="fch0">
+        <div class="f-section-title">📘 সংখ্যাতত্ত্ব ও মৌলিক বীজগণিত সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>a² - b² = (a+b)(a-b)</td><td>বর্গের পার্থক্য</td><td>দুটি রাশির বর্গের বিয়োগকে দুটি গুণনীয়কে ভাঙা যায়</td></tr>
+          <tr><td>(a+b)² = a²+2ab+b²</td><td>যোগের বর্গ</td><td>দুটি রাশির যোগফলের বর্গগণনার সূত্র</td></tr>
+          <tr><td>(a-b)² = a²-2ab+b²</td><td>বিয়োগের বর্গ</td><td>দুটি রাশির বিয়োগফলের বর্গগণনার সূত্র</td></tr>
+          <tr><td>(a+b)³ = a³+3a²b+3ab²+b³</td><td>যোগের ঘন</td><td>দুটি রাশির যোগফলের ঘনফলের বিস্তার</td></tr>
+          <tr><td>(a-b)³ = a³-3a²b+3ab²-b³</td><td>বিয়োগের ঘন</td><td>দুটি রাশির বিয়োগফলের ঘনফলের বিস্তার</td></tr>
+          <tr><td>a³+b³ = (a+b)(a²-ab+b²)</td><td>ঘনের যোগ</td><td>দুটি রাশির ঘনের যোগকে গুণনীয়কে ভাঙা</td></tr>
+          <tr><td>a³-b³ = (a-b)(a²+ab+b²)</td><td>ঘনের বিয়োগ</td><td>দুটি রাশির ঘনের বিয়োগকে গুণনীয়কে ভাঙা</td></tr>
+          <tr><td>aᵐ × aⁿ = aᵐ⁺ⁿ</td><td>সূচকের গুণ নিয়ম</td><td>একই ভিত্তির দুটি সূচকীয় রাশির গুণফল</td></tr>
+          <tr><td>aᵐ ÷ aⁿ = aᵐ⁻ⁿ</td><td>সূচকের ভাগ নিয়ম</td><td>একই ভিত্তির দুটি সূচকীয় রাশির ভাগফল</td></tr>
+          <tr><td>(aᵐ)ⁿ = aᵐⁿ</td><td>সূচকের ঘাত নিয়ম</td><td>সূচকীয় রাশির পুনরায় সূচক</td></tr>
+          <tr><td>a⁰ = 1</td><td>শূন্য সূচক</td><td>যেকোনো রাশির শূন্য ঘাত সর্বদা ১</td></tr>
+          <tr><td>a⁻ⁿ = 1/aⁿ</td><td>ঋণাত্মক সূচক</td><td>ঋণাত্মক সূচক মানে ভিত্তির বিপরীত</td></tr>
+          <tr><td>(ab)ⁿ = aⁿbⁿ</td><td>গুণফলের সূচক</td><td>গুণফলের সূচক পৃথকভাবে প্রয়োগ করা যায়</td></tr>
+          <tr><td>(a/b)ⁿ = aⁿ/bⁿ</td><td>ভাগফলের সূচক</td><td>ভাগফলের সূচক পৃথকভাবে প্রয়োগ করা যায়</td></tr>
+          <tr><td>a^(1/n) = ⁿ√a</td><td>মূলদ সূচক</td><td>ভগ্নাংশ সূচক মানে মূলদ নির্ণয়</td></tr>
+        </table>
+
+        <div class="f-section-title">📘 লগারিদম সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>log_a(MN) = log_a M + log_a N</td><td>গুণের লগ নিয়ম</td><td>গুণফলের লগ = পৃথক লগের যোগফল</td></tr>
+          <tr><td>log_a(M/N) = log_a M - log_a N</td><td>ভাগের লগ নিয়ম</td><td>ভাগফলের লগ = পৃথক লগের বিয়োগফল</td></tr>
+          <tr><td>log_a(Mⁿ) = n·log_a M</td><td>ঘাতের লগ নিয়ম</td><td>ঘাতের লগ = সূচক × লগ</td></tr>
+          <tr><td>log_a a = 1</td><td>একক লগ</td><td>যেকোনো ভিত্তির নিজের লগ = ১</td></tr>
+          <tr><td>log_a 1 = 0</td><td>শূন্য লগ</td><td>যেকোনো ভিত্তিতে ১ এর লগ = ০</td></tr>
+          <tr><td>log_b M = log_a M / log_a b</td><td>ভিত্তি পরিবর্তন সূত্র</td><td>এক ভিত্তি থেকে অন্য ভিত্তিতে রূপান্তর</td></tr>
+          <tr><td>ln x = log_e x</td><td>প্রাকৃতিক লগারিদম</td><td>e ভিত্তিক লগারিদম (e ≈ 2.718)</td></tr>
+          <tr><td>log x = log₁₀ x</td><td>সাধারণ লগারিদম</td><td>১০ ভিত্তিক লগারিদম</td></tr>
+          <tr><td>ln e = 1, ln 1 = 0</td><td>প্রাকৃতিক লগের মান</td><td>e এর প্রাকৃতিক লগ ১, ১ এর প্রাকৃতিক লগ ০</td></tr>
+          <tr><td>e^(ln x) = x</td><td>লগ ও সূচকের বিপরীত সম্পর্ক</td><td>e সূচক এবং ln পরস্পরের বিপরীত অপেক্ষক</td></tr>
+        </table>
+
+        <div class="f-section-title">📘 সুদ ও চক্রবৃদ্ধি সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>I = Prt</td><td>সরল সুদ</td><td>I=সুদ, P=আসল, r=হার, t=সময় (বছর)</td></tr>
+          <tr><td>A = P(1+rt)</td><td>সরল সুদে মিশ্রধন</td><td>মোট পরিমাণ = আসল + সুদ</td></tr>
+          <tr><td>A = P(1+r)ⁿ</td><td>চক্রবৃদ্ধি সুদ (বার্ষিক)</td><td>n বছরে বার্ষিক r হারে চক্রবৃদ্ধি</td></tr>
+          <tr><td>A = P(1+r/m)^(mn)</td><td>চক্রবৃদ্ধি (m বার)</td><td>বছরে m বার চক্রবৃদ্ধি হলে</td></tr>
+          <tr><td>A = Pe^(rn)</td><td>ক্রমাগত চক্রবৃদ্ধি</td><td>অবিরাম চক্রবৃদ্ধির সূত্র</td></tr>
+          <tr><td>PV = FV/(1+r)ⁿ</td><td>বর্তমান মূল্য (PV)</td><td>ভবিষ্যতের অর্থের আজকের মূল্য</td></tr>
+          <tr><td>n = ln2/ln(1+r)</td><td>দ্বিগুণ হওয়ার সময়</td><td>টাকা দ্বিগুণ হতে কত বছর লাগবে</td></tr>
+          <tr><td>r ≈ 72/n (৭২ নিয়ম)</td><td>সহজ দ্বিগুণ সূত্র</td><td>n বছরে দ্বিগুণ হলে সুদের হার প্রায় 72/n</td></tr>
+        </table>
+      </div>
+
+      <!-- ===== অধ্যায় ২: সেট তত্ত্ব ===== -->
+      <div class="formula-chapter" id="fch1">
+        <div class="f-section-title">📗 সেট সংক্রান্ত মৌলিক সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>A ∪ B</td><td>সেটের যোগ / ইউনিয়ন</td><td>A বা B উভয়ের মধ্যে যা আছে তার সমষ্টি</td></tr>
+          <tr><td>A ∩ B</td><td>সেটের ছেদ / ইন্টারসেকশন</td><td>A এবং B উভয়ে সাধারণ উপাদান</td></tr>
+          <tr><td>A' বা Aᶜ = U - A</td><td>পূরক সেট</td><td>সার্বিক সেট থেকে A বাদ দিলে যা থাকে</td></tr>
+          <tr><td>A - B = A ∩ B'</td><td>অন্তর সেট</td><td>A তে আছে কিন্তু B তে নেই এমন উপাদান</td></tr>
+          <tr><td>A × B</td><td>কার্তেসীয় গুণক</td><td>A ও B এর উপাদান দিয়ে তৈরি সকল ক্রমজোড়</td></tr>
+          <tr><td>n(A ∪ B) = n(A)+n(B)-n(A∩B)</td><td>সংযোগ সূত্র (২ সেট)</td><td>দুটি সেটের ইউনিয়নের উপাদান সংখ্যা</td></tr>
+          <tr><td>n(A∪B∪C) = n(A)+n(B)+n(C) - n(A∩B) - n(B∩C) - n(A∩C) + n(A∩B∩C)</td><td>সংযোগ সূত্র (৩ সেট)</td><td>তিনটি সেটের ইউনিয়নের উপাদান সংখ্যা নির্ণয়</td></tr>
+          <tr><td>n(Aᶜ) = n(U) - n(A)</td><td>পূরক সেটের উপাদান</td><td>পূরক সেটে কতটি উপাদান থাকবে</td></tr>
+          <tr><td>n(A×B) = n(A) × n(B)</td><td>কার্তেসীয় গুণকের উপাদান</td><td>কার্তেসীয় গুণকে উপাদান সংখ্যা</td></tr>
+          <tr><td>|P(A)| = 2^n(A)</td><td>শক্তি সেটের উপাদান</td><td>n উপাদানের সেটের শক্তি সেটে 2ⁿ উপাদান</td></tr>
+        </table>
+
+        <div class="f-section-title">📗 ডি মর্গ্যানের বিধি</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>(A ∪ B)' = A' ∩ B'</td><td>ডি মর্গ্যানের ১ম বিধি</td><td>যোগের পূরক = পৃথক পূরকের ছেদ</td></tr>
+          <tr><td>(A ∩ B)' = A' ∪ B'</td><td>ডি মর্গ্যানের ২য় বিধি</td><td>ছেদের পূরক = পৃথক পূরকের যোগ</td></tr>
+        </table>
+
+        <div class="f-section-title">📗 ক্রমবন্টন ও বিন্যাস সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>nPr = n!/(n-r)!</td><td>বিন্যাস (Permutation)</td><td>n জিনিস থেকে r টি সাজানোর উপায়</td></tr>
+          <tr><td>nCr = n!/[r!(n-r)!]</td><td>সমবায় (Combination)</td><td>n জিনিস থেকে r টি বাছাইয়ের উপায়</td></tr>
+          <tr><td>n! = n×(n-1)×...×2×1</td><td>ফ্যাক্টরিয়াল</td><td>১ থেকে n পর্যন্ত সংখ্যার গুণফল</td></tr>
+          <tr><td>0! = 1</td><td>শূন্যের ফ্যাক্টরিয়াল</td><td>সংজ্ঞা অনুযায়ী ০! = ১</td></tr>
+        </table>
+
+        <div class="f-section-title">📗 ভেনচিত্রের গুরুত্বপূর্ণ ফলাফল</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>A ∩ B ⊆ A ⊆ A ∪ B</td><td>সেটের অন্তর্ভুক্তি সম্পর্ক</td><td>ছেদ সেট ⊆ A ⊆ ইউনিয়ন</td></tr>
+          <tr><td>A ∪ A' = U</td><td>পূর্ণতার নিয়ম</td><td>সেট ও তার পূরকের ইউনিয়ন = সার্বিক সেট</td></tr>
+          <tr><td>A ∩ A' = ∅</td><td>শূন্যতার নিয়ম</td><td>সেট ও তার পূরকের ছেদ = শূন্য সেট</td></tr>
+          <tr><td>A ∪ ∅ = A, A ∩ U = A</td><td>পরিচয় নিয়ম</td><td>শূন্য সেট ইউনিয়নে নিরপেক্ষ; U ছেদে নিরপেক্ষ</td></tr>
+          <tr><td>A ∪ A = A, A ∩ A = A</td><td>ঘাতমূলকতা নিয়ম</td><td>একই সেটের ইউনিয়ন/ছেদ = ওই সেট নিজেই</td></tr>
+        </table>
+      </div>
+
+      <!-- ===== অধ্যায় ৩: স্থিতীয় বিশ্লেষণ ===== -->
+      <div class="formula-chapter" id="fch2">
+        <div class="f-section-title">📙 বাজার ভারসাম্য সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>Qd = Qs → ভারসাম্য</td><td>বাজার ভারসাম্য শর্ত</td><td>চাহিদা = যোগান হলে বাজার ভারসাম্যে থাকে</td></tr>
+          <tr><td>Qd = a - bP (a,b>0)</td><td>রৈখিক চাহিদা অপেক্ষক</td><td>a=স্বায়ত্ব চাহিদা, b=মূল্যের প্রতিক্রিয়া</td></tr>
+          <tr><td>Qs = c + dP (d>0)</td><td>রৈখিক যোগান অপেক্ষক</td><td>c=স্বায়ত্ব যোগান, d=মূল্যের প্রতিক্রিয়া</td></tr>
+          <tr><td>P* = (a-c)/(b+d)</td><td>ভারসাম্য মূল্য</td><td>রৈখিক চাহিদা-যোগান থেকে প্রাপ্ত ভারসাম্য মূল্য</td></tr>
+          <tr><td>Q* = (ad+bc)/(b+d)</td><td>ভারসাম্য পরিমাণ</td><td>রৈখিক চাহিদা-যোগান থেকে প্রাপ্ত ভারসাম্য পরিমাণ</td></tr>
+          <tr><td>CS = ½(Pmax - P*)Q*</td><td>ভোক্তা উদ্বৃত্ত</td><td>সর্বোচ্চ ইচ্ছুক মূল্য ও ভারসাম্য মূল্যের পার্থক্যজনিত সুবিধা</td></tr>
+          <tr><td>PS = ½(P* - Pmin)Q*</td><td>উৎপাদক উদ্বৃত্ত</td><td>ভারসাম্য মূল্য ও সর্বনিম্ন যোগান মূল্যের পার্থক্যজনিত সুবিধা</td></tr>
+        </table>
+
+        <div class="f-section-title">📙 কর ও ভর্তুকির প্রভাব</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>P*_t = (a-c+t)/(b+d)</td><td>করের পর ভারসাম্য মূল্য (Pt)</td><td>একক কর t আরোপ করলে নতুন ভারসাম্য মূল্য</td></tr>
+          <tr><td>ΔP/Δt = d/(b+d)</td><td>ক্রেতার কর বহন</td><td>এককর বৃদ্ধিতে ক্রেতার মূল্য বৃদ্ধির অংশ</td></tr>
+          <tr><td>উৎপাদকের কর বহন = b/(b+d)</td><td>উৎপাদকের কর বহন</td><td>এককর বৃদ্ধিতে উৎপাদকের মূল্য হ্রাসের অংশ</td></tr>
+          <tr><td>P*_s = (a-c-s)/(b+d)</td><td>ভর্তুকির পর ভারসাম্য (Ps)</td><td>একক ভর্তুকি s দিলে নতুন ভারসাম্য মূল্য</td></tr>
+          <tr><td>% কর ভার = P% পরিবর্তন / t%</td><td>শতাংশ কর বহন বিশ্লেষণ</td><td>শতাংশ কর আরোপের প্রভাব বিশ্লেষণ</td></tr>
+        </table>
+
+        <div class="f-section-title">📙 জাতীয় আয় মডেলের সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>Y = C + I + G</td><td>জাতীয় আয় সমীকরণ</td><td>আয় = ভোগ+বিনিয়োগ+সরকারি ব্যয়</td></tr>
+          <tr><td>C = a + bY (0&lt;b&lt;1)</td><td>ভোগ অপেক্ষক</td><td>a=স্বায়ত্ব ভোগ, b=প্রান্তিক ভোগ প্রবণতা (MPC)</td></tr>
+          <tr><td>S = Y - C = -a + (1-b)Y</td><td>সঞ্চয় অপেক্ষক</td><td>সঞ্চয় = আয় - ভোগ; (1-b) = MPS</td></tr>
+          <tr><td>Y* = (a+I+G)/(1-b)</td><td>ভারসাম্য জাতীয় আয়</td><td>সরল জাতীয় আয় মডেলের সমাধান</td></tr>
+          <tr><td>k_I = 1/(1-b) = 1/MPS</td><td>বিনিয়োগ গুণক</td><td>বিনিয়োগ ১ টাকা বাড়লে আয় কতগুণ বাড়ে</td></tr>
+          <tr><td>k_G = 1/(1-b)</td><td>সরকারি ব্যয় গুণক</td><td>G ১ টাকা বাড়লে আয় কতগুণ বাড়ে</td></tr>
+          <tr><td>k_T = -b/(1-b)</td><td>কর গুণক</td><td>কর ১ টাকা বাড়লে আয় কতগুণ কমে</td></tr>
+          <tr><td>k_balanced = 1</td><td>সুষম বাজেট গুণক</td><td>সমান পরিমাণ G ও T বাড়ালে আয় সমান বাড়ে</td></tr>
+          <tr><td>Y* = (a+I)/(1-b+bt)</td><td>কর সহ আয় মডেল</td><td>আনুপাতিক কর (t) অন্তর্ভুক্ত জাতীয় আয়</td></tr>
+          <tr><td>MPC + MPS = 1</td><td>প্রান্তিক প্রবণতার সম্পর্ক</td><td>ভোগ ও সঞ্চয় প্রবণতার যোগফল সর্বদা ১</td></tr>
+        </table>
+
+        <div class="f-section-title">📙 IS-LM মডেল সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>IS: Y = (a+I₀-bi+G)/(1-b)</td><td>IS রেখার সমীকরণ</td><td>পণ্য বাজারের ভারসাম্য রেখা; i ও Y এর সম্পর্ক</td></tr>
+          <tr><td>LM: i = (kY - L₀)/h</td><td>LM রেখার সমীকরণ</td><td>মুদ্রা বাজারের ভারসাম্য রেখা; i ও Y এর সম্পর্ক</td></tr>
+          <tr><td>Md = kY - hi</td><td>মুদ্রার চাহিদা</td><td>k=লেনদেন সহগ, h=সুদের সংবেদনশীলতা</td></tr>
+        </table>
+      </div>
+
+      <!-- ===== অধ্যায় ৪: অপেক্ষক, সীমা, অবিচ্ছিন্নতা ===== -->
+      <div class="formula-chapter" id="fch3">
+        <div class="f-section-title">📕 সীমা (Limit) সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>lim(x→a)[f(x)+g(x)] = L+M</td><td>যোগের সীমা নিয়ম</td><td>দুই অপেক্ষকের যোগের সীমা = পৃথক সীমার যোগ</td></tr>
+          <tr><td>lim(x→a)[f(x)·g(x)] = L·M</td><td>গুণের সীমা নিয়ম</td><td>দুই অপেক্ষকের গুণের সীমা = পৃথক সীমার গুণ</td></tr>
+          <tr><td>lim(x→a)[f(x)/g(x)] = L/M (M≠0)</td><td>ভাগের সীমা নিয়ম</td><td>ভাগের সীমা = সীমাদ্বয়ের ভাগ (হর ≠ ০)</td></tr>
+          <tr><td>lim(x→a) c = c</td><td>ধ্রুবকের সীমা</td><td>ধ্রুবকের সীমা সর্বদা ধ্রুবক নিজেই</td></tr>
+          <tr><td>lim(x→a) x = a</td><td>চলকের সীমা</td><td>x → a তে x এর সীমা = a</td></tr>
+          <tr><td>lim(x→0)(sin x/x) = 1</td><td>ত্রিকোণমিতিক সীমা</td><td>গুরুত্বপূর্ণ প্রমাণিত সীমা</td></tr>
+          <tr><td>lim(x→0)(eˣ-1)/x = 1</td><td>সূচকীয় সীমা</td><td>প্রমাণিত মৌলিক সীমা (e ভিত্তিক)</td></tr>
+          <tr><td>lim(x→∞)(1+1/x)ˣ = e</td><td>e এর সীমা সংজ্ঞা</td><td>e সংখ্যার সীমা-ভিত্তিক সংজ্ঞা</td></tr>
+          <tr><td>lim(x→∞)(aₙxⁿ+...)/( bₙxⁿ+...) = aₙ/bₙ</td><td>অসীমে সীমা</td><td>সর্বোচ্চ ঘাতের সহগের অনুপাত নেওয়া হয়</td></tr>
+          <tr><td>L'Hôpital: lim f/g = lim f'/g' (0/0 বা ∞/∞ হলে)</td><td>লোপিতালের নিয়ম</td><td>অনির্ধারিত রূপের সীমা নির্ণয়ের পদ্ধতি</td></tr>
+        </table>
+
+        <div class="f-section-title">📕 অবিচ্ছিন্নতার শর্ত</div>
+        <table class="formula-table">
+          <tr><th>শর্ত</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>① f(a) সংজ্ঞায়িত</td><td>অস্তিত্বের শর্ত</td><td>a বিন্দুতে অপেক্ষকের মান থাকতে হবে</td></tr>
+          <tr><td>② lim(x→a) f(x) বিদ্যমান</td><td>সীমার শর্ত</td><td>বাম ও ডান উভয় দিক থেকে সীমা সমান হতে হবে</td></tr>
+          <tr><td>③ lim(x→a) f(x) = f(a)</td><td>সমতার শর্ত</td><td>সীমা ও অপেক্ষকের মান সমান হতে হবে</td></tr>
+        </table>
+
+        <div class="f-section-title">📕 ঢাল (Slope) সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>m = (y₂-y₁)/(x₂-x₁)</td><td>দুই বিন্দু থেকে ঢাল</td><td>দুটি বিন্দুর স্থানাঙ্ক থেকে সরলরেখার ঢাল</td></tr>
+          <tr><td>m = Δy/Δx</td><td>পার্থক্য ভাগফল</td><td>দুই চলের পরিবর্তনের অনুপাত</td></tr>
+          <tr><td>m = dy/dx = f'(x)</td><td>অন্তরক সহগ (ঢাল)</td><td>অবিরাম অপেক্ষকের যেকোনো বিন্দুতে ঢাল</td></tr>
+        </table>
+      </div>
+
+      <!-- ===== অধ্যায় ৫: সমীকরণ পদ্ধতি ===== -->
+      <div class="formula-chapter" id="fch4">
+        <div class="f-section-title">📒 একঘাত সমীকরণের সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>ax + b = 0 → x = -b/a</td><td>একচলক একঘাত সমীকরণ</td><td>সহজ রৈখিক সমীকরণের সমাধান</td></tr>
+          <tr><td>a₁x+b₁y=c₁; a₂x+b₂y=c₂</td><td>দুই চলক সহসমীকরণ</td><td>দুটি একঘাত সমীকরণের তন্ত্র</td></tr>
+          <tr><td>D = a₁b₂ - a₂b₁ (নির্ধারক)</td><td>সহসমীকরণের নির্ধারক</td><td>D ≠ 0 হলে এককভাবে সমাধানযোগ্য</td></tr>
+          <tr><td>x = (c₁b₂-c₂b₁)/D</td><td>ক্রেমারের নিয়মে x</td><td>ক্রেমারের নিয়মে x এর মান</td></tr>
+          <tr><td>y = (a₁c₂-a₂c₁)/D</td><td>ক্রেমারের নিয়মে y</td><td>ক্রেমারের নিয়মে y এর মান</td></tr>
+        </table>
+
+        <div class="f-section-title">📒 দ্বিঘাত সমীকরণের সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>ax²+bx+c = 0 (a≠0)</td><td>দ্বিঘাত সমীকরণের মানক রূপ</td><td>দ্বিঘাত সমীকরণের সাধারণ রূপ</td></tr>
+          <tr><td>x = [-b ± √(b²-4ac)] / 2a</td><td>দ্বিঘাত সূত্র (শ্রীধর)</td><td>দ্বিঘাত সমীকরণের মূল নির্ণয়ের সার্বজনীন সূত্র</td></tr>
+          <tr><td>Δ = b²-4ac (বিভেদক)</td><td>বিভেদক (Discriminant)</td><td>মূলের প্রকৃতি নির্ধারণ করে</td></tr>
+          <tr><td>Δ > 0 → দুটি বাস্তব ভিন্ন মূল</td><td>বিভেদক ধনাত্মক</td><td>দুটি আলাদা বাস্তব সংখ্যা মূল</td></tr>
+          <tr><td>Δ = 0 → দুটি সমান মূল</td><td>বিভেদক শূন্য</td><td>দুটি সমান বাস্তব মূল (পুনরাবৃত্ত মূল)</td></tr>
+          <tr><td>Δ < 0 → দুটি জটিল মূল</td><td>বিভেদক ঋণাত্মক</td><td>দুটি কাল্পনিক সংখ্যার মূল</td></tr>
+          <tr><td>α+β = -b/a (মূলের যোগফল)</td><td>ভিয়েটার সূত্র ১</td><td>দুটি মূলের যোগফল</td></tr>
+          <tr><td>αβ = c/a (মূলের গুণফল)</td><td>ভিয়েটার সূত্র ২</td><td>দুটি মূলের গুণফল</td></tr>
+          <tr><td>x²-(α+β)x+αβ = 0</td><td>মূল দিয়ে সমীকরণ গঠন</td><td>মূল জানা থাকলে সমীকরণ তৈরির পদ্ধতি</td></tr>
+        </table>
+
+        <div class="f-section-title">📒 অসমতার সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>a > b এবং b > c → a > c</td><td>অকর্মতার স্থানান্তর</td><td>অসমতার স্থানান্তরিত ধর্ম</td></tr>
+          <tr><td>a > b → a+c > b+c</td><td>যোগের ধর্ম</td><td>উভয়পক্ষে একই রাশি যোগ করলে অসমতা অপরিবর্তিত</td></tr>
+          <tr><td>a > b, c > 0 → ac > bc</td><td>গুণের ধর্ম (ধনাত্মক)</td><td>ধনাত্মক সংখ্যায় গুণ করলে চিহ্ন অপরিবর্তিত</td></tr>
+          <tr><td>a > b, c < 0 → ac < bc</td><td>গুণের ধর্ম (ঋণাত্মক)</td><td>ঋণাত্মক সংখ্যায় গুণ করলে চিহ্ন বিপরীত হয়</td></tr>
+        </table>
+      </div>
+
+      <!-- ===== অধ্যায় ৬: জ্যামিতি ===== -->
+      <div class="formula-chapter" id="fch5">
+        <div class="f-section-title">📓 বিশ্লেষণী জ্যামিতির সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>d = √[(x₂-x₁)²+(y₂-y₁)²]</td><td>দুই বিন্দুর দূরত্ব</td><td>কার্তেসীয় স্থানাঙ্কে দুটি বিন্দুর দূরত্ব</td></tr>
+          <tr><td>M = ((x₁+x₂)/2, (y₁+y₂)/2)</td><td>মধ্যবিন্দু সূত্র</td><td>দুই বিন্দুর মধ্যবর্তী বিন্দুর স্থানাঙ্ক</td></tr>
+          <tr><td>P = ((mx₂+nx₁)/(m+n), (my₂+ny₁)/(m+n))</td><td>বিভাজন সূত্র (অভ্যন্তরীণ)</td><td>m:n অনুপাতে ভেতরে ভাগকারী বিন্দু</td></tr>
+          <tr><td>m = (y₂-y₁)/(x₂-x₁)</td><td>দুই বিন্দু থেকে ঢাল</td><td>সরলরেখার ঢাল নির্ণয়</td></tr>
+          <tr><td>সমান্তরাল: m₁ = m₂</td><td>সমান্তরাল রেখার শর্ত</td><td>দুটি সরলরেখার ঢাল সমান হলে সমান্তরাল</td></tr>
+          <tr><td>লম্ব: m₁ × m₂ = -1</td><td>লম্ব রেখার শর্ত</td><td>দুটি রেখার ঢালের গুণফল -১ হলে পরস্পর লম্ব</td></tr>
+        </table>
+
+        <div class="f-section-title">📓 সরলরেখার সমীকরণ</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>y = mx + c</td><td>ঢাল-ছেদক আকার</td><td>m=ঢাল, c=y-অক্ষ ছেদক</td></tr>
+          <tr><td>y - y₁ = m(x - x₁)</td><td>বিন্দু-ঢাল আকার</td><td>একটি বিন্দু ও ঢাল দিয়ে সমীকরণ</td></tr>
+          <tr><td>(y-y₁)/(y₂-y₁) = (x-x₁)/(x₂-x₁)</td><td>দুই বিন্দু আকার</td><td>দুটি বিন্দুর স্থানাঙ্ক দিয়ে সমীকরণ</td></tr>
+          <tr><td>x/a + y/b = 1</td><td>ছেদক আকার</td><td>a=x-ছেদ, b=y-ছেদ</td></tr>
+          <tr><td>ax + by + c = 0</td><td>সাধারণ আকার</td><td>সরলরেখার সাধারণ সমীকরণ</td></tr>
+          <tr><td>x = a (উলম্ব রেখা)</td><td>উলম্ব রেখা</td><td>x অক্ষের সাথে সমান্তরাল রেখার সমীকরণ নেই, y ব্যবহার নেই</td></tr>
+          <tr><td>y = b (আনুভূমিক রেখা)</td><td>আনুভূমিক রেখা</td><td>ঢাল শূন্য, x অক্ষের সমান্তরাল</td></tr>
+        </table>
+
+        <div class="f-section-title">📓 বৃত্তের সমীকরণ</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>(x-h)²+(y-k)² = r²</td><td>বৃত্তের কেন্দ্র-ব্যাসার্ধ আকার</td><td>কেন্দ্র (h,k) ও ব্যাসার্ধ r এর বৃত্ত</td></tr>
+          <tr><td>x²+y²+2gx+2fy+c = 0</td><td>বৃত্তের সাধারণ সমীকরণ</td><td>কেন্দ্র (-g,-f), ব্যাসার্ধ=√(g²+f²-c)</td></tr>
+          <tr><td>(x-x₁)(x-x₂)+(y-y₁)(y-y₂)=0</td><td>ব্যাসীয় আকারের বৃত্ত</td><td>দুই প্রান্তবিন্দু দিয়ে বৃত্তের সমীকরণ</td></tr>
+        </table>
+
+        <div class="f-section-title">📓 কনিক (Conic) সমীকরণ</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>y = ax² + bx + c</td><td>সমপরাবৃত্ত (Parabola)</td><td>a>0 হলে উর্ধ্বমুখী, a<0 হলে অধোমুখী</td></tr>
+          <tr><td>x = h + a(y-k)²</td><td>আনুভূমিক সমপরাবৃত্ত</td><td>আনুভূমিকভাবে খোলা সমপরাবৃত্ত</td></tr>
+          <tr><td>xy = k (k≠0)</td><td>আয়তাকার অতিবৃত্ত</td><td>সমপরাবৃত্ত; অর্থনীতিতে P×Q = ধ্রুবক</td></tr>
+          <tr><td>শীর্ষবিন্দু = (-b/2a, f(-b/2a))</td><td>সমপরাবৃত্তের শীর্ষ</td><td>সর্বোচ্চ বা সর্বনিম্ন বিন্দু</td></tr>
+        </table>
+      </div>
+
+      <!-- ===== অধ্যায় ৭: অন্তরক ক্যালকুলাস ===== -->
+      <div class="formula-chapter" id="fch6">
+        <div class="f-section-title">📔 মৌলিক অন্তরকরণ নিয়ম</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>d/dx(c) = 0</td><td>ধ্রুবকের অন্তরক</td><td>ধ্রুবকের অন্তরক সর্বদা শূন্য</td></tr>
+          <tr><td>d/dx(xⁿ) = nxⁿ⁻¹</td><td>ঘাত নিয়ম</td><td>সবচেয়ে মৌলিক অন্তরকরণ সূত্র</td></tr>
+          <tr><td>d/dx(cf) = c·f'</td><td>ধ্রুবক গুণকের নিয়ম</td><td>ধ্রুবক গুণক বাইরে রাখা যায়</td></tr>
+          <tr><td>d/dx(f±g) = f'±g'</td><td>যোগ/বিয়োগের নিয়ম</td><td>যোগফলের অন্তরক = পৃথক অন্তরকের যোগ</td></tr>
+          <tr><td>d/dx(fg) = f'g + fg'</td><td>গুণের নিয়ম (Product Rule)</td><td>দুই অপেক্ষকের গুণফলের অন্তরক</td></tr>
+          <tr><td>d/dx(f/g) = (f'g - fg')/g²</td><td>ভাগের নিয়ম (Quotient Rule)</td><td>ভাগফলের অন্তরক নির্ণয়ের নিয়ম</td></tr>
+          <tr><td>d/dx[f(g(x))] = f'(g(x))·g'(x)</td><td>শৃঙ্খল নিয়ম (Chain Rule)</td><td>যৌগিক অপেক্ষকের অন্তরক</td></tr>
+          <tr><td>d/dx(eˣ) = eˣ</td><td>e সূচকের অন্তরক</td><td>eˣ এর অন্তরক নিজেই eˣ</td></tr>
+          <tr><td>d/dx(aˣ) = aˣ·ln a</td><td>সাধারণ সূচকের অন্তরক</td><td>a ভিত্তিক সূচকীয় অপেক্ষকের অন্তরক</td></tr>
+          <tr><td>d/dx(ln x) = 1/x</td><td>প্রাকৃতিক লগের অন্তরক</td><td>ln x এর অন্তরক 1/x</td></tr>
+          <tr><td>d/dx(log_a x) = 1/(x·ln a)</td><td>সাধারণ লগের অন্তরক</td><td>a ভিত্তিক লগের অন্তরক</td></tr>
+          <tr><td>d/dx(e^(f(x))) = f'(x)·e^(f(x))</td><td>শৃঙ্খল নিয়মে e সূচক</td><td>জটিল সূচকীয় অপেক্ষকের অন্তরক</td></tr>
+          <tr><td>d/dx(ln f(x)) = f'(x)/f(x)</td><td>শৃঙ্খল নিয়মে লগ</td><td>জটিল লগ অপেক্ষকের অন্তরক</td></tr>
+        </table>
+
+        <div class="f-section-title">📔 আংশিক অন্তরক (Partial Derivatives)</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>∂f/∂x: y কে ধ্রুবক ধরে x এর সাপেক্ষে অন্তরক</td><td>x এর সাপেক্ষে আংশিক অন্তরক</td><td>y স্থির রেখে শুধু x পরিবর্তন করা হয়</td></tr>
+          <tr><td>∂f/∂y: x কে ধ্রুবক ধরে y এর সাপেক্ষে অন্তরক</td><td>y এর সাপেক্ষে আংশিক অন্তরক</td><td>x স্থির রেখে শুধু y পরিবর্তন করা হয়</td></tr>
+          <tr><td>∂²f/∂x² = f_xx (দ্বিতীয় আংশিক)</td><td>দ্বিতীয় আংশিক অন্তরক</td><td>প্রথম আংশিক অন্তরকের পুনরায় অন্তরক</td></tr>
+          <tr><td>∂²f/∂x∂y = f_xy (মিশ্র আংশিক)</td><td>মিশ্র আংশিক অন্তরক</td><td>প্রথমে x, পরে y এর সাপেক্ষে অন্তরক</td></tr>
+          <tr><td>f_xy = f_yx (Young's theorem)</td><td>ইয়াংয়ের উপপাদ্য</td><td>মিশ্র আংশিক অন্তরকদ্বয় সমান (সাধারণত)</td></tr>
+        </table>
+
+        <div class="f-section-title">📔 ইউলারের উপপাদ্য</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>f(tx,ty) = tⁿ·f(x,y) → সমজাতীয়</td><td>সমজাতীয় অপেক্ষকের সংজ্ঞা</td><td>n মাত্রার সমজাতীয় অপেক্ষক</td></tr>
+          <tr><td>x·∂f/∂x + y·∂f/∂y = n·f(x,y)</td><td>ইউলারের উপপাদ্য</td><td>n মাত্রার সমজাতীয় অপেক্ষকের জন্য প্রযোজ্য</td></tr>
+          <tr><td>উৎপাদন: x·MP_x + y·MP_y = n·Q</td><td>উৎপাদন সংক্রান্ত ইউলার</td><td>n=1 হলে মোট উৎপাদন = উপকরণের আয়ের যোগফল</td></tr>
+        </table>
+
+        <div class="f-section-title">📔 সমাকলন (Integration) সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>∫xⁿ dx = xⁿ⁺¹/(n+1) + C (n≠-1)</td><td>ঘাতের সমাকলন</td><td>ঘাত নিয়মের বিপরীত</td></tr>
+          <tr><td>∫1/x dx = ln|x| + C</td><td>বিপরীত x এর সমাকলন</td><td>১/x এর সমাকলন প্রাকৃতিক লগ</td></tr>
+          <tr><td>∫eˣ dx = eˣ + C</td><td>e সূচকের সমাকলন</td><td>eˣ এর সমাকলন নিজেই eˣ</td></tr>
+          <tr><td>∫aˣ dx = aˣ/ln a + C</td><td>সাধারণ সূচকের সমাকলন</td><td>a ভিত্তিক সূচকের সমাকলন</td></tr>
+          <tr><td>∫c dx = cx + C</td><td>ধ্রুবকের সমাকলন</td><td>ধ্রুবকের সমাকলন</td></tr>
+          <tr><td>∫[f(x)±g(x)]dx = ∫f dx ± ∫g dx</td><td>যোগ/বিয়োগের সমাকলন</td><td>যোগফলের সমাকলন = পৃথক সমাকলনের যোগ</td></tr>
+          <tr><td>∫ᵃᵇ f(x)dx = F(b) - F(a)</td><td>নির্দিষ্ট সমাকলন</td><td>নির্দিষ্ট সীমায় সমাকলন নির্ণয়</td></tr>
+          <tr><td>CS = ∫₀^Q* D(q)dq - P*Q*</td><td>ভোক্তা উদ্বৃত্ত (সমাকলন)</td><td>চাহিদা অপেক্ষকের নিচের ক্ষেত্রফল থেকে ব্যয় বাদ</td></tr>
+          <tr><td>PS = P*Q* - ∫₀^Q* S(q)dq</td><td>উৎপাদক উদ্বৃত্ত (সমাকলন)</td><td>মোট আয় থেকে যোগান অপেক্ষকের নিচের ক্ষেত্রফল বাদ</td></tr>
+        </table>
+      </div>
+
+      <!-- ===== অধ্যায় ৮: কাম্যকরণ ===== -->
+      <div class="formula-chapter" id="fch7">
+        <div class="f-section-title">📑 একচলক কাম্যকরণের শর্ত</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>FOC: f'(x*) = 0</td><td>প্রথম পর্যায়ের শর্ত (FOC)</td><td>অপেক্ষকের প্রথম অন্তরক শূন্য হতে হবে</td></tr>
+          <tr><td>SOC সর্বোচ্চ: f''(x*) < 0</td><td>সর্বোচ্চ মানের ২য় পর্যায়ের শর্ত</td><td>দ্বিতীয় অন্তরক ঋণাত্মক হলে সর্বোচ্চ মান</td></tr>
+          <tr><td>SOC সর্বনিম্ন: f''(x*) > 0</td><td>সর্বনিম্ন মানের ২য় পর্যায়ের শর্ত</td><td>দ্বিতীয় অন্তরক ধনাত্মক হলে সর্বনিম্ন মান</td></tr>
+          <tr><td>f''(x*) = 0 → অনমনীয় বিন্দু সম্ভব</td><td>অনমনীয় বিন্দু পরীক্ষা</td><td>তৃতীয় অন্তরকের মাধ্যমে নিশ্চিত করতে হবে</td></tr>
+        </table>
+
+        <div class="f-section-title">📑 দুইচলক কাম্যকরণের শর্ত</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>FOC: ∂f/∂x = 0, ∂f/∂y = 0</td><td>দুইচলক FOC</td><td>উভয় আংশিক অন্তরক শূন্য হতে হবে</td></tr>
+          <tr><td>|H| = f_xx·f_yy - (f_xy)² (হেসিয়ান)</td><td>হেসিয়ান নির্ধারক</td><td>SOC পরীক্ষার জন্য ব্যবহৃত নির্ধারক</td></tr>
+          <tr><td>সর্বোচ্চ: f_xx < 0 এবং |H| > 0</td><td>দুইচলক সর্বোচ্চ শর্ত</td><td>উভয় শর্ত পূরণ হলে সর্বোচ্চ মান নিশ্চিত</td></tr>
+          <tr><td>সর্বনিম্ন: f_xx > 0 এবং |H| > 0</td><td>দুইচলক সর্বনিম্ন শর্ত</td><td>উভয় শর্ত পূরণ হলে সর্বনিম্ন মান নিশ্চিত</td></tr>
+          <tr><td>|H| < 0 → স্যাডেল বিন্দু</td><td>স্যাডেল বিন্দু</td><td>সর্বোচ্চ বা সর্বনিম্ন কোনোটি নয়</td></tr>
+        </table>
+
+        <div class="f-section-title">📑 মুনাফা সর্বোচ্চকরণ সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>π = TR - TC</td><td>মুনাফার সংজ্ঞা</td><td>মোট আয় থেকে মোট ব্যয় বিয়োগ</td></tr>
+          <tr><td>TR = P × Q</td><td>মোট আয়</td><td>মূল্য × পরিমাণ</td></tr>
+          <tr><td>MR = dTR/dQ = P + Q·dP/dQ</td><td>প্রান্তিক আয়</td><td>এক একক বেশি বিক্রিতে আয়ের পরিবর্তন</td></tr>
+          <tr><td>MC = dTC/dQ</td><td>প্রান্তিক ব্যয়</td><td>এক একক বেশি উৎপাদনে ব্যয়ের পরিবর্তন</td></tr>
+          <tr><td>π সর্বোচ্চ: MR = MC (FOC)</td><td>সর্বোচ্চ মুনাফার শর্ত</td><td>প্রান্তিক আয় = প্রান্তিক ব্যয়</td></tr>
+          <tr><td>SOC: dMR/dQ < dMC/dQ</td><td>সর্বোচ্চ মুনাফার ২য় শর্ত</td><td>MC এর বৃদ্ধির হার MR এর চেয়ে বেশি হতে হবে</td></tr>
+          <tr><td>MR = P(1 - 1/|ε|)</td><td>MR ও স্থিতিস্থাপকতার সম্পর্ক</td><td>|ε|=চাহিদার মূল্য স্থিতিস্থাপকতা</td></tr>
+          <tr><td>TR সর্বোচ্চ: MR = 0, |ε| = 1</td><td>মোট আয় সর্বোচ্চ শর্ত</td><td>MR শূন্য হলে TR সর্বোচ্চ; একক স্থিতিস্থাপক</td></tr>
+        </table>
+
+        <div class="f-section-title">📑 শর্তযুক্ত কাম্যকরণ — ল্যাগরেঞ্জ পদ্ধতি</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>L = f(x,y) + λ[g(x,y) - c]</td><td>ল্যাগরেঞ্জ অপেক্ষক</td><td>মূল অপেক্ষক + λ × শর্ত; λ = ল্যাগরেঞ্জ গুণক</td></tr>
+          <tr><td>∂L/∂x = 0, ∂L/∂y = 0, ∂L/∂λ = 0</td><td>ল্যাগরেঞ্জ FOC</td><td>তিনটি সমীকরণ থেকে x*, y*, λ* নির্ণয়</td></tr>
+          <tr><td>λ* = ∂f*/∂c (ল্যাগরেঞ্জ গুণকের অর্থ)</td><td>λ এর অর্থনৈতিক ব্যাখ্যা</td><td>শর্ত ১ একক শিথিল হলে সর্বোচ্চ মানের পরিবর্তন</td></tr>
+          <tr><td>প্রতিস্থাপন পদ্ধতি: শর্ত থেকে একটি চলক বের করে মূলে বসাও</td><td>প্রতিস্থাপন পদ্ধতি</td><td>সহজ শর্তের ক্ষেত্রে ল্যাগরেঞ্জ ছাড়া সমাধান</td></tr>
+        </table>
+
+        <div class="f-section-title">📑 উৎপাদন সংক্রান্ত গুরুত্বপূর্ণ সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>Q = f(K, L)</td><td>উৎপাদন অপেক্ষক</td><td>মূলধন (K) ও শ্রম (L) এর অপেক্ষক</td></tr>
+          <tr><td>MP_L = ∂Q/∂L</td><td>শ্রমের প্রান্তিক উৎপাদন</td><td>শ্রমের একক বৃদ্ধিতে উৎপাদনের পরিবর্তন</td></tr>
+          <tr><td>MP_K = ∂Q/∂K</td><td>মূলধনের প্রান্তিক উৎপাদন</td><td>মূলধনের একক বৃদ্ধিতে উৎপাদনের পরিবর্তন</td></tr>
+          <tr><td>AP_L = Q/L</td><td>শ্রমের গড় উৎপাদন</td><td>মোট উৎপাদনকে শ্রম দ্বারা ভাগ</td></tr>
+          <tr><td>Q = AK^α L^β (কব-ডগলাস)</td><td>কব-ডগলাস উৎপাদন অপেক্ষক</td><td>A=প্রযুক্তি, α+β=মাত্রার পরিমাপ (RTS)</td></tr>
+          <tr><td>α+β=1 → স্থির মাত্রার আয়</td><td>কব-ডগলাসে CRS</td><td>সকল উপকরণ দ্বিগুণ করলে উৎপাদন দ্বিগুণ</td></tr>
+          <tr><td>α+β>1 → ক্রমবর্ধমান মাত্রার আয়</td><td>কব-ডগলাসে IRS</td><td>উপকরণ দ্বিগুণে উৎপাদন দ্বিগুণের বেশি</td></tr>
+          <tr><td>α+β<1 → ক্রমহ্রাসমান মাত্রার আয়</td><td>কব-ডগলাসে DRS</td><td>উপকরণ দ্বিগুণে উৎপাদন দ্বিগুণের কম</td></tr>
+          <tr><td>MRTS = MP_L/MP_K = -dK/dL</td><td>প্রান্তিক কারিগরি প্রতিস্থাপন হার</td><td>আইসোকোয়্যান্টের ঢাল (পরম মান)</td></tr>
+          <tr><td>CES: Q = A[αK^(-ρ) + (1-α)L^(-ρ)]^(-1/ρ)</td><td>CES উৎপাদন অপেক্ষক</td><td>ধ্রুবক প্রতিস্থাপন স্থিতিস্থাপকতার অপেক্ষক</td></tr>
+        </table>
+
+        <div class="f-section-title">📑 মূল্য স্থিতিস্থাপকতার সূত্র</div>
+        <table class="formula-table">
+          <tr><th>সূত্র</th><th>নাম (বাংলা)</th><th>ব্যাখ্যা / অর্থ</th></tr>
+          <tr><td>ε = (dQ/dP)·(P/Q)</td><td>চাহিদার মূল্য স্থিতিস্থাপকতা</td><td>মূল্য পরিবর্তনের তুলনায় চাহিদার পরিবর্তনের অনুপাত</td></tr>
+          <tr><td>|ε| > 1 → স্থিতিস্থাপক চাহিদা</td><td>স্থিতিস্থাপক</td><td>মূল্য পরিবর্তনে চাহিদা বেশি পরিবর্তিত হয়</td></tr>
+          <tr><td>|ε| < 1 → অস্থিতিস্থাপক চাহিদা</td><td>অস্থিতিস্থাপক</td><td>মূল্য পরিবর্তনে চাহিদা কম পরিবর্তিত হয়</td></tr>
+          <tr><td>|ε| = 1 → একক স্থিতিস্থাপক</td><td>একক স্থিতিস্থাপক</td><td>মূল্য ও চাহিদা সমানুপাতে পরিবর্তিত হয়</td></tr>
+          <tr><td>εᵧ = (dQ/dY)·(Y/Q)</td><td>আয়ের স্থিতিস্থাপকতা</td><td>আয় পরিবর্তনে চাহিদার পরিবর্তন</td></tr>
+        </table>
+      </div>
+
+    </div><!-- end formula-body -->
+  </div><!-- end formula-modal -->
+</div><!-- end formula-overlay -->
+
+<script>
+// ===== FORMULA CHAPTER TABS =====
+function showFormulaChapter(idx, btn) {
+  document.querySelectorAll('.formula-chapter').forEach((c,i) => c.classList.toggle('active', i === idx));
+  document.querySelectorAll('.f-tab').forEach((t,i) => t.classList.toggle('active', i === idx));
+}
+
+// ===== SEARCH FUNCTIONALITY =====
+function openSearch() {
+  document.getElementById('searchOverlay').classList.add('open');
+  setTimeout(function() { document.getElementById('searchInput').focus(); }, 80);
+  showBtns();
+}
+function closeSearch() {
+  document.getElementById('searchOverlay').classList.remove('open');
+  document.getElementById('searchInput').value = '';
+  document.getElementById('searchResults').innerHTML = '<div class="search-empty"><div class="se-icon">🔎</div>এখানে ফলাফল দেখাবে</div>';
+  document.getElementById('searchStats').textContent = 'টাইপ করুন — পুরো পেজ জুড়ে খোঁজা হবে';
+  showBtns();
+}
+
+function escapeReg(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+function highlight(text, query) {
+  if (!query) return text;
+  var re = new RegExp('(' + escapeReg(query) + ')', 'gi');
+  return text.replace(re, '<mark>$1</mark>');
+}
+function getContext(el) {
+  // Walk up to find a meaningful label
+  var labels = [
+    '.section-title', '.chapter-header', '.f-section-title',
+    '.tp-header', '.q-list', '.marks-table th'
+  ];
+  var node = el;
+  for (var i = 0; i < 8; i++) {
+    if (!node || !node.parentElement) break;
+    node = node.parentElement;
+    for (var l = 0; l < labels.length; l++) {
+      var found = node.querySelector(labels[l]);
+      if (found && found !== el) return found.innerText.trim().replace(/\n/g,' ').slice(0,70);
+    }
+  }
+  return 'পেজে';
+}
+
+function doSearch() {
+  var query = document.getElementById('searchInput').value.trim();
+  var resultsEl = document.getElementById('searchResults');
+  var statsEl = document.getElementById('searchStats');
+
+  if (query.length < 2) {
+    resultsEl.innerHTML = '<div class="search-empty"><div class="se-icon">🔎</div>কমপক্ষে ২টি অক্ষর লিখুন</div>';
+    statsEl.textContent = 'টাইপ করুন — পুরো পেজ জুড়ে খোঁজা হবে';
+    return;
+  }
+
+  // Collect all text nodes from the page (excluding modals and scripts)
+  var walker = document.createTreeWalker(
+    document.body,
+    NodeFilter.SHOW_ELEMENT,
+    {
+      acceptNode: function(node) {
+        var tag = node.tagName;
+        if (['SCRIPT','STYLE','NOSCRIPT'].indexOf(tag) >= 0) return NodeFilter.FILTER_REJECT;
+        if (node.id === 'searchOverlay' || node.id === 'formulaOverlay') return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    }
+  );
+
+  var matches = [];
+  var seen = new Set();
+  var re = new RegExp(escapeReg(query), 'i');
+
+  while (walker.nextNode()) {
+    var node = walker.currentNode;
+    // Only leaf-ish elements with visible text
+    if (node.children.length > 3) continue;
+    var text = node.innerText ? node.innerText.trim() : '';
+    if (text.length < 3 || !re.test(text)) continue;
+    if (seen.has(text)) continue;
+    seen.add(text);
+    matches.push({ el: node, text: text });
+    if (matches.length >= 60) break;
+  }
+
+  if (matches.length === 0) {
+    resultsEl.innerHTML = '<div class="search-empty"><div class="se-icon">😕</div>"' + query + '" — কোনো ফলাফল পাওয়া যায়নি</div>';
+    statsEl.textContent = '০টি ফলাফল';
+    return;
+  }
+
+  statsEl.textContent = matches.length + 'টি ফলাফল পাওয়া গেছে';
+
+  var html = '';
+  matches.forEach(function(m, idx) {
+    var ctx = getContext(m.el);
+    var snippet = m.text.length > 160 ? m.text.slice(0, 160) + '…' : m.text;
+    html += '<div class="search-result-item" onclick="jumpTo(' + idx + ')">' +
+      '<div class="sr-context">📍 ' + ctx + '</div>' +
+      '<div class="sr-text">' + highlight(snippet, query) + '</div>' +
+      '</div>';
+  });
+  resultsEl.innerHTML = html;
+  resultsEl._matches = matches;
+}
+
+function jumpTo(idx) {
+  var resultsEl = document.getElementById('searchResults');
+  var matches = resultsEl._matches;
+  if (!matches || !matches[idx]) return;
+  closeSearch();
+  var el = matches[idx].el;
+  setTimeout(function() {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Flash highlight
+    var orig = el.style.transition;
+    var origBg = el.style.background;
+    el.style.transition = 'background 0.3s';
+    el.style.background = '#fff9c4';
+    setTimeout(function() {
+      el.style.background = '#fffde0';
+      setTimeout(function() {
+        el.style.background = origBg;
+        el.style.transition = orig;
+      }, 1200);
+    }, 300);
+  }, 120);
+}
+
+// Keyboard shortcut Ctrl+F / Cmd+F → open search
+document.addEventListener('keydown', function(e) {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+    e.preventDefault();
+    openSearch();
+  }
+  if (e.key === 'Escape') {
+    document.getElementById('formulaOverlay').classList.remove('open');
+    closeSearch();
+    showBtns();
+  }
+  if (e.key === 'Enter' && document.getElementById('searchOverlay').classList.contains('open')) {
+    // Jump to first result
+    var first = document.querySelector('.search-result-item');
+    if (first) first.click();
+  }
+});
+
+// ===== AUTO-HIDE NAVBAR =====
+(function() {
+  var navbar = document.getElementById('topNavbar');
+  var hideTimer = null;
+
+  function isAnyModalOpen() {
+    return document.getElementById('formulaOverlay').classList.contains('open') ||
+           document.getElementById('searchOverlay').classList.contains('open');
+  }
+
+  window.showBtns = function() {
+    navbar.classList.remove('nav-hidden');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function() {
+      if (!isAnyModalOpen()) {
+        navbar.classList.add('nav-hidden');
+      }
+    }, 3000);
+  };
+
+  // Initial hide after 3s
+  hideTimer = setTimeout(function() {
+    if (!isAnyModalOpen()) {
+      navbar.classList.add('nav-hidden');
+    }
+  }, 3000);
+
+  window.addEventListener('scroll', showBtns, { passive: true });
+  document.addEventListener('touchstart', showBtns, { passive: true });
+  document.addEventListener('mousemove', function(e) {
+    if (e.clientY < 80) showBtns();
+  }, { passive: true });
+})();
+
+// ===== SORT DROPDOWN =====
+function toggleSortMenu() {
+  var btn = document.getElementById('sortBtn');
+  var dd = document.getElementById('sortDropdown');
+  var open = dd.classList.contains('open');
+  dd.classList.toggle('open', !open);
+  btn.classList.toggle('open', !open);
+}
+
+function toggleChapterGroup(labelEl) {
+  var subItems = labelEl.nextElementSibling;
+  if (!subItems) return;
+  var isOpen = subItems.classList.contains('open');
+  // Close all others in same dropdown section
+  var allLabels = document.querySelectorAll('.sd-chapter-label');
+  allLabels.forEach(function(lbl) {
+    var si = lbl.nextElementSibling;
+    if (si) { si.classList.remove('open'); lbl.classList.remove('open'); }
+  });
+  // Toggle this one
+  if (!isOpen) {
+    subItems.classList.add('open');
+    labelEl.classList.add('open');
+  }
+}
+
+function navTo(id) {
+  // Close dropdown (if exists)
+  var sd = document.getElementById('sortDropdown');
+  var sb = document.getElementById('sortBtn');
+  if (sd) sd.classList.remove('open');
+  if (sb) sb.classList.remove('open');
+  // Show navbar briefly
+  showBtns();
+  var el = document.getElementById(id);
+  if (!el) return;
+  var navH = document.getElementById('topNavbar').offsetHeight || 54;
+  var top = el.getBoundingClientRect().top + window.pageYOffset - navH - 12;
+  window.scrollTo({ top: top, behavior: 'smooth' });
+  // Flash
+  var orig = el.style.background;
+  el.style.transition = 'background 0.3s';
+  el.style.background = '#fff9c4';
+  setTimeout(function() {
+    el.style.background = orig;
+    el.style.transition = '';
+  }, 1400);
+}
+
+// Close sort dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  var sw = document.getElementById('sortWrapper');
+  if (sw && !sw.contains(e.target)) {
+    document.getElementById('sortDropdown').classList.remove('open');
+    document.getElementById('sortBtn').classList.remove('open');
+  }
+});
+</script>
+
 <div class="main-header">
   <div class="header-badge">📚 ফাইনাল পরীক্ষা সাজেশন ২০২৪/২৫</div>
   <h1>জাতীয় বিশ্ববিদ্যালয়<br>বি.এস.এস (অনার্স) প্রথম বর্ষ</h1>
@@ -610,10 +1873,10 @@
 
 
   <!-- ===== ক বিভাগ ===== -->
-  <div class="section-title"><span class="icon">✏️</span> ক-বিভাগ: অতিসংক্ষিপ্ত প্রশ্নাবলি (বিগত সালের + গুরুত্বপূর্ণ)</div>
+  <div class="section-title" id="ka-section"><span class="icon">✏️</span> ক-বিভাগ: অতিসংক্ষিপ্ত প্রশ্নাবলি (বিগত সালের + গুরুত্বপূর্ণ)</div>
   <div class="q-block">
 
-    <div class="chapter-header">🔹 অধ্যায় ১ — কতিপয় মৌলিক ধারণার পর্যালোচনা</div>
+    <div class="chapter-header" id="ka-ch1">🔹 অধ্যায় ১ — কতিপয় মৌলিক ধারণার পর্যালোচনা</div>
     <ul class="q-list">
       <li>গাণিতিক অর্থনীতি কী? <span class="year-tag">২০১৫, ১৮</span>
         <span class="q-ans">গাণিতিক অর্থনীতি হলো অর্থনীতির সেই শাখা যেখানে অর্থনৈতিক তত্ত্ব ও সম্পর্কসমূহ গাণিতিক প্রতীক, সমীকরণ ও সংখ্যার সাহায্যে প্রকাশ করা হয়।</span>
@@ -692,7 +1955,7 @@
       </li>
     </ul>
 
-    <div class="chapter-header">🔹 অধ্যায় ২ — সেটের ধারণা</div>
+    <div class="chapter-header" id="ka-ch2">🔹 অধ্যায় ২ — সেটের ধারণা</div>
     <ul class="q-list">
       <li>সেট কী? <span class="year-tag">২০১৩, ১৬</span>
         <span class="q-ans">সুনির্দিষ্ট ও সুপরিচিত বস্তু বা উপাদানের সুসংগঠিত সংগ্রহকে সেট বলে। যেমন: A = {1, 2, 3}। সেটের উপাদানগুলো অনন্য (unique) এবং কোনো নির্দিষ্ট ক্রম নেই।</span>
@@ -753,7 +2016,7 @@
       </li>
     </ul>
 
-    <div class="chapter-header">🔹 অধ্যায় ৩ — প্রাথমিক স্থিতীয় বিশ্লেষণ</div>
+    <div class="chapter-header" id="ka-ch3">🔹 অধ্যায় ৩ — প্রাথমিক স্থিতীয় বিশ্লেষণ</div>
     <ul class="q-list">
       <li>ভারসাম্য কী? <span class="year-tag">২০১৫, ১৯</span>
         <span class="q-ans">ভারসাম্য হলো এমন একটি অবস্থা যেখানে পরস্পরবিরোধী শক্তিগুলো সমান হয়ে যায় এবং সিস্টেমটি পরিবর্তনের কোনো প্রবণতা দেখায় না। অর্থনীতিতে: চাহিদা = যোগান হলে বাজারে ভারসাম্য প্রতিষ্ঠিত হয়।</span>
@@ -787,7 +2050,7 @@
       </li>
     </ul>
 
-    <div class="chapter-header">🔹 অধ্যায় ৪ — অপেক্ষক, সীমা এবং অবিচ্ছিন্নতা</div>
+    <div class="chapter-header" id="ka-ch4">🔹 অধ্যায় ৪ — অপেক্ষক, সীমা এবং অবিচ্ছিন্নতা</div>
     <ul class="q-list">
       <li>অপেক্ষক কী? <span class="year-tag">২০১৩, ১৬, ২০</span> <span class="hot-tag">★</span>
         <span class="q-ans">অপেক্ষক হলো দুটি চলকের মধ্যে এমন একটি সম্পর্ক যেখানে স্বাধীন চলক (x) এর প্রতিটি মানের জন্য অধীন চলক (y) এর একটি এবং কেবল একটি মান নির্ধারিত হয়। লেখা হয়: y = f(x)।</span>
@@ -851,7 +2114,7 @@
       </li>
     </ul>
 
-    <div class="chapter-header">🔹 অধ্যায় ৫ — সমীকরণ পদ্ধতি</div>
+    <div class="chapter-header" id="ka-ch5">🔹 অধ্যায় ৫ — সমীকরণ পদ্ধতি</div>
     <ul class="q-list">
       <li>সমীকরণ কী? <span class="year-tag">২০১৪, ১৭</span>
         <span class="q-ans">সমীকরণ হলো দুটি রাশির মধ্যে সমতা প্রকাশকারী গাণিতিক বিবৃতি যেখানে অজ্ঞাত চলক থাকে এবং নির্দিষ্ট মানের জন্য সমতা সত্য হয়। যেমন: 2x + 3 = 7 একটি সমীকরণ যেখানে x = 2 সমাধান।</span>
@@ -879,7 +2142,7 @@
       </li>
     </ul>
 
-    <div class="chapter-header">🔹 অধ্যায় ৬ — জ্যামিতি</div>
+    <div class="chapter-header" id="ka-ch6">🔹 অধ্যায় ৬ — জ্যামিতি</div>
     <ul class="q-list">
       <li>স্থানাঙ্ক জ্যামিতি কী? <span class="year-tag">২০১৫</span>
         <span class="q-ans">স্থানাঙ্ক জ্যামিতি হলো জ্যামিতির একটি শাখা যেখানে বিন্দু, রেখা ও আকৃতিকে সংখ্যার মাধ্যমে (স্থানাঙ্ক ব্যবহার করে) উপস্থাপন করা হয়। রেনে দেকার্ত (René Descartes) এই পদ্ধতির প্রবর্তন করেন, তাই একে বিশ্লেষণী জ্যামিতি বা কার্তেসীয় জ্যামিতিও বলে।</span>
@@ -916,7 +2179,7 @@
       </li>
     </ul>
 
-    <div class="chapter-header">🔹 অধ্যায় ৭ — প্রাথমিক অন্তরক ক্যালকুলাস</div>
+    <div class="chapter-header" id="ka-ch7">🔹 অধ্যায় ৭ — প্রাথমিক অন্তরক ক্যালকুলাস</div>
     <ul class="q-list">
       <li>অন্তরক ক্যালকুলাস কী? <span class="year-tag">২০১৫, ১৮</span>
         <span class="q-ans">অন্তরক ক্যালকুলাস হলো গণিতের সেই শাখা যেখানে কোনো অপেক্ষকের পরিবর্তনের হার (rate of change) নিয়ে আলোচনা করা হয়। নিউটন ও লাইবনিজ এটি প্রতিষ্ঠা করেন। এটি ঢাল, সর্বোচ্চ-সর্বনিম্ন মান নির্ণয়, প্রান্তিক বিশ্লেষণ ইত্যাদিতে ব্যবহৃত হয়।</span>
@@ -986,7 +2249,7 @@
       </li>
     </ul>
 
-    <div class="chapter-header">🔹 অধ্যায় ৮ — কাম্যকরণ (Optimization)</div>
+    <div class="chapter-header" id="ka-ch8">🔹 অধ্যায় ৮ — কাম্যকরণ (Optimization)</div>
     <ul class="q-list">
       <li>কাম্যকরণ কী? <span class="year-tag">২০১৫, ১৮</span>
         <span class="q-ans">কাম্যকরণ (Optimization) হলো গাণিতিক পদ্ধতিতে কোনো উদ্দেশ্য অপেক্ষকের (objective function) সর্বোচ্চ বা সর্বনিম্ন মান নির্ণয় করার প্রক্রিয়া। অর্থনীতিতে: উৎপাদক মুনাফা সর্বোচ্চ করতে এবং ভোক্তা উপযোগিতা সর্বোচ্চ বা ব্যয় সর্বনিম্ন করতে কাম্যকরণ পদ্ধতি ব্যবহার করে।</span>
@@ -1030,10 +2293,10 @@
 
 
   <!-- ===== খ বিভাগ ===== -->
-  <div class="section-title"><span class="icon">📝</span> খ-বিভাগ: সংক্ষিপ্ত প্রশ্নাবলি (৪ নম্বর করে)</div>
+  <div class="section-title" id="kha-section"><span class="icon">📝</span> খ-বিভাগ: সংক্ষিপ্ত প্রশ্নাবলি (৪ নম্বর করে)</div>
   <div class="q-block">
 
-    <div class="chapter-header">🔹 অধ্যায় ১ — কতিপয় মৌলিক ধারণার পর্যালোচনা</div>
+    <div class="chapter-header" id="kha-ch1">🔹 অধ্যায় ১ — কতিপয় মৌলিক ধারণার পর্যালোচনা</div>
     <ul class="q-list">
       <li>মূলদ ও অমূলদ সংখ্যার মধ্যে পার্থক্য লিখ। <span class="year-tag">২০১৫, ১৭</span>
         <span class="q-ans">মূলদ সংখ্যা: p/q আকারে প্রকাশযোগ্য (p, q পূর্ণ সংখ্যা, q≠0); দশমিক প্রসার সীমিত বা পুনরাবৃত্তিমূলক। যেমন: 3/4 = 0.75, 1/3 = 0.333…। অমূলদ সংখ্যা: p/q আকারে প্রকাশ অসম্ভব; দশমিক প্রসার অসীম ও অনিয়মিত। যেমন: √2 = 1.41421…, π = 3.14159…। উভয় মিলে বাস্তব সংখ্যা (ℝ) গঠিত হয়।</span>
@@ -1061,7 +2324,7 @@
       </li>
     </ul>
 
-    <div class="chapter-header">🔹 অধ্যায় ২ — সেটের ধারণা</div>
+    <div class="chapter-header" id="kha-ch2">🔹 অধ্যায় ২ — সেটের ধারণা</div>
     <ul class="q-list">
       <li>De Morgan's Law প্রমাণ কর। <span class="hot-tag">★ অতি গুরুত্বপূর্ণ</span>
         <span class="q-ans">De Morgan's Law: (i) (A∪B)' = A'∩B'; (ii) (A∩B)' = A'∪B'।
@@ -1091,7 +2354,7 @@
       </li>
     </ul>
 
-    <div class="chapter-header">🔹 অধ্যায় ৩ — প্রাথমিক স্থিতীয় বিশ্লেষণ</div>
+    <div class="chapter-header" id="kha-ch3">🔹 অধ্যায় ৩ — প্রাথমিক স্থিতীয় বিশ্লেষণ</div>
     <ul class="q-list">
       <li>বাজার ভারসাম্য নির্ণয় কর (Qd = Qs ব্যবহার করে)। <span class="year-tag">২০১৬, ১৯</span> <span class="hot-tag">★</span>
         <span class="q-ans">ধরা যাক, Qd = 20 – 2P এবং Qs = –4 + 3P।<br>
@@ -1133,7 +2396,7 @@
       </li>
     </ul>
 
-    <div class="chapter-header">🔹 অধ্যায় ৪ — অপেক্ষক, সীমা এবং অবিচ্ছিন্নতা</div>
+    <div class="chapter-header" id="kha-ch45">🔹 অধ্যায় ৪ — অপেক্ষক, সীমা এবং অবিচ্ছিন্নতা</div>
     <ul class="q-list">
       <li>সীমার ধারণা ও বৈশিষ্ট্য সংক্ষেপে লিখ। <span class="year-tag">২০১৫, ১৮</span>
         <span class="q-ans"><strong>সীমার ধারণা:</strong> x কোনো নির্দিষ্ট মান a এর কাছে যাওয়ার সময় f(x) যে মান L এর দিকে অগ্রসর হয়, তাকে f(x) এর সীমা বলে। লেখা হয়: lim(x→a) f(x) = L।<br>
@@ -1286,7 +2549,7 @@
       </li>
     </ul>
 
-    <div class="chapter-header">🔹 অধ্যায় ৭ — প্রাথমিক অন্তরক ক্যালকুলাস</div>
+    <div class="chapter-header" id="kha-ch78">🔹 অধ্যায় ৭ — প্রাথমিক অন্তরক ক্যালকুলাস</div>
     <ul class="q-list">
       <li>চেইন রুল ব্যাখ্যা কর এবং উদাহরণ দাও। <span class="year-tag">২০১৬, ২০</span> <span class="hot-tag">★</span>
         <span class="q-ans"><strong>শৃঙ্খল নিয়ম (Chain Rule):</strong> যদি y = f(u) এবং u = g(x) হয়, তাহলে যৌগিক অপেক্ষক y = f[g(x)] এর অন্তরক সহগ:<br>
@@ -1441,7 +2704,7 @@
 
 
   <!-- ===== গ বিভাগ ===== -->
-  <div class="section-title"><span class="icon">📘</span> গ-বিভাগ: রচনামূলক প্রশ্নাবলি (১০ নম্বর করে)</div>
+  <div class="section-title" id="ga-section"><span class="icon">📘</span> গ-বিভাগ: রচনামূলক প্রশ্নাবলি (১০ নম্বর করে)</div>
   <div class="q-block">
 
     <div class="chapter-header">🔹 অধ্যায় ১ — কতিপয় মৌলিক ধারণার পর্যালোচনা</div>
@@ -2918,7 +4181,7 @@
 
 
   <!-- SPECIAL MATH PROBLEMS -->
-  <div class="section-title"><span class="icon">🔢</span> বিশেষভাবে গুরুত্বপূর্ণ গাণিতিক সমস্যা (প্রায় প্রতি বছর আসে)</div>
+  <div class="section-title" id="kathin-math"><span class="icon">🔢</span> বিশেষভাবে গুরুত্বপূর্ণ গাণিতিক সমস্যা (প্রায় প্রতি বছর আসে)</div>
   <div class="q-block">
     <ul class="q-list">
       <li><strong>সমস্যা ১:</strong> Qd = 20 – 4P এবং Qs = –4 + 2P হলে ভারসাম্য P ও Q নির্ণয় কর। <span class="hot-tag">★ বারবার আসে</span>
